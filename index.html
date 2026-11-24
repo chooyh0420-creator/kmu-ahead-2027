@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>KMU AHEAD 2027 · 추윤호 연구 여정</title>
-<meta name="description" content="직원은 AI로 일하고, 학생은 기다리지 않는 대학 — KMU AHEAD 2027 참가 연구계획을 실제 위성지도 위의 여정으로 소개합니다.">
+<meta name="description" content="모든 직원이 개발자가 되는 대학 — KMU AHEAD 2027 참가 연구계획을 실제 위성지도 위의 여정으로 소개합니다.">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.css">
 <style>
 *{box-sizing:border-box}
@@ -308,16 +308,16 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 <!-- 연구 구조: 두 축의 연결 -->
 <div class="scene flow" data-s="flow">
   <div class="axes r1">
-    <div class="ax staff"><small>축 ① 직원</small><b>AI로 일하는 직원</b><span>현업 직원이 자기 업무를<br>AI로 직접 개선</span><p><i>도구</i><i>규칙</i><i>교육</i><i>공유</i></p></div>
-    <div class="link"><span>직원이 AI로 만든 도구가<br><b>곧 학생 서비스</b></span><svg viewBox="0 0 120 24"><path d="M2 12h108" stroke="#ffb703" stroke-width="3" stroke-dasharray="6 5"/><path d="M104 4l12 8-12 8" fill="none" stroke="#ffb703" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="ax staff"><small>축 ① 직원</small><b>개발하는 직원</b><span>학생 곁에서 발견한 불편을<br>AI로 직접 해결</span><p><i>도구</i><i>규칙</i><i>교육</i><i>공유</i></p></div>
+    <div class="link"><span>누구나 개발하는 시대<br><b>직원의 도구 = 학생 서비스</b></span><svg viewBox="0 0 120 24"><path d="M2 12h108" stroke="#ffb703" stroke-width="3" stroke-dasharray="6 5"/><path d="M104 4l12 8-12 8" fill="none" stroke="#ffb703" stroke-width="3" stroke-linejoin="round"/></svg></div>
     <div class="ax stud"><small>축 ② 학생</small><b>기다리지 않는 학생</b><span>묻기 전에 필요한 정보를<br>먼저 받음</span><p><i>맞춤 알림</i><i>실시간 정보</i><i>AI 상담</i></p></div>
   </div>
-  <div class="cases r2"><h5>우리 대학에서 이미 확인한 흐름</h5>
-    <div class="case"><span class="w">장학 기준·서류 안내 업무</span><em>→</em><b>「장학금 자가진단」</b><em>→</em><span class="s">학생이 스스로 진단 <strong>2,100여 회</strong></span></div>
-    <div class="case"><span class="w">재무팀 전표 일정 공유</span><em>→</em><b>「장학금 캘린더」</b><em>→</em><span class="s">지급일을 묻지 않고 확인 <strong>750여 회</strong></span></div>
-    <div class="case"><span class="w">클리커 식수 자동 집계</span><em>→</em><b>「아침밥 실시간 현황」</b><em>→</em><span class="s">헛걸음 없이 확인 <strong>5,400여 회</strong></span></div>
+  <div class="cases r2"><h5>학생의 불편에서 시작해 직원이 직접 만든 3가지</h5>
+    <div class="case"><span class="w">“내가 받을 수 있는 장학금은?” 반복 문의</span><em>→</em><b>「장학금 자가진단」</b><em>→</em><span class="s">학생이 스스로 진단 <strong>2,100여 회</strong></span></div>
+    <div class="case"><span class="w">“장학금 언제 들어와요?” 지급일 문의</span><em>→</em><b>「장학금 캘린더」</b><em>→</em><span class="s">지급일을 묻지 않고 확인 <strong>750여 회</strong></span></div>
+    <div class="case"><span class="w">마감 여부를 몰라 아침밥 헛걸음</span><em>→</em><b>「아침밥 실시간 현황」</b><em>→</em><span class="s">헛걸음 없이 확인 <strong>5,400여 회</strong></span></div>
   </div>
-  <div class="gap r3"><div class="bad"><small>지금의 한계</small>담당자 한 명의 역량 → 바뀌면 끊기고, 다른 부서로 퍼지지 않음</div><em>⟶</em><div class="good"><small>AHEAD 2027에서 찾을 답</small>개인의 실험을 대학의 <b>검증·공유·확산 체계</b>로</div></div>
+  <div class="gap r3"><div class="bad"><small>지금의 한계</small>담당자 한 명만 개발 → 바뀌면 끊기고, 다른 부서로 퍼지지 않음</div><em>⟶</em><div class="good"><small>AHEAD 2027에서 찾을 답</small><b>모든 직원이 개발</b>하고, 대학이 <b>검수·공유·확산</b>하는 체계</div></div>
 </div>
 <!-- 기관 비교표 -->
 <div class="scene matrix" data-s="matrix">
@@ -365,13 +365,13 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 /* 단계별 카드 문구 — app.js의 STEPS와 순서가 같아야 합니다 (15단계) */
 window.STEP_HTML=[
 /* 0 시작 */
-`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>직원은 AI로 일하고,<br>학생은 기다리지 않는 대학</h2><p class="lead">현업 직원 주도 AI 업무혁신의 확산 체계와 학생 선제 안내 서비스 모델 연구</p><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
+`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>모든 직원이<br>개발자가 되는 대학</h2><p class="lead">현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><div class="hl">누구나 개발할 수 있는 시대가 됐습니다. 학생 곁에 있는 직원이 일상 속 불편을 가장 먼저 발견하고, 아이디어를 직접 도구로 만들어 적용합니다.</div><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
 /* 1 계명대 */
-`<span class="tag gr">출발점 · 계명대학교</span><h2>현장에서 먼저<br>작게 실험해 왔습니다</h2><p class="lead">반복되는 검증·입력 업무를 생성형 AI로 개선해 업무 효율성과 학생 편의성을 높이고, 학생이 묻기 전에 먼저 알려 주는 서비스를 직접 만들어 운영하고 있습니다.</p><ul><li><b>장학금 맞춤형 추천 시스템</b>(장학금 자가진단) 개발 — 직무발명 신고 및 지식재산 등록 <b>제C-2026-048495호</b></li><li><b>장학금 자가진단</b> — 누적 방문 <b>13,600여 회</b>, 맞춤 진단 <b>2,100여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥</b> 클리커 자동 집계·실시간 현황 공개 — 예산 0원, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">그런데 담당자 한 명의 역량에 머무르면, 담당자가 바뀔 때 끊기고 다른 부서로 퍼지지 않습니다. 이 한계를 넘을 방법을 찾으러 떠납니다.</div><p class="note">※ 방문·진단 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
+`<span class="tag gr">출발점 · 계명대학교</span><h2>학생의 불편에서 출발해<br>직접 만들어 왔습니다</h2><p class="lead">장학 업무를 하며 학생들이 반복해서 묻고 헛걸음하는 모습을 보고, 생성형 AI로 그 불편을 해결하는 서비스를 직접 만들어 운영하고 있습니다.</p><ul><li><b>장학금 맞춤형 추천 시스템</b>(장학금 자가진단) 개발 — 직무발명 신고 및 지식재산 등록 <b>제C-2026-048495호</b></li><li><b>장학금 자가진단</b> — 누적 방문 <b>13,600여 회</b>, 맞춤 진단 <b>2,100여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥</b> 클리커 자동 집계·실시간 현황 공개 — 예산 0원, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">그런데 담당자 한 명의 역량에 머무르면, 담당자가 바뀔 때 끊기고 다른 부서로 퍼지지 않습니다. 이 한계를 넘을 방법을 찾으러 떠납니다.</div><p class="note">※ 방문·진단 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
 /* 2 직접 만든 서비스 */
 `<span class="tag gr">직접 만들어 운영 중인 서비스</span><h2>학생이 묻기 전에<br>먼저 알려 주는 서비스 3가지</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>클리커 자동 집계로 남은 인원을 5초마다 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl"><b>저작권 등록 제C-2026-048495호</b> — 「학자금지원구간 및 학업정보 기반 장학금 맞춤형 추천 시스템」(2026. 9. 29. 등록, 저작자 계명대학교 산학협력단)</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상입니다. ③은 실제 현황 페이지에 예시 숫자를 넣어, 클리커를 찍을 때마다 인원이 실시간으로 올라가는 운영 중 모습을 재현한 영상입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
 /* 3 연구 구조 */
-`<span class="tag">연구 구조 · 두 축의 연결</span><h2>직원이 만든 도구가<br>곧 학생 서비스가 됩니다</h2><p class="lead">연구주제의 두 축은 따로 떨어져 있지 않습니다. 직원의 업무혁신이 학생의 기다림을 줄이는 <b>하나의 흐름</b>으로 연구합니다.</p><ul><li><b>(직원)</b> 현업 직원이 AI로 자기 업무를 직접 개선하는 체계: 도구·규칙·교육·공유</li><li><b>(학생)</b> 학생이 묻기 전에 필요한 정보를 먼저 알려 주는 선제 안내 서비스</li><li><b>(연결)</b> 직원이 AI로 만든 도구가 곧 학생 서비스가 되는 구조</li></ul><div class="hl">흐름도 가운데 줄은 우리 대학에서 이미 확인한 흐름입니다. 이 흐름을 <b>개인이 아닌 대학의 체계</b>로 만드는 방법을 찾는 것이 이번 연구의 목표입니다.</div>`,
+`<span class="tag">연구 구조 · 불편에서 서비스까지</span><h2>학생의 불편이 아이디어가 되고,<br>직원이 만든 도구가 서비스가 됩니다</h2><p class="lead">누구나 개발할 수 있는 시대, 학생 곁의 직원이 가장 먼저 불편을 발견합니다. 이 과정을 <b>하나의 흐름</b>으로 연구합니다.</p><ul><li><b>(직원)</b> 현업 직원이 AI로 자기 업무를 직접 개선하는 체계: 도구·규칙·교육·공유</li><li><b>(학생)</b> 학생이 묻기 전에 필요한 정보를 먼저 알려 주는 선제 안내 서비스</li><li><b>(연결)</b> 학생의 불편 발견 → 직원의 아이디어 → AI로 직접 개발 → 검수·공유 → 학생 서비스 적용</li></ul><div class="hl">흐름도 가운데 줄은 제가 직접 겪은 사례입니다. 이 흐름을 한 사람이 아닌 <b>모든 직원이 할 수 있는 대학의 체계</b>로 만드는 것이 이번 연구의 목표입니다.</div>`,
 /* 4 사전연구 */
 `<span class="tag">출국 전 · 사전연구</span><h2>세 가지 질문을 들고 갑니다</h2><ul class="q"><li><i>1</i>직원이 만든 AI 도구를 대학은 어떤 기준으로 <b>검증·승인하고 함께 쓰는가?</b><br><span class="chip">개인정보·보안</span><span class="chip">지식재산 귀속</span><span class="chip">유지보수·인수인계</span></li><li><i>2</i>전 직원의 AI 활용 역량을 어떤 <b>교육과 지원 조직</b>으로 키우는가?<br><span class="chip">교육과정</span><span class="chip">직원 커뮤니티</span><span class="chip">성과 인정</span></li><li><i>3</i>학생이 묻기 전에 <b>먼저 알려 주는 서비스</b>는 어떤 데이터와 채널로 운영되는가?<br><span class="chip">AI 상담</span><span class="chip">맞춤 알림</span><span class="chip">실시간 정보</span></li></ul><h4>출국 전에 할 일</h4><ul><li>방문기관의 AI 정책·플랫폼·가이드라인 공개자료 조사</li><li>우리 대학 AI 활용 사례(장학금 자가진단·캘린더, 천원의 아침밥 현황)의 효과와 한계 정리</li><li><b>본인 담당</b> — 직접 만든 서비스 3종을 바탕으로 연구팀 <b>공통 현장 질문지 초안</b> 작성</li></ul>`,
 /* 5 인천 출국 */
@@ -393,7 +393,7 @@ window.STEP_HTML=[
 /* 13 귀국·적용 */
 `<span class="tag alt">2027. 1. 30.(토) · 귀국</span><h2>가져와서<br>이렇게 쓰겠습니다</h2><h4>단기 시범 적용</h4><ul><li>장학복지팀 AI 도구를 <b>타 부서 1~2곳</b>에 시범 적용</li><li>장학금 신청·지급 일정 <b>개인 맞춤 알림</b> 시범 운영</li></ul><h4>제도 마련</h4><ul><li>직원 AI 활용 가이드라인(안), 직원 개발 도구 검수·공유 절차</li><li>직원 개발 도구의 <b>직무발명 신고·지식재산 등록 지원 절차(안)</b></li></ul><h4>공유와 확산</h4><ul><li>성과공유회 발표, 실습형 「AI 업무 자동화 따라 하기」 워크숍</li><li>매뉴얼·사례 영상을 업무포털에 공유, 6개월 후 효과(처리 시간·문의 건수) 측정</li></ul>`,
 /* 14 약속 */
-`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「직원은 AI로 일하고, 학생은 기다리지 않는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 연구팀 공통 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 타 부서 시범 적용 설계·운영, 6개월 후 효과 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
+`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「모든 직원이 개발자가 되는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 연구팀 공통 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 타 부서 시범 적용 설계·운영, 6개월 후 효과 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
 ];
 
 /* 방문기관 단계 오른쪽 화면: 공식 영상(YouTube 퍼가기) + 가서 배울 것 → 계명대 적용 */
@@ -442,7 +442,7 @@ var STEPS=[
  {nav:'시작',sub:'',cam:C([172,30],1.55,0,0,{loc:'태평양 상공'})},
  {nav:'계명대',sub:'출발점',cam:C([128.4874,35.8558],15.7,62,-28,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'})},
  {nav:'직접 만든 서비스',sub:'3가지',cam:C([128.4874,35.8558],15.1,55,-10,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'trio'},
- {nav:'연구 구조',sub:'두 축 연결',cam:C([128.4874,35.8558],13.4,50,35,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'flow'},
+ {nav:'연구 구조',sub:'불편→서비스',cam:C([128.4874,35.8558],13.4,50,35,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'flow'},
  {nav:'사전연구',sub:'출국 전',cam:C([127.6,36.3],6.3,28,-8,{place:'daegu',loc:'대한민국'})},
  {nav:'인천 출국',sub:'1. 19.(화)',cam:C([126.4506,37.4492],13.4,58,35,{orbit:1,place:'icn',loc:'인천국제공항'})},
  {nav:'샌프란시스코',sub:'도착',cam:C([-122.26,37.63],9.25,48,-12,{loc:'샌프란시스코 베이 에어리어'}),flightFrom:'icn',flightTo:'bayArrive'},
