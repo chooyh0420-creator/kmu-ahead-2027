@@ -253,7 +253,7 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .ytw .cap{margin:0;color:#fff;font-size:14px;font-weight:700;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .ytw .cap small{display:block;font-size:11.5px;font-weight:700;color:#ffd36b;margin-bottom:1px}
-.learn{background:rgba(255,255,255,.97);border-radius:14px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.45);align-self:start}
+.learn{background:rgba(255,255,255,.97);border-radius:14px;padding:12px 16px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
 .learn h6{margin:0 0 8px;font-size:13.5px;color:#0b2a5b;font-weight:800}
 .learn h6 em{font-style:normal;color:#f29900}
 .learn ol{list-style:none;margin:0;padding:0}
@@ -267,6 +267,18 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 .vnote{margin:0;color:rgba(255,255,255,.85);font-size:12px;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 @media (min-width:761px) and (max-width:1300px){.vgrid{grid-template-columns:1fr 1fr}.learn li{font-size:12px;padding:6px 0}}
 @media (max-width:760px){.vgrid{grid-template-columns:1fr}.learn,.vnote{display:none}.scene.visit h5{font-size:13px}.ytw .cap{display:none}.scene.visit{pointer-events:auto}}
+
+/* ---- v10: 방문 장소 사진 ---- */
+.side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.place{position:relative;margin:0;border-radius:14px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);aspect-ratio:16/7;background:#223;pointer-events:auto}
+.place img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.place figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 12px 7px;background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0));color:#fff;line-height:1.3}
+.place figcaption b{display:block;font-size:13px;font-weight:800}
+.place figcaption a{display:block;font-size:10px;color:rgba(255,255,255,.8);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.place figcaption a:hover{text-decoration:underline}
+.side .learn li{padding:5px 0;font-size:12.5px}
+@media (min-width:761px) and (max-height:820px){.place{aspect-ratio:16/6}.side .learn li{padding:4px 0;font-size:12px}.learn h6{margin-bottom:4px}}
+@media (max-width:760px){.side{display:none}}
 
 </style>
 </head>
@@ -386,25 +398,25 @@ window.STEP_HTML=[
 
 /* 방문기관 단계 오른쪽 화면: 공식 영상(YouTube 퍼가기) + 가서 배울 것 → 계명대 적용 */
 window.VISITS={
- stanford:{title:'Stanford · AI Playground',yt:'anpfvt_bN4M',vt:'AI Playground: An Introduction',ch:'Stanford University IT',
+ stanford:{photo:'place_stanford.jpg',pcap:'Stanford 메인 쿼드 · 후버 타워',pcredit:'사진: Frank Schulenburg · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Stanford_University_campus_in_2016.jpg',title:'Stanford · AI Playground',yt:'anpfvt_bN4M',vt:'AI Playground: An Introduction',ch:'Stanford University IT',
   learn:[['여러 AI 모델을 대학 로그인 한 곳에서','직원용 공용 AI 창구 검토'],
          ['데이터 위험 등급별 승인 도구 목록','AI 활용 가이드라인(안) 등급표'],
          ['행정 매뉴얼 검색 같은 업무 맞춤 도구','장학 규정 검색 등 직원 도구 공식화'],
          ['입문 교육 「AI Playground 101」','실습형 직원 워크숍']]},
- berkeley:{title:'UC Berkeley · 직원의 AI 실험',yt:'tCWj1Tt2ptQ',vt:'Staff Experimentation with AI (Eugene Whitlock)',ch:'UC Berkeley AI Community',
+ berkeley:{photo:'place_berkeley.jpg',pcap:'UC Berkeley 세더 타워(캠퍼닐리)',pcredit:'사진: Doug Letterman · CC BY 2.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:UC_Berkeley_Sather_Tower_-_Jan_16,_2022.jpg',title:'UC Berkeley · 직원의 AI 실험',yt:'tCWj1Tt2ptQ',vt:'Staff Experimentation with AI (Eugene Whitlock)',ch:'UC Berkeley AI Community',
   learn:[['행정 업무용 Campus AI Sandbox 시범','타 부서 1~2곳 시범 적용 설계'],
          ['P1~P4 데이터 보호 등급별 허용 도구','개인정보 등급별 허용 도구 표'],
          ['직원 실험을 장려하는 문화·커뮤니티','교내 AI 업무혁신 커뮤니티'],
          ['직원 시간 절감·비용 구조 측정','6개월 효과 측정 지표']]},
- minerva:{title:'Minerva · Forum 학습 플랫폼',yt:'MOwFX-YZoFw',vt:'Forum: A New Way To Learn',ch:'Minerva University',
+ minerva:{photo:'place_minerva.jpg',pcap:'Minerva 본부(14 Mint Plaza) 일대 · 옛 샌프란시스코 조폐국',pcredit:'사진: Percival Kestreltail · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Old_San_Francisco_Mint_rear_06-2023.jpg',title:'Minerva · Forum 학습 플랫폼',yt:'MOwFX-YZoFw',vt:'Forum: A New Way To Learn',ch:'Minerva University',
   learn:[['모든 수업을 소규모 실시간 세미나로','학생과 상시 연결되는 채널'],
          ['수업 참여 데이터를 모아 학생 지원','학생 반응·이용 데이터 측정'],
          ['여러 도시에 흩어진 학생을 적은 인력으로','학생 선제 안내 서비스 설계(안)']]},
- openai:{title:'OpenAI · 대학 전체 확산 사례',yt:'U5LdIVA3Pk8',vt:'Unpacking AI at Scale with CSU and OpenAI',ch:'EDUCAUSE',
+ openai:{photo:'place_openai.jpg',pcap:'OpenAI 본사 건물 · 미션베이 1515 Third St.(2025년 촬영)',pcredit:'사진: Coolcaesar · CC BY 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:1515_Third_Street.jpg',title:'OpenAI · 대학 전체 확산 사례',yt:'U5LdIVA3Pk8',vt:'Unpacking AI at Scale with CSU and OpenAI',ch:'EDUCAUSE',
   learn:[['캘리포니아 주립대(CSU) 시스템 전체 도입','단계적 전 부서 확산 방법'],
          ['대학 워크스페이스 안 맞춤 GPT 공유','장학 안내·문의 응대 AI 비서'],
          ['대화·데이터를 모델 학습에 쓰지 않음','개인정보 보호 기준']]},
- google:{title:'Google · 대학 차원 AI 도입',yt:'0Zd4LkGELzU',vt:'How San Diego State University is leading the way in higher-education AI',ch:'Google for Education',
+ google:{photo:'place_google.jpg',pcap:'Google 마운틴뷰 캠퍼스 · Charleston Road',pcredit:'사진: Dietmar Rabich · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Mountain_View_(CA,_USA),_Charleston_Road,_Google-Schild_--_2022_--_2896.jpg',title:'Google · 대학 차원 AI 도입',yt:'0Zd4LkGELzU',vt:'How San Diego State University is leading the way in higher-education AI',ch:'Google for Education',
   learn:[['샌디에이고 주립대의 대학 차원 AI 도입','도입 순서·교육 방법 벤치마킹'],
          ['미국 대학 1,000곳 이상 Gemini for Education 도입','이미 쓰는 도구 활용(저비용)'],
          ['관리자가 사용 현황을 확인','이용률 기반 효과 측정'],
@@ -455,7 +467,8 @@ var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
     d.innerHTML='<h5 class="r1">현장 미리보기 — '+esc(v.title)+'</h5>'+
       '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?autoplay=1&mute=1&playsinline=1&loop=1&playlist='+v.yt+'&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
       '<p class="cap"><small>공식 영상 · '+esc(v.ch)+'</small>'+esc(v.vt)+'</p></div>'+
-      '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div>'+
+      '<div class="side">'+(v.photo?'<figure class="place"><img src="'+v.photo+'" alt="'+esc(v.pcap)+'" loading="lazy" data-zoom><figcaption><b>📍 '+esc(v.pcap)+'</b><a href="'+v.plink+'" target="_blank" rel="noopener">'+esc(v.pcredit)+'</a></figcaption></figure>':'')+
+      '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div></div>'+
       '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. 이 단계에 오면 소리 없이 자동 재생되고, 🔊 버튼으로 소리를 켜거나 전체 화면으로 볼 수 있어요.</p>';
     box.appendChild(d);});})();
 var sc=document.getElementById('showcase'),scenes=[].slice.call(sc.querySelectorAll('.scene')),scTimer=0;
