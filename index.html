@@ -453,10 +453,10 @@ var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
   Object.keys(V).forEach(function(k){var v=V[k],d=document.createElement('div');d.className='scene visit';d.setAttribute('data-s','v_'+k);
     var li=v.learn.map(function(x,n){return '<li><i>'+(n+1)+'</i><span>'+esc(x[0])+'</span><em>→</em><b>'+esc(x[1])+'</b></li>';}).join('');
     d.innerHTML='<h5 class="r1">현장 미리보기 — '+esc(v.title)+'</h5>'+
-      '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?rel=0" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
+      '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?autoplay=1&mute=1&playsinline=1&loop=1&playlist='+v.yt+'&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
       '<p class="cap"><small>공식 영상 · '+esc(v.ch)+'</small>'+esc(v.vt)+'</p></div>'+
       '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div>'+
-      '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. ▶를 누르면 바로 재생되고, 전체 화면으로도 볼 수 있어요.</p>';
+      '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. 이 단계에 오면 소리 없이 자동 재생되고, 🔊 버튼으로 소리를 켜거나 전체 화면으로 볼 수 있어요.</p>';
     box.appendChild(d);});})();
 var sc=document.getElementById('showcase'),scenes=[].slice.call(sc.querySelectorAll('.scene')),scTimer=0;
 function vids(on){[].forEach.call(sc.querySelectorAll('video'),function(v){if(on){try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}else{try{v.pause();}catch(e){}}});}
