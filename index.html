@@ -93,14 +93,14 @@ body.sc .pin{opacity:0;pointer-events:none}
 #showcase{position:fixed;z-index:3;left:calc(min(410px,38vw) + 52px);right:40px;top:80px;bottom:150px;pointer-events:none;visibility:hidden}
 #showcase.on{visibility:visible}
 .scene{display:none;height:100%}
-.scene.trio.cur{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scene.trio.cur{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:minmax(0,1fr);gap:22px}
 .scene.cur:not(.trio){display:flex;flex-direction:column;justify-content:center;gap:16px;max-width:1040px;margin:0 auto}
 .scene [class*=" r"],.scene [class^="r"]{opacity:0;transform:translateY(22px)}
 #showcase.on .scene.cur .r1{animation:rise .7s cubic-bezier(.2,.8,.2,1) .2s forwards}
 #showcase.on .scene.cur .r2{animation:rise .7s cubic-bezier(.2,.8,.2,1) .75s forwards}
 #showcase.on .scene.cur .r3{animation:rise .7s cubic-bezier(.2,.8,.2,1) 1.3s forwards}
 #showcase.on .scene.cur .r4{animation:rise .7s cubic-bezier(.2,.8,.2,1) 1.85s forwards}
-.col{display:flex;flex-direction:column;gap:10px;min-width:0;opacity:0;transform:translateY(26px)}
+.col{display:flex;flex-direction:column;gap:10px;min-width:0;min-height:0;opacity:0;transform:translateY(26px)}
 #showcase.on .col{animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
 #showcase.on .c1{animation-delay:.25s}#showcase.on .c2{animation-delay:1.05s}#showcase.on .c3{animation-delay:1.85s}
 @keyframes rise{to{opacity:1;transform:none}}
@@ -112,7 +112,7 @@ body.sc .pin{opacity:0;pointer-events:none}
 .bar span{margin-left:8px;flex:1;background:#fff;border:1px solid #d5dbe5;border-radius:99px;font-size:10px;color:#4b5565;padding:1px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .vp{aspect-ratio:16/10;overflow:hidden;background:#f5f7fb}
 .vp img,.vp video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.below{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-start;gap:12px;pointer-events:auto}
+.below{flex:1;min-height:0;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;gap:12px;pointer-events:auto}
 .vp img,.vp video,.below img{pointer-events:auto;cursor:zoom-in}
 .below .cert{height:100%;max-height:440px;width:auto;border-radius:4px;box-shadow:0 14px 36px rgba(0,0,0,.55);background:#fff;opacity:0}
 #showcase.on .below .cert{animation:certin .7s cubic-bezier(.2,.8,.2,1) .75s forwards}
@@ -149,9 +149,9 @@ body.sc .pin{opacity:0;pointer-events:none}
 }
 
 /* ---- v6 additions ---- */
-.lbl em{font-style:normal;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:auto;text-shadow:none;white-space:nowrap}
-.lbl em.live{background:#e6f4ea;color:#137333}
-.lbl em.ex{background:rgba(255,255,255,.85);color:#5f6b7d}
+.bar em{font-style:normal;font-size:10px;font-weight:800;padding:1px 7px;border-radius:99px;margin-left:6px;white-space:nowrap;flex:none}
+.bar em.live{background:#e6f4ea;color:#137333}
+.bar em.ex{background:#e3e8ef;color:#4b5565}
 .kpi{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:2px 7px;background:rgba(255,255,255,.95);border-radius:10px;padding:8px 12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .kpi b{font-size:19px;font-weight:800;color:#0b2a5b;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .kpi b small{font-size:11px;font-weight:700;color:#5f6b7d;margin-left:1px}
@@ -229,7 +229,7 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 @media (max-width:1180px){.mx>div{font-size:11px;padding:5px 6px}.mx small{display:none}.case{font-size:12.5px}.ax b{font-size:17px}}
 @media (max-width:760px){
   .scene.cur:not(.trio){justify-content:flex-start;gap:8px;overflow:auto;pointer-events:auto}
-  .kpi{display:none}.lbl em{display:none}
+  .kpi{display:none}.bar em{display:none}
   .scene h5{font-size:13px}.scene h5 span{display:none}
   .axes{grid-template-columns:1fr 30px 1fr;gap:4px}.link span{display:none}.ax{padding:9px 10px}.ax b{font-size:14px}.ax span{font-size:11px}.ax p{display:none}.link{font-size:10px}.link b{font-size:11px}
   .cases{padding:8px 10px}.case{grid-template-columns:1fr;gap:0;font-size:11.5px;padding:5px 0}.case em,.case .w{display:none}
@@ -239,6 +239,9 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
   .track,.measure{display:none}
   .phase{grid-template-columns:1fr;gap:6px}.phase:before,.ph:before{display:none}.ph{padding:9px 12px}.ph b{font-size:14px;margin:2px 0}.ph span{font-size:11.5px}
 }
+
+@media (min-width:761px) and (max-height:820px){#showcase{top:72px;bottom:132px}.kpi{padding:5px 10px}.kpi b{font-size:16px}.col{gap:7px}.lbl{font-size:14px}}
+@media (min-width:761px) and (max-width:1560px){.kpi{grid-template-columns:auto 1fr;gap:0 7px;padding:5px 10px}.kpi b{font-size:15px}.lbl{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 
 </style>
 </head>
@@ -252,17 +255,17 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 <div id="showcase" aria-hidden="true">
 <!-- 서비스 3종: 실제 작동 영상 -->
 <div class="scene trio" data-s="trio">
-  <div class="col c1"><div class="lbl"><i>1</i>내 장학금 자가진단<em class="live">● 실제 작동 영상</em></div>
+  <div class="col c1"><div class="lbl"><i>1</i>내 장학금 자가진단</div>
     <div class="kpi"><b>13,600<small>여 회</small></b><span>누적 방문</span><b>2,100<small>여 회</small></b><span>맞춤 진단</span></div>
-    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev</span></div><div class="vp"><video src="demo_scholar.mp4" poster="demo_scholar.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div>
+    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev</span><em class="live">● 실제 작동 영상</em></div><div class="vp"><video src="demo_scholar.mp4" poster="demo_scholar.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div>
     <div class="below"><img class="cert" src="shot_cert.jpg" alt="저작권 등록증 제C-2026-048495호" data-zoom></div></div>
-  <div class="col c2"><div class="lbl"><i>2</i>계명대 장학금 캘린더<em class="live">● 실제 작동 영상</em></div>
+  <div class="col c2"><div class="lbl"><i>2</i>계명대 장학금 캘린더</div>
     <div class="kpi"><b>750<small>여 회</small></b><span>누적 방문</span><b>재무팀</b><span>전표 일정 바로 반영</span></div>
-    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>k-link.pages.dev</span></div><div class="vp"><video src="demo_klink.mp4" poster="demo_klink.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div>
+    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>k-link.pages.dev</span><em class="live">● 실제 작동 영상</em></div><div class="vp"><video src="demo_klink.mp4" poster="demo_klink.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div>
     <div class="below"><div class="phone"><div class="notch"></div><div class="sbar dark"><span>9:12</span><span class="ic">▂▄▆ ▮</span></div><img src="shot_klink_m.jpg" alt="장학금 캘린더 휴대폰 화면" data-zoom></div></div></div>
-  <div class="col c3"><div class="lbl"><i>3</i>천원의 아침밥 실시간 현황<em class="ex">예시 화면</em></div>
+  <div class="col c3"><div class="lbl"><i>3</i>천원의 아침밥 실시간 현황</div>
     <div class="kpi"><b>5,400<small>여 회</small></b><span>누적 방문</span><b>17,093<small>식</small></b><span>10. 31. 기준</span></div>
-    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev/breakfast</span></div><div class="vp"><img src="shot_breakfast_d.jpg" alt="천원의 아침밥 화면" data-zoom></div></div>
+    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev/breakfast</span><em class="ex">예시 화면</em></div><div class="vp"><img src="shot_breakfast_d.jpg" alt="천원의 아침밥 화면" data-zoom></div></div>
     <div class="below"><div class="phone"><div class="notch"></div><div class="sbar light"><span>9:12</span><span class="ic">▂▄▆ ▮</span></div><img src="shot_breakfast_m.jpg" alt="천원의 아침밥 휴대폰 화면" data-zoom></div></div></div>
 </div>
 <!-- 연구 구조: 두 축의 연결 -->
