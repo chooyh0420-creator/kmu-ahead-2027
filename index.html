@@ -243,6 +243,31 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 @media (min-width:761px) and (max-height:820px){#showcase{top:72px;bottom:132px}.kpi{padding:5px 10px}.kpi b{font-size:16px}.col{gap:7px}.lbl{font-size:14px}}
 @media (min-width:761px) and (max-width:1560px){.kpi{grid-template-columns:auto 1fr;gap:0 7px;padding:5px 10px}.kpi b{font-size:15px}.lbl{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 
+/* ---- v8: 방문기관 공식 영상 장면 ---- */
+#lightbox iframe{display:none;width:min(1100px,92vw);aspect-ratio:16/9;height:auto;border:0;border-radius:8px;background:#000;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+#lightbox .lbx{position:absolute;top:18px;right:24px;color:#fff;font-size:14px;font-weight:700;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:99px}
+.scene.visit h5{font-size:18px}
+.vgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:stretch}
+.ytw{display:flex;flex-direction:column;gap:8px;min-width:0}
+.yt{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 16px 40px rgba(0,0,0,.55);pointer-events:auto}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytw .cap{margin:0;color:#fff;font-size:14px;font-weight:700;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.ytw .cap small{display:block;font-size:11.5px;font-weight:700;color:#ffd36b;margin-bottom:1px}
+.learn{background:rgba(255,255,255,.97);border-radius:14px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.45);align-self:start}
+.learn h6{margin:0 0 8px;font-size:13.5px;color:#0b2a5b;font-weight:800}
+.learn h6 em{font-style:normal;color:#f29900}
+.learn ol{list-style:none;margin:0;padding:0}
+.learn li{display:grid;grid-template-columns:22px 1fr;gap:2px 8px;padding:8px 0;border-top:1px solid #eef1f5;font-size:13px;line-height:1.45;align-items:start}
+.learn li:first-child{border-top:0}
+.learn li i{grid-row:span 2;font-style:normal;width:22px;height:22px;border-radius:50%;background:#0b2a5b;color:#fff;font-size:11.5px;font-weight:800;display:grid;place-items:center;margin-top:1px}
+.learn li span{color:#253044;font-weight:600}
+.learn li em{display:none}
+.learn li b{font-size:12.5px;color:#137333;font-weight:700}
+.learn li b:before{content:"→ 계명대: ";color:#f29900;font-weight:800}
+.vnote{margin:0;color:rgba(255,255,255,.85);font-size:12px;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+@media (min-width:761px) and (max-width:1300px){.vgrid{grid-template-columns:1fr 1fr}.learn li{font-size:12px;padding:6px 0}}
+@media (max-width:760px){.vgrid{grid-template-columns:1fr}.learn,.vnote{display:none}.scene.visit h5{font-size:13px}.ytw .cap{display:none}.scene.visit{pointer-events:auto}}
+
 </style>
 </head>
 <body>
@@ -314,7 +339,7 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 </div>
 </div>
 <section id="panel" aria-live="polite"></section>
-<div id="lightbox"><img alt=""><video muted loop playsinline controls></video></div>
+<div id="lightbox"><img alt=""><video muted loop playsinline controls></video><iframe title="공식 영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><span class="lbx">닫기 ✕</span></div>
 <div class="ctrl">
   <button id="prev" aria-label="이전 단계">‹</button>
   <span id="stepNo">1 / 15</span>
@@ -346,7 +371,7 @@ window.STEP_HTML=[
 /* 8 UC Berkeley */
 `<span class="tag">방문 ② · UC Berkeley</span><h2>행정 업무를 위한<br>Campus AI Sandbox</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Campus AI Sandbox’(베타)</b> — 교수·직원·학생 근로자가 <b>일상 행정 업무</b>에 쓰도록 주요 AI 모델을 한곳에 모은 시범 서비스</li><li>2025. 10. 2.부터 <b>P3 등급</b> 데이터 사용 승인 — 데이터 보호 등급(P1~P4)에 따라 쓸 수 있는 도구를 안내</li><li>시범 운영 목적에 <b>직원 시간 절감 효과</b>와 <b>비용 구조 분석</b>을 넣어 지속 가능한 예산 모델을 마련</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ②</span></h4><ul><li>행정 직원의 실제 활용 사례와 시간 절감 측정 방법, 교육·커뮤니티 운영</li></ul><div class="hl">가져올 것 → <b>직원 AI 활용 가이드라인(안)</b>: 데이터 등급별 허용 도구 표</div><p class="src">출처 <a href="https://ai.berkeley.edu/resources/campus-ai-platform-beta" target="_blank" rel="noopener">UC Berkeley · Campus AI Sandbox ↗</a></p>`,
 /* 9 Minerva */
-`<span class="tag">방문 ③ · Minerva University</span><h2>적은 인력으로<br>학생을 먼저 챙기는 방법</h2><h4>확인할 것 <span class="chip">탐색 ③</span></h4><ul><li>여러 도시에 흩어진 학생을 지원하는 <b>디지털 학생 지원 체계</b></li><li>학생 안내 채널, 알림 시점, 학생 반응 측정 방법</li></ul><h4>현장에서 할 일</h4><ul><li>학생 지원 담당자 면담</li><li>우리 대학 학생 서비스(자가진단·캘린더·실시간 현황) <b>직접 시연</b> 후 의견 청취</li></ul><div class="hl">가져올 것 → <b>학생 선제 안내 서비스 설계(안)</b>: 대상 업무·알림 시점·채널</div>`,
+`<span class="tag">방문 ③ · Minerva University</span><h2>적은 인력으로<br>학생을 먼저 챙기는 방법</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>모든 수업을 자체 플랫폼 <b>‘Forum’</b>에서 소규모 실시간 세미나로 운영</li><li>토론·투표·소그룹 등 <b>수업 참여 데이터</b>를 모아 학생 참여도를 확인</li></ul><h4>확인할 것 <span class="chip">탐색 ③</span></h4><ul><li>여러 도시에 흩어진 학생을 지원하는 <b>디지털 학생 지원 체계</b></li><li>학생 안내 채널, 알림 시점, 학생 반응 측정 방법</li></ul><h4>현장에서 할 일</h4><ul><li>학생 지원 담당자 면담</li><li>우리 대학 학생 서비스(자가진단·캘린더·실시간 현황) <b>직접 시연</b> 후 의견 청취</li></ul><div class="hl">가져올 것 → <b>학생 선제 안내 서비스 설계(안)</b>: 대상 업무·알림 시점·채널</div><p class="src">출처 <a href="https://www.minerva.edu/blog/a-teachers-guide-how-to-use-data-to-measure-student-engagement" target="_blank" rel="noopener">Minerva University · Forum ↗</a></p>`,
 /* 10 OpenAI */
 `<span class="tag">방문 ④ · OpenAI</span><h2>대학에 AI를<br>어떻게 퍼뜨리는가</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘ChatGPT Edu’</b> — 학생·교수·연구자는 물론 <b>캠퍼스 운영(행정)</b>까지 대학 전체에 AI를 책임 있게 도입하도록 만든 대학용 서비스</li><li>대학 워크스페이스 안에서 <b>맞춤 GPT를 만들어 함께 쓰는</b> 기능</li><li>2026. 3. 기준 수백 개 대학이 ChatGPT Edu로 협력 중</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ②</span><span class="chip">탐색 ③</span></h4><ul><li>대학 단위 확산을 돕는 방식, 장학 안내·문의 응대용 <b>맞춤 AI 비서</b> 아이디어에 대한 의견</li></ul><div class="hl">가져올 것 → 장학 업무 <b>맞춤 AI 비서</b> 시범 아이디어</div><p class="src">출처 <a href="https://openai.com/index/introducing-chatgpt-edu/" target="_blank" rel="noopener">OpenAI · Introducing ChatGPT Edu ↗</a></p>`,
 /* 11 Google */
@@ -358,6 +383,33 @@ window.STEP_HTML=[
 /* 14 약속 */
 `<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「직원은 AI로 일하고, 학생은 기다리지 않는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 연구팀 공통 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 타 부서 시범 적용 설계·운영, 6개월 후 효과 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
 ];
+
+/* 방문기관 단계 오른쪽 화면: 공식 영상(YouTube 퍼가기) + 가서 배울 것 → 계명대 적용 */
+window.VISITS={
+ stanford:{title:'Stanford · AI Playground',yt:'anpfvt_bN4M',vt:'AI Playground: An Introduction',ch:'Stanford University IT',
+  learn:[['여러 AI 모델을 대학 로그인 한 곳에서','직원용 공용 AI 창구 검토'],
+         ['데이터 위험 등급별 승인 도구 목록','AI 활용 가이드라인(안) 등급표'],
+         ['행정 매뉴얼 검색 같은 업무 맞춤 도구','장학 규정 검색 등 직원 도구 공식화'],
+         ['입문 교육 「AI Playground 101」','실습형 직원 워크숍']]},
+ berkeley:{title:'UC Berkeley · 직원의 AI 실험',yt:'tCWj1Tt2ptQ',vt:'Staff Experimentation with AI (Eugene Whitlock)',ch:'UC Berkeley AI Community',
+  learn:[['행정 업무용 Campus AI Sandbox 시범','타 부서 1~2곳 시범 적용 설계'],
+         ['P1~P4 데이터 보호 등급별 허용 도구','개인정보 등급별 허용 도구 표'],
+         ['직원 실험을 장려하는 문화·커뮤니티','교내 AI 업무혁신 커뮤니티'],
+         ['직원 시간 절감·비용 구조 측정','6개월 효과 측정 지표']]},
+ minerva:{title:'Minerva · Forum 학습 플랫폼',yt:'MOwFX-YZoFw',vt:'Forum: A New Way To Learn',ch:'Minerva University',
+  learn:[['모든 수업을 소규모 실시간 세미나로','학생과 상시 연결되는 채널'],
+         ['수업 참여 데이터를 모아 학생 지원','학생 반응·이용 데이터 측정'],
+         ['여러 도시에 흩어진 학생을 적은 인력으로','학생 선제 안내 서비스 설계(안)']]},
+ openai:{title:'OpenAI · 대학 전체 확산 사례',yt:'U5LdIVA3Pk8',vt:'Unpacking AI at Scale with CSU and OpenAI',ch:'EDUCAUSE',
+  learn:[['캘리포니아 주립대(CSU) 시스템 전체 도입','단계적 전 부서 확산 방법'],
+         ['대학 워크스페이스 안 맞춤 GPT 공유','장학 안내·문의 응대 AI 비서'],
+         ['대화·데이터를 모델 학습에 쓰지 않음','개인정보 보호 기준']]},
+ google:{title:'Google · 대학 차원 AI 도입',yt:'0Zd4LkGELzU',vt:'How San Diego State University is leading the way in higher-education AI',ch:'Google for Education',
+  learn:[['샌디에이고 주립대의 대학 차원 AI 도입','도입 순서·교육 방법 벤치마킹'],
+         ['미국 대학 1,000곳 이상 Gemini for Education 도입','이미 쓰는 도구 활용(저비용)'],
+         ['관리자가 사용 현황을 확인','이용률 기반 효과 측정'],
+         ['문서·시트 등 업무 도구 속 AI','시트·앱스크립트 도구와 연결']]}
+};
 
 </script>
 <script>
@@ -382,11 +434,11 @@ var STEPS=[
  {nav:'사전연구',sub:'출국 전',cam:C([127.6,36.3],6.3,28,-8,{place:'daegu',loc:'대한민국'})},
  {nav:'인천 출국',sub:'1. 19.(화)',cam:C([126.4506,37.4492],13.4,58,35,{orbit:1,place:'icn',loc:'인천국제공항'})},
  {nav:'샌프란시스코',sub:'도착',cam:C([-122.26,37.63],9.25,48,-12,{loc:'샌프란시스코 베이 에어리어'}),flightFrom:'icn',flightTo:'bayArrive'},
- {nav:'Stanford',sub:'방문 ①',cam:C([-122.1697,37.4275],16.1,63,-20,{orbit:1,place:'stanford',loc:'Stanford University · 스탠퍼드'})},
- {nav:'UC Berkeley',sub:'방문 ②',cam:C([-122.2578,37.8716],16.1,63,10,{orbit:1,place:'berkeley',loc:'UC Berkeley · 버클리'})},
- {nav:'Minerva',sub:'방문 ③',cam:C([-122.4075,37.7826],15.9,63,25,{orbit:1,place:'minerva',loc:'샌프란시스코 다운타운'})},
- {nav:'OpenAI',sub:'방문 ④',cam:C([-122.3889,37.7684],15.9,63,-15,{orbit:1,place:'openai',loc:'샌프란시스코 미션베이'})},
- {nav:'Google',sub:'방문 ⑤',cam:C([-122.0841,37.4220],16.0,63,30,{orbit:1,place:'google',loc:'마운틴뷰'})},
+ {nav:'Stanford',sub:'방문 ①',cam:C([-122.1697,37.4275],16.1,63,-20,{orbit:1,place:'stanford',loc:'Stanford University · 스탠퍼드'}),show:'v_stanford'},
+ {nav:'UC Berkeley',sub:'방문 ②',cam:C([-122.2578,37.8716],16.1,63,10,{orbit:1,place:'berkeley',loc:'UC Berkeley · 버클리'}),show:'v_berkeley'},
+ {nav:'Minerva',sub:'방문 ③',cam:C([-122.4075,37.7826],15.9,63,25,{orbit:1,place:'minerva',loc:'샌프란시스코 다운타운'}),show:'v_minerva'},
+ {nav:'OpenAI',sub:'방문 ④',cam:C([-122.3889,37.7684],15.9,63,-15,{orbit:1,place:'openai',loc:'샌프란시스코 미션베이'}),show:'v_openai'},
+ {nav:'Google',sub:'방문 ⑤',cam:C([-122.0841,37.4220],16.0,63,30,{orbit:1,place:'google',loc:'마운틴뷰'}),show:'v_google'},
  {nav:'비교·정리',sub:'현지',cam:C([-122.24,37.66],9.4,52,18,{loc:'샌프란시스코 베이 에어리어'}),show:'matrix'},
  {nav:'귀국·적용',sub:'1. 30.(토)',cam:C([128.4874,35.8558],15.2,60,15,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),flightFrom:'sfo',flightTo:'daegu',show:'model'},
  {nav:'약속',sub:'본인 역할',cam:C([150,32],1.6,0,0,{loc:'계명대학교에서'}),show:'role'}
@@ -395,20 +447,39 @@ var N=STEPS.length,HTML=window.STEP_HTML||[];
 function idxOf(n){for(var k=0;k<N;k++)if(STEPS[k].nav===n)return k;return -1;}
 var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
 // showcase (screens of services I built)
+// 방문기관 장면(공식 영상 + 배울 것) 생성
+(function(){var V=window.VISITS||{},box=document.getElementById('showcase');
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  Object.keys(V).forEach(function(k){var v=V[k],d=document.createElement('div');d.className='scene visit';d.setAttribute('data-s','v_'+k);
+    var li=v.learn.map(function(x,n){return '<li><i>'+(n+1)+'</i><span>'+esc(x[0])+'</span><em>→</em><b>'+esc(x[1])+'</b></li>';}).join('');
+    d.innerHTML='<h5 class="r1">현장 미리보기 — '+esc(v.title)+'</h5>'+
+      '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?rel=0" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
+      '<p class="cap"><small>공식 영상 · '+esc(v.ch)+'</small>'+esc(v.vt)+'</p></div>'+
+      '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div>'+
+      '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. ▶를 누르면 바로 재생되고, 전체 화면으로도 볼 수 있어요.</p>';
+    box.appendChild(d);});})();
 var sc=document.getElementById('showcase'),scenes=[].slice.call(sc.querySelectorAll('.scene')),scTimer=0;
 function vids(on){[].forEach.call(sc.querySelectorAll('video'),function(v){if(on){try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}else{try{v.pause();}catch(e){}}});}
 function showcase(s){clearTimeout(scTimer);sc.classList.remove('on');scenes.forEach(function(x){x.classList.remove('cur');});
+  [].forEach.call(sc.querySelectorAll('.scene.visit iframe'),function(f){var on=f.closest('.scene').getAttribute('data-s')===s;
+    if(on){if(!f.getAttribute('src')||f.getAttribute('src')==='about:blank')f.setAttribute('src',f.getAttribute('data-src'));}
+    else if(f.getAttribute('src')&&f.getAttribute('src')!=='about:blank')f.setAttribute('src','about:blank');});
   if(!s){document.body.classList.remove('sc');vids(false);return;}
   void sc.offsetWidth;scenes.forEach(function(x){x.classList.toggle('cur',x.getAttribute('data-s')===s);});
   sc.classList.add('on');document.body.classList.add('sc');
   if(s==='trio'){scTimer=setTimeout(function(){vids(true);},400);}else vids(false);}
 var lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img'),lbVid=lb.querySelector('video');
-document.addEventListener('click',function(e){var t=e.target;if(t&&t.hasAttribute&&t.hasAttribute('data-zoom')){
+var lbYt=lb.querySelector('iframe');
+function closeLb(){lb.classList.remove('on');lbVid.pause();if(lbYt){lbYt.src='about:blank';lbYt.style.display='none';}}
+document.addEventListener('click',function(e){var t=e.target;var y=t&&t.closest?t.closest('[data-yt]'):null;
+  if(y){e.preventDefault();var id=y.getAttribute('data-yt');lbImg.style.display='none';lbVid.pause();lbVid.style.display='none';
+    lbYt.style.display='block';lbYt.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';lb.classList.add('on');return;}
+  if(t&&t.hasAttribute&&t.hasAttribute('data-zoom')){if(lbYt){lbYt.src='about:blank';lbYt.style.display='none';}
   if(t.tagName==='VIDEO'){lbImg.style.display='none';lbVid.style.display='block';lbVid.src=t.currentSrc||t.src;lbVid.currentTime=0;var p=lbVid.play();if(p&&p.catch)p.catch(function(){});}
   else{lbVid.pause();lbVid.removeAttribute('src');lbVid.style.display='none';lbImg.style.display='block';lbImg.src=t.src;}
   lb.classList.add('on');}});
-lb.onclick=function(e){if(e.target===lbVid)return;lb.classList.remove('on');lbVid.pause();};
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on')){lb.classList.remove('on');lbVid.pause();}},true);
+lb.onclick=function(e){if(e.target===lbVid)return;closeLb();};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on')){closeLb();}},true);
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var mobile=function(){return window.innerWidth<=760;};
 function padding(){return mobile()?{top:40,bottom:Math.round(window.innerHeight*0.46),left:0,right:0}:{top:40,bottom:60,left:Math.round(Math.min(410,window.innerWidth*0.38))+30,right:0};}
@@ -491,7 +562,7 @@ function fmt(c){var la=c[1],lo=c[0];return Math.abs(la).toFixed(4)+'°'+(la>=0?'
 // ---- navigation ----
 var step=0,ready=false,token=0,busyUntil=0,orbitOn=false;
 function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===step&&!instant)return;
-  var from=step;step=i;var my=++token;orbitOn=false;map.stop();
+  if(lb.classList.contains('on'))closeLb();var from=step;step=i;var my=++token;orbitOn=false;map.stop();
   cards.forEach(function(c,k){c.classList.toggle('on',k===i);if(k===i)c.scrollTop=0;});
   tbs.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);});
   if(tbs[i].scrollIntoView)tbs[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
