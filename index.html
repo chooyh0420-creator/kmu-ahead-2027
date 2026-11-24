@@ -113,7 +113,7 @@ body.sc .pin{opacity:0;pointer-events:none}
 .vp{aspect-ratio:16/10;overflow:hidden;background:#f5f7fb}
 .vp img,.vp video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .below{flex:1;min-height:0;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;gap:12px;pointer-events:auto}
-.vp img,.vp video,.below img{pointer-events:auto;cursor:zoom-in}
+.vp img,.vp video,.below img,.below video{pointer-events:auto;cursor:zoom-in}
 .below .cert{height:100%;max-height:440px;width:auto;border-radius:4px;box-shadow:0 14px 36px rgba(0,0,0,.55);background:#fff;opacity:0}
 #showcase.on .below .cert{animation:certin .7s cubic-bezier(.2,.8,.2,1) .75s forwards}
 @keyframes certin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -124,7 +124,7 @@ body.sc .pin{opacity:0;pointer-events:none}
 .phone .sbar .ic{font-size:7px;letter-spacing:1px}
 .phone .sbar.dark{background:#16306d;color:#fff}
 .phone .sbar.light{background:#e7ebf7;color:#1d2533}
-.phone img{flex:1;min-height:0;width:100%;object-fit:cover;object-position:top;border-radius:0 0 19px 19px;display:block;background:#fff}
+.phone img,.phone video{flex:1;min-height:0;width:100%;object-fit:cover;object-position:top;border-radius:0 0 19px 19px;display:block;background:#fff}
 .phone .notch{position:absolute;top:12px;left:50%;width:54px;height:15px;margin-left:-27px;background:#000;border-radius:10px;z-index:2}
 .card ol.svc{list-style:none;margin:6px 0 0;padding:0;counter-reset:none}
 .card ol.svc li{position:relative;padding:9px 0 9px 32px;border-bottom:1px solid #eef1f5;font-size:13.5px;line-height:1.55}
@@ -141,7 +141,7 @@ body.sc .pin{opacity:0;pointer-events:none}
 .card a.go{display:inline-block;margin-top:14px;background:#0b2a5b;color:#fff;text-decoration:none;font-size:13.5px;font-weight:700;padding:9px 14px;border-radius:8px}
 .card a.go:hover{background:#0b57d0}
 #lightbox{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;cursor:zoom-out}
-#lightbox.on{display:flex}#lightbox img,#lightbox video{max-height:92vh;max-width:92vw;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.6);background:#fff}#lightbox video{display:none;width:min(1200px,92vw);cursor:default}
+#lightbox.on{display:flex}#lightbox img,#lightbox video{max-height:92vh;max-width:92vw;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.6);background:#fff}#lightbox video{display:none;width:auto;min-width:min(390px,92vw);cursor:default}
 @media (max-width:760px){
   #showcase{left:10px;right:10px;top:108px;bottom:calc(46vh + 84px)}
   .trio{gap:8px}.lbl{font-size:10.5px}.lbl i{width:17px;height:17px;font-size:10px}
@@ -151,7 +151,7 @@ body.sc .pin{opacity:0;pointer-events:none}
 /* ---- v6 additions ---- */
 .bar em{font-style:normal;font-size:10px;font-weight:800;padding:1px 7px;border-radius:99px;margin-left:6px;white-space:nowrap;flex:none}
 .bar em.live{background:#e6f4ea;color:#137333}
-.bar em.ex{background:#e3e8ef;color:#4b5565}
+.bar em.ex{background:#fff1e0;color:#a14d00}
 .kpi{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:baseline;gap:2px 7px;background:rgba(255,255,255,.95);border-radius:10px;padding:8px 12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .kpi b{font-size:19px;font-weight:800;color:#0b2a5b;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .kpi b small{font-size:11px;font-weight:700;color:#5f6b7d;margin-left:1px}
@@ -265,8 +265,8 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
     <div class="below"><div class="phone"><div class="notch"></div><div class="sbar dark"><span>9:12</span><span class="ic">▂▄▆ ▮</span></div><img src="shot_klink_m.jpg" alt="장학금 캘린더 휴대폰 화면" data-zoom></div></div></div>
   <div class="col c3"><div class="lbl"><i>3</i>천원의 아침밥 실시간 현황</div>
     <div class="kpi"><b>5,400<small>여 회</small></b><span>누적 방문</span><b>17,093<small>식</small></b><span>10. 31. 기준</span></div>
-    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev/breakfast</span><em class="ex">예시 화면</em></div><div class="vp"><img src="shot_breakfast_d.jpg" alt="천원의 아침밥 화면" data-zoom></div></div>
-    <div class="below"><div class="phone"><div class="notch"></div><div class="sbar light"><span>9:12</span><span class="ic">▂▄▆ ▮</span></div><img src="shot_breakfast_m.jpg" alt="천원의 아침밥 휴대폰 화면" data-zoom></div></div></div>
+    <div class="browser"><div class="bar"><b></b><b></b><b></b><span>kmu-scholarship.pages.dev/breakfast</span><em class="ex">● 예시 데이터 영상</em></div><div class="vp"><video src="demo_breakfast_d.mp4" poster="demo_breakfast_d.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div>
+    <div class="below"><div class="phone"><div class="notch"></div><div class="sbar light"><span>9:12</span><span class="ic">▂▄▆ ▮</span></div><video src="demo_breakfast_m.mp4" poster="demo_breakfast_m.jpg" muted loop playsinline preload="auto" data-zoom></video></div></div></div>
 </div>
 <!-- 연구 구조: 두 축의 연결 -->
 <div class="scene flow" data-s="flow">
@@ -332,7 +332,7 @@ window.STEP_HTML=[
 /* 1 계명대 */
 `<span class="tag gr">출발점 · 계명대학교</span><h2>현장에서 먼저<br>작게 실험해 왔습니다</h2><p class="lead">반복되는 검증·입력 업무를 생성형 AI로 개선해 업무 효율성과 학생 편의성을 높이고, 학생이 묻기 전에 먼저 알려 주는 서비스를 직접 만들어 운영하고 있습니다.</p><ul><li><b>장학금 맞춤형 추천 시스템</b>(장학금 자가진단) 개발 — 직무발명 신고 및 지식재산 등록 <b>제C-2026-048495호</b></li><li><b>장학금 자가진단</b> — 누적 방문 <b>13,600여 회</b>, 맞춤 진단 <b>2,100여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥</b> 클리커 자동 집계·실시간 현황 공개 — 예산 0원, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">그런데 담당자 한 명의 역량에 머무르면, 담당자가 바뀔 때 끊기고 다른 부서로 퍼지지 않습니다. 이 한계를 넘을 방법을 찾으러 떠납니다.</div><p class="note">※ 방문·진단 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
 /* 2 직접 만든 서비스 */
-`<span class="tag gr">직접 만들어 운영 중인 서비스</span><h2>학생이 묻기 전에<br>먼저 알려 주는 서비스 3가지</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>클리커 자동 집계로 남은 인원을 5초마다 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl"><b>저작권 등록 제C-2026-048495호</b> — 「학자금지원구간 및 학업정보 기반 장학금 맞춤형 추천 시스템」(2026. 9. 29. 등록, 저작자 계명대학교 산학협력단)</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상이고, ③은 운영 시간 중 모습을 보여 드리기 위한 예시 화면입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
+`<span class="tag gr">직접 만들어 운영 중인 서비스</span><h2>학생이 묻기 전에<br>먼저 알려 주는 서비스 3가지</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>클리커 자동 집계로 남은 인원을 5초마다 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl"><b>저작권 등록 제C-2026-048495호</b> — 「학자금지원구간 및 학업정보 기반 장학금 맞춤형 추천 시스템」(2026. 9. 29. 등록, 저작자 계명대학교 산학협력단)</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상입니다. ③은 실제 현황 페이지에 예시 숫자를 넣어, 클리커를 찍을 때마다 인원이 실시간으로 올라가는 운영 중 모습을 재현한 영상입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
 /* 3 연구 구조 */
 `<span class="tag">연구 구조 · 두 축의 연결</span><h2>직원이 만든 도구가<br>곧 학생 서비스가 됩니다</h2><p class="lead">연구주제의 두 축은 따로 떨어져 있지 않습니다. 직원의 업무혁신이 학생의 기다림을 줄이는 <b>하나의 흐름</b>으로 연구합니다.</p><ul><li><b>(직원)</b> 현업 직원이 AI로 자기 업무를 직접 개선하는 체계: 도구·규칙·교육·공유</li><li><b>(학생)</b> 학생이 묻기 전에 필요한 정보를 먼저 알려 주는 선제 안내 서비스</li><li><b>(연결)</b> 직원이 AI로 만든 도구가 곧 학생 서비스가 되는 구조</li></ul><div class="hl">흐름도 가운데 줄은 우리 대학에서 이미 확인한 흐름입니다. 이 흐름을 <b>개인이 아닌 대학의 체계</b>로 만드는 방법을 찾는 것이 이번 연구의 목표입니다.</div>`,
 /* 4 사전연구 */
