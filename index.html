@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>KMU AHEAD 2027 · 추윤호 연구 여정</title>
+<meta name="description" content="직원은 AI로 일하고, 학생은 기다리지 않는 대학 — KMU AHEAD 2027 참가 연구계획을 실제 위성지도 위의 여정으로 소개합니다.">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#000;font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;color:#1d2533;-webkit-font-smoothing:antialiased}
+#map{position:fixed;inset:0;background:radial-gradient(1px 1px at 20% 30%,#fff8 50%,transparent),radial-gradient(1px 1px at 70% 80%,#fff6 50%,transparent),radial-gradient(1px 1px at 40% 70%,#fff5 50%,transparent),radial-gradient(1.5px 1.5px at 85% 20%,#fff9 50%,transparent),radial-gradient(1px 1px at 10% 85%,#fff6 50%,transparent),radial-gradient(1px 1px at 55% 15%,#fff7 50%,transparent),#02040a}
+#vignette{position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 38%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%),linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 14%);z-index:1}
+.top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;padding:16px 22px;pointer-events:none;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{font-weight:900;font-size:13px;letter-spacing:.06em;background:#fff;color:#0b2a5b;padding:7px 8px;border-radius:6px;text-shadow:none}
+.brand b{display:block;font-size:14px;font-weight:700}
+.brand small{font-size:12px;opacity:.85}
+.loc{text-align:right}
+.loc span{display:block;font-size:15px;font-weight:700}
+.loc small{font-size:11.5px;opacity:.8;font-variant-numeric:tabular-nums}
+#panel{position:fixed;left:22px;top:84px;bottom:118px;width:min(410px,38vw);z-index:4;pointer-events:none}
+.card{position:absolute;left:0;top:0;width:100%;max-height:100%;overflow:auto;background:#fff;border-radius:14px;box-shadow:0 10px 32px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.2);padding:22px 22px 20px;opacity:0;transform:translateX(-14px);transition:opacity .45s,transform .45s;pointer-events:none}
+.card.on{opacity:1;transform:none;pointer-events:auto}
+.card .tag{display:inline-block;font-size:12px;font-weight:700;color:#0b57d0;background:#e8f0fe;padding:4px 10px;border-radius:6px}
+.card .tag.alt{color:#a14d00;background:#fff1e0}
+.card .tag.gr{color:#137333;background:#e6f4ea}
+.card h2{margin:12px 0 6px;font-size:22px;line-height:1.38;letter-spacing:-.02em;word-break:keep-all;color:#111827}
+.card h2 small{display:block;font-size:13.5px;font-weight:600;color:#5f6b7d;margin-bottom:6px;letter-spacing:0}
+.card .big{font-size:27px}
+.card p.lead{margin:6px 0 12px;color:#4b5565;font-size:14px;line-height:1.65;word-break:keep-all}
+.card h4{margin:16px 0 6px;font-size:12.5px;color:#5f6b7d;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{position:relative;padding:5px 0 5px 16px;font-size:14px;line-height:1.6;color:#253044;word-break:keep-all}
+.card li:before{content:"";position:absolute;left:3px;top:14px;width:5px;height:5px;border-radius:50%;background:#0b57d0}
+.card li b{color:#0f172a}
+.card .q li{padding-left:30px}.card .q li:before{content:none}
+.card .q li i{position:absolute;left:0;top:6px;width:21px;height:21px;border-radius:50%;background:#0b2a5b;color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.chip{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:99px;border:1px solid #d5dbe5;color:#4b5565;margin:3px 3px 0 0;background:#f7f9fc;font-weight:500}
+.hl{margin-top:14px;border-left:3px solid #0b57d0;background:#f3f6fb;padding:10px 12px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:#253044;word-break:keep-all}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.grid4 div{border:1px solid #e3e8ef;border-radius:10px;padding:10px 11px;background:#fafbfd}
+.grid4 b{display:block;font-size:14px;color:#0b2a5b;margin-bottom:2px}
+.grid4 span{font-size:12.5px;color:#4b5565;line-height:1.5;word-break:keep-all}
+.note{font-size:11.5px;color:#7b8494;margin-top:12px;line-height:1.55}
+.ctrl{position:fixed;right:22px;bottom:96px;z-index:5;display:flex;align-items:center;gap:6px;background:#fff;border-radius:99px;box-shadow:0 4px 14px rgba(0,0,0,.3);padding:4px}
+.ctrl button{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:24px;color:#0b2a5b;line-height:1}
+.ctrl button:hover{background:#eef2f8}
+.ctrl span{font-size:13px;font-weight:700;color:#253044;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
+#timeline{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;gap:0;overflow-x:auto;padding:12px 18px 14px;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0));scrollbar-width:none}
+#timeline::-webkit-scrollbar{display:none}
+#timeline button{all:unset;cursor:pointer;flex:1 0 auto;min-width:88px;color:#fff;text-align:center;font-size:12px;position:relative;padding-top:18px;opacity:.7;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+#timeline button:before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:rgba(255,255,255,.45)}
+#timeline button:after{content:"";position:absolute;top:1px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;border:2px solid rgba(0,0,0,.25)}
+#timeline button small{display:block;font-size:10.5px;opacity:.85}
+#timeline button.done{opacity:.9}
+#timeline button.done:before,#timeline button.on:before{background:#ffb703}
+#timeline button.on{opacity:1;font-weight:700}
+#timeline button.on:after{background:#ffb703;border-color:#fff;transform:scale(1.25)}
+#hint{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:5;background:rgba(255,255,255,.92);color:#253044;font-size:12.5px;padding:7px 14px;border-radius:99px;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:opacity .6s;white-space:nowrap}
+kbd{font-family:inherit;font-size:11px;border:1px solid #c5ccd8;border-bottom-width:2px;border-radius:4px;padding:0 4px;background:#fff}
+/* map markers */
+.pin{display:flex;flex-direction:column;align-items:center;cursor:default}
+.pin .lb{background:#fff;color:#111827;font-size:12.5px;font-weight:700;padding:5px 9px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.35);white-space:nowrap;margin-bottom:4px;position:relative}
+.pin .lb small{display:block;font-size:10.5px;font-weight:500;color:#5f6b7d}
+.pin svg{width:26px;height:34px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+.pin.on .lb{background:#0b2a5b;color:#fff}.pin.on .lb small{color:#cfdcf5}
+.pin.hide{display:none}
+.pin.left .lb,.pin.right .lb{position:absolute;bottom:14px;margin:0}
+.pin.left .lb{right:22px;text-align:right}
+.pin.right .lb{left:22px}
+#map.sky{background:linear-gradient(180deg,#8fb5e0 0%,#c9dcf0 45%,#dfe9f4 100%)}
+.plane svg{width:44px;height:44px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+.maplibregl-ctrl-attrib{font-size:10px!important}
+.maplibregl-ctrl-bottom-right{bottom:62px!important}
+@media (max-width:760px){
+  #panel{left:10px;right:10px;width:auto;top:auto;bottom:74px;height:46vh}
+  .card{top:auto;bottom:0;padding:16px 16px 14px;border-radius:12px}
+  .card h2{font-size:18px}.card .big{font-size:21px}
+  .ctrl{bottom:auto;top:64px;right:10px}
+  .top{padding:12px 12px}.loc{display:none}
+  #hint{display:none}
+  .maplibregl-ctrl-group{display:none}
+  #timeline button{min-width:76px;font-size:11px}
+  .maplibregl-ctrl-bottom-right{bottom:auto!important;top:110px}
+}
+
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="vignette"></div>
+<header class="top">
+  <div class="brand"><span class="logo">KMU</span><div><b>AHEAD 2027 · 참가 연구계획</b><small>계명대학교 장학복지팀 추윤호</small></div></div>
+  <div class="loc"><span id="locName">태평양 상공</span><small id="locCoord"></small></div>
+</header>
+<section id="panel" aria-live="polite"></section>
+<div class="ctrl">
+  <button id="prev" aria-label="이전 단계">‹</button>
+  <span id="stepNo">1 / 13</span>
+  <button id="next" aria-label="다음 단계">›</button>
+</div>
+<nav id="timeline" aria-label="여정 단계"></nav>
+<div id="hint">마우스 휠 · <kbd>→</kbd> <kbd>←</kbd> 키 · 아래 일정을 눌러 이동</div>
+<noscript><p style="padding:40px">이 페이지는 JavaScript가 필요합니다.</p></noscript>
+<script src="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.js"></script>
+<script>
+window.STEP_HTML=["<span class=\"tag\">KMU AHEAD 2027 · 참가 연구계획</span><h2 class=\"big\"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>직원은 AI로 일하고,<br>학생은 기다리지 않는 대학</h2><p class=\"lead\">현업 직원 주도 AI 업무혁신의 확산 체계와 학생 선제 안내 서비스 모델 연구</p><span class=\"chip\">장학복지팀 8급 추윤호</span><span class=\"chip\">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class=\"chip\">샌프란시스코·실리콘밸리</span><p class=\"note\">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>", "<span class=\"tag gr\">출발점 · 계명대학교</span><h2>현장에서 먼저<br>작게 실험해 왔습니다</h2><p class=\"lead\">반복되는 검증·입력 업무를 생성형 AI와 함께 줄이고, 학생이 묻기 전에 먼저 알려 주는 서비스를 직접 만들어 운영하고 있습니다.</p><ul><li><b>장학금 맞춤형 추천 시스템</b>(장학금 자가진단) 개발 — 직무발명 신고 및 지식재산 등록 <b>제C-2026-048495호</b></li><li><b>천원의 아침밥</b> 클리커 자동 집계·실시간 현황 공개 — 예산 0원, 누적 방문 5,400여 회</li><li><b>계명대 장학금 캘린더</b> — 장학복지팀·재무팀 협업(K-Circle 「K-Link」)</li></ul><div class=\"hl\">그런데 담당자 한 명의 역량에 머무르면, 담당자가 바뀔 때 끊기고 다른 부서로 퍼지지 않습니다. 이 한계를 넘을 방법을 찾으러 떠납니다.</div>", "<span class=\"tag\">출국 전 · 사전연구</span><h2>세 가지 질문을 들고 갑니다</h2><ul class=\"q\"><li><i>1</i>직원이 만든 AI 도구를 대학은 어떤 기준으로 <b>검증·승인하고 함께 쓰는가?</b><br><span class=\"chip\">개인정보·보안</span><span class=\"chip\">지식재산 귀속</span><span class=\"chip\">유지보수·인수인계</span></li><li><i>2</i>전 직원의 AI 활용 역량을 어떤 <b>교육과 지원 조직</b>으로 키우는가?<br><span class=\"chip\">교육과정</span><span class=\"chip\">직원 커뮤니티</span><span class=\"chip\">성과 인정</span></li><li><i>3</i>학생이 묻기 전에 <b>먼저 알려 주는 서비스</b>는 어떤 데이터와 채널로 운영되는가?<br><span class=\"chip\">AI 상담</span><span class=\"chip\">맞춤 알림</span><span class=\"chip\">실시간 정보</span></li></ul><h4>출국 전에 할 일</h4><ul><li>방문기관의 AI 정책·플랫폼·가이드라인 공개자료 조사</li><li>우리 대학 자동화 사례의 효과와 한계 정리 → <b>공통 질문지</b> 작성</li></ul>", "<span class=\"tag alt\">2027. 1. 19.(화) · 인천 출국</span><h2>10박 12일,<br>실리콘밸리로 떠납니다</h2><h4>가방에 넣어 가는 것</h4><ul><li><b>공통 질문지</b> — 탐색사항 ①~③을 기관마다 같은 질문으로</li><li><b>우리 대학 사례 소개 자료</b> — 장학금 자가진단·천원의 아침밥 현황 화면 시연</li><li><b>비교표 양식</b> — ‘도구–규칙–사람–서비스’ 4개 기준</li></ul><p class=\"note\">다음으로 넘기면 태평양을 건너 샌프란시스코로 날아갑니다 ✈</p>", "<span class=\"tag alt\">샌프란시스코·실리콘밸리 도착</span><h2>다섯 곳에서<br>답을 찾습니다</h2><ul><li><b>Stanford · UC Berkeley</b> — 직원용 AI 플랫폼, 데이터 등급별 사용 기준, 직원 교육</li><li><b>Minerva University</b> — 적은 인력으로 여러 도시의 학생을 지원하는 디지털 학생 지원 체계</li><li><b>OpenAI · Google</b> — 대학용 AI 서비스의 도입·확산 지원, 업무별 맞춤 AI 비서</li></ul><p class=\"note\">※ 방문 순서와 세부 일정은 주최 측 확정 일정에 따르며, 이 페이지의 순서는 연구 흐름에 맞춘 예시입니다.</p>", "<span class=\"tag\">방문 ① · Stanford University</span><h2>전 구성원이 안전하게 쓰는<br>대학의 AI 플랫폼</h2><h4>확인할 것 <span class=\"chip\">탐색 ①</span></h4><ul><li>2024년 시범 운영을 시작한 <b>‘AI Playground’</b> — 여러 AI 모델을 대학이 관리하는 환경에서 함께 쓰는 방식</li><li>데이터 등급별 사용 기준과 직원 교육(입문 과정) 운영</li></ul><h4>현장에서 할 일</h4><ul><li>IT·행정 담당자 면담 — 공통 질문지로 직원 개발 도구 검수·승인 절차 질의</li></ul><div class=\"hl\">가져올 것 → <b>계명형 ‘직원 개발 → 검수 → 공유’ 절차(안)</b>의 뼈대</div>", "<span class=\"tag\">방문 ② · UC Berkeley</span><h2>행정 업무를 위한<br>캠퍼스 AI 샌드박스</h2><h4>확인할 것 <span class=\"chip\">탐색 ①</span><span class=\"chip\">탐색 ②</span></h4><ul><li>교직원 행정 업무 효율을 위한 <b>캠퍼스 AI 샌드박스</b> 운영 방식</li><li>학교가 승인한 AI 도구와 데이터 보호 수준 안내 체계</li></ul><h4>현장에서 할 일</h4><ul><li>행정 직원의 AI 활용 사례 청취, 교육·커뮤니티 운영 방법 질의</li></ul><div class=\"hl\">가져올 것 → <b>직원 AI 활용 가이드라인(안)</b>의 항목 구성</div>", "<span class=\"tag\">방문 ③ · Minerva University</span><h2>적은 인력으로<br>학생을 먼저 챙기는 방법</h2><h4>확인할 것 <span class=\"chip\">탐색 ③</span></h4><ul><li>여러 도시에 흩어진 학생을 지원하는 <b>디지털 학생 지원 체계</b></li><li>학생 안내 채널, 알림 시점, 학생 반응 측정 방법</li></ul><h4>현장에서 할 일</h4><ul><li>학생 지원 담당자 면담, 우리 대학 학생 서비스(자가진단·실시간 현황) 소개</li></ul><div class=\"hl\">가져올 것 → <b>학생 선제 안내 서비스 설계(안)</b>: 대상 업무·알림 시점·채널</div>", "<span class=\"tag\">방문 ④ · OpenAI</span><h2>대학에 AI를<br>어떻게 퍼뜨리는가</h2><h4>확인할 것 <span class=\"chip\">탐색 ②</span><span class=\"chip\">탐색 ③</span></h4><ul><li>대학용 AI 서비스의 <b>도입·확산 지원 방식</b></li><li>업무별 <b>맞춤 AI 비서</b>를 만들고 함께 쓰는 사례</li></ul><h4>현장에서 할 일</h4><ul><li>장학 안내·문의 응대용 AI 비서 아이디어를 소개하고 의견 청취</li></ul><div class=\"hl\">가져올 것 → 장학 업무 <b>맞춤 AI 비서</b> 시범 아이디어</div>", "<span class=\"tag\">방문 ⑤ · Google</span><h2>매일 쓰는 업무 도구 속의 AI</h2><h4>확인할 것 <span class=\"chip\">탐색 ②</span></h4><ul><li>문서·시트 등 <b>업무 도구 안에서 AI를 쓰는 방식</b>과 조직 단위 보안 설정</li><li>교육기관 대상 AI 활용 교육 지원</li></ul><h4>현장에서 할 일</h4><ul><li>구글 시트·앱스크립트로 만든 우리 도구(천원의 아침밥 집계 등)와 연결할 방법 질의</li></ul><div class=\"hl\">가져올 것 → 이미 쓰는 도구를 활용한 <b>저비용 확산 방안</b></div>", "<span class=\"tag gr\">현지 정리 · 기관 간 비교</span><h2>네 가지 기준으로<br>나란히 비교합니다</h2><div class=\"grid4\"><div><b>도구</b><span>어떤 AI 플랫폼을 누구에게 제공하는가</span></div><div><b>규칙</b><span>데이터 등급·보안·지식재산 기준은 무엇인가</span></div><div><b>사람</b><span>교육·커뮤니티·성과 인정은 어떻게 하는가</span></div><div><b>서비스</b><span>학생에게 무엇을 먼저 알려 주는가</span></div></div><h4>본인 역할</h4><ul><li>면담 기록과 기관별 비교표 정리 담당</li><li>우리 대학 자동화 사례 소개 자료 준비·발표</li></ul>", "<span class=\"tag alt\">2027. 1. 30.(토) · 귀국</span><h2>가져와서<br>이렇게 쓰겠습니다</h2><h4>단기 시범 적용</h4><ul><li>장학복지팀 자동화 도구를 <b>타 부서 1~2곳</b>에 시범 적용</li><li>장학금 신청·지급 일정 <b>개인 맞춤 알림</b> 시범 운영</li></ul><h4>제도 마련</h4><ul><li>직원 AI 활용 가이드라인(안), 직원 개발 도구 검수·공유 절차</li><li>직원 개발 도구의 <b>직무발명 신고·지식재산 등록 지원 절차(안)</b></li></ul><h4>공유와 확산</h4><ul><li>성과공유회 발표, 실습형 「AI 업무 자동화 따라 하기」 워크숍</li><li>매뉴얼·사례 영상을 업무포털에 공유, 6개월 후 효과(처리 시간·문의 건수) 측정</li></ul>", "<span class=\"tag\">KMU AHEAD 2027</span><h2 class=\"big\">개인의 실험을<br>대학의 일하는 방식으로</h2><p class=\"lead\">「직원은 AI로 일하고, 학생은 기다리지 않는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li>사전연구·현지 벤치마킹·성과공유회 성실 참여</li><li>연구결과보고서 작성과 실행과제 구체화·시범 적용 참여</li><li>귀국 후 시범사업 운영을 직접 맡아 결과 공유</li></ul><p class=\"note\">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>"];
+</script>
+<script>
+(function(){
+'use strict';
+var P={
+  daegu:{c:[128.4874,35.8563],name:'계명대학교',sub:'대구 성서캠퍼스',minz:0},
+  icn:{c:[126.4506,37.4492],name:'인천국제공항',sub:'2027. 1. 19.(화) 출국',minz:5.5},
+  bay:{c:[-122.27,37.62],name:'샌프란시스코·실리콘밸리',sub:'2027. 1. 19. ~ 1. 30.',minz:0,maxz:7.5},
+  stanford:{c:[-122.1697,37.4275],name:'Stanford University',sub:'스탠퍼드',minz:7.5,side:'left'},
+  berkeley:{c:[-122.2578,37.8721],name:'UC Berkeley',sub:'버클리',minz:7.5},
+  minerva:{c:[-122.4075,37.7826],name:'Minerva University',sub:'샌프란시스코',minz:7.5,side:'left'},
+  openai:{c:[-122.3889,37.7684],name:'OpenAI',sub:'샌프란시스코 미션베이',minz:7.5,side:'right'},
+  google:{c:[-122.0841,37.4220],name:'Google',sub:'마운틴뷰',minz:7.5,side:'right'}
+};
+function C(center,zoom,pitch,bearing,o){o=o||{};return {center:center,zoom:zoom,pitch:pitch||0,bearing:bearing||0,orbit:!!o.orbit,place:o.place||null,loc:o.loc||''};}
+var STEPS=[
+ {nav:'시작',sub:'',cam:C([172,30],1.55,0,0,{loc:'태평양 상공'})},
+ {nav:'계명대',sub:'출발점',cam:C([128.4874,35.8558],15.7,62,-28,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'})},
+ {nav:'사전연구',sub:'출국 전',cam:C([127.6,36.3],6.3,28,-8,{place:'daegu',loc:'대한민국'})},
+ {nav:'인천 출국',sub:'1. 19.(화)',cam:C([126.4506,37.4492],13.4,58,35,{orbit:1,place:'icn',loc:'인천국제공항'})},
+ {nav:'샌프란시스코',sub:'도착',cam:C([-122.26,37.63],9.25,48,-12,{loc:'샌프란시스코 베이 에어리어'}),flightFrom:'icn',flightTo:'bayArrive'},
+ {nav:'Stanford',sub:'방문 ①',cam:C([-122.1697,37.4275],16.1,63,-20,{orbit:1,place:'stanford',loc:'Stanford University · 스탠퍼드'})},
+ {nav:'UC Berkeley',sub:'방문 ②',cam:C([-122.2578,37.8716],16.1,63,10,{orbit:1,place:'berkeley',loc:'UC Berkeley · 버클리'})},
+ {nav:'Minerva',sub:'방문 ③',cam:C([-122.4075,37.7826],15.9,63,25,{orbit:1,place:'minerva',loc:'샌프란시스코 다운타운'})},
+ {nav:'OpenAI',sub:'방문 ④',cam:C([-122.3889,37.7684],15.9,63,-15,{orbit:1,place:'openai',loc:'샌프란시스코 미션베이'})},
+ {nav:'Google',sub:'방문 ⑤',cam:C([-122.0841,37.4220],16.0,63,30,{orbit:1,place:'google',loc:'마운틴뷰'})},
+ {nav:'비교·정리',sub:'현지',cam:C([-122.24,37.66],9.4,52,18,{loc:'샌프란시스코 베이 에어리어'})},
+ {nav:'귀국·적용',sub:'1. 30.(토)',cam:C([128.4874,35.8558],15.2,60,15,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),flightFrom:'sfo',flightTo:'daegu'},
+ {nav:'약속',sub:'',cam:C([150,32],1.6,0,0,{loc:'계명대학교에서'})}
+];
+var N=STEPS.length,HTML=window.STEP_HTML||[];
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var mobile=function(){return window.innerWidth<=760;};
+function padding(){return mobile()?{top:40,bottom:Math.round(window.innerHeight*0.46),left:0,right:0}:{top:40,bottom:60,left:Math.round(Math.min(410,window.innerWidth*0.38))+30,right:0};}
+
+var style={version:8,
+  projection:{type:'globe'},
+  sky:{'sky-color':'#5d8fd0','horizon-color':'#cfe0f2','fog-color':'#e6eef7','sky-horizon-blend':0.6,'horizon-fog-blend':0.6,'fog-ground-blend':0.85,'atmosphere-blend':['interpolate',['linear'],['zoom'],0,1,5,1,8,0]},
+  sources:{
+    sat:{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:19,attribution:'Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community'},
+    ref:{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:13},
+    ofm:{type:'vector',url:'https://tiles.openfreemap.org/planet',attribution:'© OpenStreetMap contributors · OpenFreeMap'}
+  },
+  layers:[
+    {id:'sat',type:'raster',source:'sat',paint:{'raster-fade-duration':200}},
+    {id:'ref',type:'raster',source:'ref',paint:{'raster-opacity':['interpolate',['linear'],['zoom'],2,.85,11,.7,13.5,0]}},
+    {id:'bld',type:'fill-extrusion',source:'ofm','source-layer':'building',minzoom:14.5,
+     paint:{'fill-extrusion-color':'#efe9df','fill-extrusion-opacity':['interpolate',['linear'],['zoom'],14.5,0,15.5,.38],
+       'fill-extrusion-height':['coalesce',['get','render_height'],8],'fill-extrusion-base':['coalesce',['get','render_min_height'],0]}}
+  ],
+};
+var s0=STEPS[0].cam;
+var map=new maplibregl.Map({container:'map',style:style,center:s0.center,zoom:s0.zoom,pitch:0,bearing:0,maxPitch:80,
+  attributionControl:false,scrollZoom:false,dragRotate:true,touchZoomRotate:true,keyboard:false,fadeDuration:150});
+map.addControl(new maplibregl.NavigationControl({showCompass:true,visualizePitch:true}),'bottom-right');
+map.addControl(new maplibregl.AttributionControl({compact:true}),'bottom-right');
+map.once('idle',function(){document.querySelectorAll('.maplibregl-ctrl-attrib').forEach(function(e){e.classList.remove('maplibregl-compact-show');e.removeAttribute('open');});});
+
+// ---- geodesy ----
+var D2R=Math.PI/180;
+function toV(c){var lo=c[0]*D2R,la=c[1]*D2R;return [Math.cos(la)*Math.cos(lo),Math.cos(la)*Math.sin(lo),Math.sin(la)];}
+function toC(v){return [Math.atan2(v[1],v[0])/D2R,Math.atan2(v[2],Math.hypot(v[0],v[1]))/D2R];}
+function gc(a,b,n){var A=toV(a),B=toV(b),d=Math.acos(Math.max(-1,Math.min(1,A[0]*B[0]+A[1]*B[1]+A[2]*B[2]))),out=[];
+  for(var i=0;i<=n;i++){var t=i/n,s=Math.sin(d),k1=Math.sin((1-t)*d)/s,k2=Math.sin(t*d)/s;out.push(toC([A[0]*k1+B[0]*k2,A[1]*k1+B[1]*k2,A[2]*k1+B[2]*k2]));}
+  for(var j=1;j<out.length;j++){while(out[j][0]-out[j-1][0]>180)out[j][0]-=360;while(out[j][0]-out[j-1][0]<-180)out[j][0]+=360;}
+  return out;}
+function bearingOf(a,b){var la1=a[1]*D2R,la2=b[1]*D2R,dl=(b[0]-a[0])*D2R;var y=Math.sin(dl)*Math.cos(la2),x=Math.cos(la1)*Math.sin(la2)-Math.sin(la1)*Math.cos(la2)*Math.cos(dl);return Math.atan2(y,x)/D2R;}
+var SFO=[-122.379,37.6213],ICN=P.icn.c,DAEGU=P.daegu.c;
+var ROUTES={out:gc(ICN,SFO,400),back:gc(SFO,ICN,400).concat(gc(ICN,DAEGU,40).slice(1))};
+var BAYLINE=[SFO,P.stanford.c,P.berkeley.c,P.minerva.c,P.openai.c,P.google.c];
+
+// ---- markers ----
+var PIN='<svg viewBox="0 0 26 34"><path d="M13 0C5.8 0 0 5.7 0 12.8 0 22.4 13 34 13 34s13-11.6 13-21.2C26 5.7 20.2 0 13 0z" fill="#d93025"/><circle cx="13" cy="12.8" r="5" fill="#fff"/></svg>';
+var PIN_HOME='<svg viewBox="0 0 26 34"><path d="M13 0C5.8 0 0 5.7 0 12.8 0 22.4 13 34 13 34s13-11.6 13-21.2C26 5.7 20.2 0 13 0z" fill="#0b2a5b"/><circle cx="13" cy="12.8" r="5" fill="#ffb703"/></svg>';
+var MK={};
+Object.keys(P).forEach(function(id){var p=P[id];var el=document.createElement('div');el.className='pin'+(p.side?' '+p.side:'');el.innerHTML='<div class="lb">'+p.name+'<small>'+p.sub+'</small></div>'+(id==='daegu'?PIN_HOME:PIN);
+  MK[id]={el:el,m:new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat(p.c).addTo(map),p:p};});
+var planeEl=document.createElement('div');planeEl.className='plane';
+planeEl.innerHTML='<svg viewBox="0 0 64 64"><path fill="#fff" stroke="#1d2533" stroke-width="1.4" d="M32 3c2.2 0 3.6 2.6 3.6 6v14.2l21.6 12.6v5.4L35.6 34.6v12.2l6.2 4.8v4.6L32 53.2l-9.8 3V51.6l6.2-4.8V34.6L6.8 41.2v-5.4l21.6-12.6V9C28.4 5.6 29.8 3 32 3z"/></svg>';
+var plane=new maplibregl.Marker({element:planeEl,rotationAlignment:'map',pitchAlignment:'map'}).setLngLat(ICN);
+function updateMarkers(){var z=map.getZoom(),cur=STEPS[step].cam.place,lon=map.getCenter().lng;lon=((lon+540)%360)-180;var us=lon<-20||lon>175;
+  document.getElementById('map').classList.toggle('sky',z>5.5);
+  Object.keys(MK).forEach(function(id){var p=MK[id].p;var show=z>=(p.minz||0)&&z<=(p.maxz===undefined?99:p.maxz);if(z>3.2&&((p.c[0]<0)!==us))show=false;MK[id].el.classList.toggle('hide',!show);MK[id].el.classList.toggle('on',id===cur);});}
+map.on('move',updateMarkers);
+
+// ---- route layers ----
+map.on('load',function(){
+  map.addSource('routes',{type:'geojson',data:{type:'FeatureCollection',features:[
+    {type:'Feature',properties:{k:'out'},geometry:{type:'LineString',coordinates:ROUTES.out}},
+    {type:'Feature',properties:{k:'back'},geometry:{type:'LineString',coordinates:ROUTES.back}}]}});
+  map.addSource('done',{type:'geojson',data:empty()});
+  map.addSource('bay',{type:'geojson',data:{type:'Feature',geometry:{type:'LineString',coordinates:BAYLINE}}});
+  map.addLayer({id:'routes',type:'line',source:'routes',layout:{'line-cap':'round'},paint:{'line-color':'#ffffff','line-width':2,'line-opacity':0,'line-dasharray':[2,2]}});
+  map.addLayer({id:'done-casing',type:'line',source:'done',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#1d2533','line-width':5.5,'line-opacity':.35}});
+  map.addLayer({id:'done',type:'line',source:'done',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#ffb703','line-width':3}});
+  map.addLayer({id:'bay',type:'line',source:'bay',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#ffffff','line-width':['interpolate',['linear'],['zoom'],8,1.5,14,3],'line-opacity':0,'line-dasharray':[1.5,1.5]}});
+  ready=true;go(0,true);
+});
+function empty(){return {type:'FeatureCollection',features:[]};}
+function setDone(coords){var s=map.getSource('done');if(s)s.setData(coords&&coords.length>1?{type:'Feature',geometry:{type:'LineString',coordinates:coords}}:empty());}
+
+// ---- UI ----
+var panel=document.getElementById('panel'),tl=document.getElementById('timeline'),cards=[],tbs=[];
+STEPS.forEach(function(s,i){var c=document.createElement('article');c.className='card';c.innerHTML=HTML[i]||'';panel.appendChild(c);cards.push(c);
+  var b=document.createElement('button');b.innerHTML=s.nav+(s.sub?'<small>'+s.sub+'</small>':'');b.onclick=function(){go(i);};tl.appendChild(b);tbs.push(b);});
+var locName=document.getElementById('locName'),locCoord=document.getElementById('locCoord'),stepNo=document.getElementById('stepNo'),hint=document.getElementById('hint');
+document.getElementById('prev').onclick=function(){go(step-1);};
+document.getElementById('next').onclick=function(){go(step+1);};
+function fmt(c){var la=c[1],lo=c[0];return Math.abs(la).toFixed(4)+'°'+(la>=0?'N':'S')+'  '+Math.abs(lo).toFixed(4)+'°'+(lo>=0?'E':'W');}
+
+// ---- navigation ----
+var step=0,ready=false,token=0,busyUntil=0,orbitOn=false;
+function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===step&&!instant)return;
+  var from=step;step=i;var my=++token;orbitOn=false;map.stop();
+  cards.forEach(function(c,k){c.classList.toggle('on',k===i);if(k===i)c.scrollTop=0;});
+  tbs.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);});
+  if(tbs[i].scrollIntoView)tbs[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  stepNo.textContent=(i+1)+' / '+N;hint.style.opacity=i===0?1:0;
+  var cam=STEPS[i].cam;locName.textContent=cam.loc;locCoord.textContent=cam.place?fmt(P[cam.place].c):'';
+  var showBay=i>=4&&i<=10;map.setPaintProperty('bay','line-opacity',showBay?.85:0);
+  map.setPaintProperty('routes','line-opacity',(i>=3&&i<=4)||(i>=10&&i<=11)?.55:0);
+  // done route
+  if(i<4)setDone(null);else if(i<=10)setDone(ROUTES.out);else setDone(ROUTES.back);
+  plane.remove();updateMarkers();
+  busyUntil=performance.now()+900;
+  if(instant){map.jumpTo(withPad(cam));afterArrive(my);return;}
+  if(i===from+1&&STEPS[i].flightFrom){flight(i,my);return;}
+  var dist=distKm(map.getCenter().toArray(),cam.center);
+  var dur=reduce?0:Math.min(6500,Math.max(2200,1600+Math.log(1+dist)*520));
+  map.flyTo(Object.assign(withPad(cam),{duration:dur,curve:1.5,essential:true}));
+  map.once('moveend',function(){if(my===token)afterArrive(my);});
+}
+function withPad(cam){return {center:cam.center,zoom:cam.zoom-(mobile()?0.6:0),pitch:cam.pitch,bearing:cam.bearing,padding:padding()};}
+function distKm(a,b){var A=toV(a),B=toV(b);return 6371*Math.acos(Math.max(-1,Math.min(1,A[0]*B[0]+A[1]*B[1]+A[2]*B[2])));}
+function afterArrive(my){if(my!==token)return;orbitOn=STEPS[step].cam.orbit&&!reduce;lastT=0;}
+// flight animation: climb -> follow plane -> descend
+function flight(i,my){
+  var back=STEPS[i].flightFrom==='sfo',route=back?ROUTES.back:ROUTES.out,start=route[0];
+  var cam=STEPS[i].cam;
+  setDone(null);map.setPaintProperty('routes','line-opacity',.55);
+  map.flyTo({center:start,zoom:4.2,pitch:30,bearing:0,padding:padding(),duration:reduce?0:2600,curve:1.3,essential:true});
+  map.once('moveend',function(){if(my!==token)return;
+    plane.setLngLat(start).addTo(map);
+    var T=reduce?10:7800,t0=performance.now();
+    (function anim(now){if(my!==token){plane.remove();return;}
+      var t=Math.min(1,(now-t0)/T),e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+      var f=e*(route.length-1),k=Math.min(route.length-2,Math.floor(f)),r=f-k;
+      var a=route[k],b=route[k+1],pos=[a[0]+(b[0]-a[0])*r,a[1]+(b[1]-a[1])*r];
+      var br=bearingOf(a,b),z=4.2-1.9*Math.sin(Math.PI*e);
+      map.jumpTo({center:pos,zoom:z,pitch:30+8*Math.sin(Math.PI*e),bearing:0,padding:padding()});
+      plane.setLngLat(pos).setRotation(br);
+      setDone(route.slice(0,k+1).concat([pos]));
+      if(t<1)requestAnimationFrame(anim);
+      else{setDone(route);plane.remove();map.flyTo(Object.assign(withPad(cam),{duration:reduce?0:3800,curve:1.4,essential:true}));map.once('moveend',function(){if(my===token)afterArrive(my);});}
+    })(t0);
+  });
+}
+// gentle orbit at campuses
+var lastT=0;
+function tick(now){if(orbitOn&&!map.isMoving()&&!userDrag){var dt=lastT?Math.min(64,now-lastT):16;map.setBearing(map.getBearing()+dt*0.0035);}
+  lastT=now;
+  var c=map.getCenter();if(!STEPS[step].cam.place&&locCoord)locCoord.textContent=fmt([c.lng,c.lat]);
+  requestAnimationFrame(tick);}
+requestAnimationFrame(tick);
+var userDrag=false;map.on('dragstart',function(){userDrag=true;orbitOn=false;});map.on('rotatestart',function(e){if(e.originalEvent){userDrag=true;orbitOn=false;}});map.on('dragend',function(){userDrag=false;});
+// input
+var acc=0,lastWheel=0;
+window.addEventListener('wheel',function(e){var cardEl=cards[step];if(cardEl&&cardEl.contains(e.target)&&cardEl.scrollHeight>cardEl.clientHeight+4){var atTop=cardEl.scrollTop<=0,atBot=cardEl.scrollTop+cardEl.clientHeight>=cardEl.scrollHeight-2;if((e.deltaY>0&&!atBot)||(e.deltaY<0&&!atTop))return;}
+  e.preventDefault();var now=performance.now();if(now<busyUntil)return;if(now-lastWheel>300)acc=0;lastWheel=now;acc+=e.deltaY;
+  if(Math.abs(acc)>60){go(step+(acc>0?1:-1));acc=0;}},{passive:false});
+window.addEventListener('keydown',function(e){var k=e.key;
+  if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();go(step+1);}
+  else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(step-1);}
+  else if(k==='Home'){go(0);}else if(k==='End'){go(N-1);}});
+var ty=null,tx=null;
+panel.addEventListener('touchstart',function(e){ty=e.touches[0].clientY;tx=e.touches[0].clientX;},{passive:true});
+panel.addEventListener('touchend',function(e){if(ty===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60){go(step+(dx<0?1:-1));}ty=tx=null;},{passive:true});
+window.addEventListener('resize',function(){if(ready)map.jumpTo(withPad(STEPS[step].cam));});
+window.__go=go;
+})();
+
+</script>
+</body>
+</html>
