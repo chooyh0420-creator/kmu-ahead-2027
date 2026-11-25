@@ -474,6 +474,22 @@ body.vstep #showcase{left:calc(min(500px,36vw) + 52px)}
 @media (min-width:761px) and (max-height:820px){.card.vcard .vhero{height:96px}}
 /* 카드 아래에 내용이 더 있을 때 표시 */
 .card.more:after{content:"▾ 아래로 더 보기";position:sticky;bottom:-20px;display:block;margin:6px -22px -20px;padding:22px 0 8px;text-align:center;font-size:11.5px;font-weight:700;color:#0b57d0;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.96) 55%);pointer-events:none}
+/* v22: 방문기관 영상 — 기관 위치(핀)에서 뽑아져 나오는 반투명 팝업 */
+.scene.visit.cur{display:block!important}
+.vpop{position:fixed;left:50%;top:120px;width:clamp(340px,min(34vw,calc((100vh - 330px) * .9)),680px);opacity:0;transform:scale(.03);pointer-events:none;z-index:3}
+.vpop.pop{animation:vpop .95s cubic-bezier(.18,1.15,.32,1) .25s forwards}
+@keyframes vpop{0%{opacity:0;transform:scale(.03)}35%{opacity:1}100%{opacity:1;transform:scale(1)}}
+.vpop h5{margin:0 0 8px;font-size:15px!important;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.vpop .yt{opacity:.86;border:1px solid rgba(255,255,255,.35);box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 0 4px rgba(255,211,107,.18)}
+.vpop .yt:hover{opacity:1}
+.vpop .ytw .cap{font-size:13px}
+.vpop .stem{position:absolute;top:100%;left:var(--sx,50%);width:2px;height:var(--sl,54px);margin-left:-1px;background:linear-gradient(180deg,rgba(255,211,107,.95),rgba(255,211,107,.35));box-shadow:0 0 10px rgba(255,183,3,.8);transform-origin:50% 100%}
+.vpop .stem i{position:absolute;left:50%;bottom:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#ffd36b;box-shadow:0 0 0 4px rgba(255,211,107,.35),0 0 16px #ffb703}
+.vpop.pop .stem{animation:stemup .35s ease-out both}
+@keyframes stemup{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+body.sc.vstep #vignette{background:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 40%),rgba(3,10,25,.16)}
+@media (max-width:760px){.vpop{position:static;width:100%;opacity:1;transform:none!important;animation:none!important}.vpop .stem{display:none}.vpop .yt{opacity:1}}
+.scene.visit{perspective:none!important}
 
 </style>
 </head>
@@ -677,8 +693,8 @@ var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   Object.keys(V).forEach(function(k){var v=V[k],d=document.createElement('div');d.className='scene visit';d.setAttribute('data-s','v_'+k);
     var li=v.learn.map(function(x,n){return '<li><i>'+(n+1)+'</i><span>'+esc(x[0])+'</span><em>→</em><b>'+esc(x[1])+'</b></li>';}).join('');
-    d.innerHTML='<h5 class="r1">현장 미리보기 — '+esc(v.title)+'</h5>'+
-      '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?autoplay=1&mute=1&playsinline=1&rel=0'+(v.st?'&start='+v.st+'&end='+v.en:'&loop=1&playlist='+v.yt)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
+    d.innerHTML='<div class="vpop"><span class="stem"><i></i></span><h5>현장 미리보기 — '+esc(v.title)+'</h5>'+
+      '<div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?autoplay=1&mute=1&playsinline=1&rel=0'+(v.st?'&start='+v.st+'&end='+v.en:'&loop=1&playlist='+v.yt)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
       '<p class="cap"><small>공식 영상 · '+esc(v.ch)+'</small>'+esc(v.vt)+'</p></div>'+
       '</div>';
     box.appendChild(d);});})();
@@ -710,7 +726,7 @@ lb.onclick=function(e){if(e.target===lbVid)return;closeLb();};
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on')){closeLb();}},true);
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var mobile=function(){return window.innerWidth<=760;};
-function padding(){var vs=typeof step!=='undefined'&&/^v_/.test(STEPS[step].show||'');return mobile()?{top:40,bottom:Math.round(window.innerHeight*0.46),left:0,right:0}:{top:40,bottom:60,left:Math.round(vs?Math.min(500,window.innerWidth*0.36):Math.min(410,window.innerWidth*0.38))+30,right:0};}
+function padding(){var vs=typeof step!=='undefined'&&/^v_/.test(STEPS[step].show||'');return mobile()?{top:40,bottom:Math.round(window.innerHeight*0.46),left:0,right:0}:{top:vs?Math.round(window.innerHeight*0.42):40,bottom:60,left:Math.round(vs?Math.min(500,window.innerWidth*0.36):Math.min(410,window.innerWidth*0.38))+30,right:0};}
 
 var style={version:8,
   projection:{type:'globe'},
@@ -815,7 +831,7 @@ function go(i,instant){if(!ready)return;if(!instant&&document.body.classList.con
   if(i<I_SFO)setDone(null);else if(i<=I_CMP)setDone(ROUTES.out);else setDone(ROUTES.back);
   var isFlight=(i===from+1&&!!STEPS[i].flightFrom&&!instant);
   if(window.FX)FX.leave(i);
-  var defer=!instant&&(i===I_TEAM||i===I_END);
+  var defer=!instant&&(i===I_TEAM||i===I_END||/^v_/.test(STEPS[i].show||''));
   showcase(isFlight||defer?null:STEPS[i].show);
   plane.remove();updateMarkers();
   busyUntil=performance.now()+900;
@@ -828,7 +844,7 @@ function go(i,instant){if(!ready)return;if(!instant&&document.body.classList.con
 }
 function withPad(cam){var pd=padding(),zs=0,sh=window.innerHeight<820;if(cam.pb&&!mobile()){pd.bottom=Math.round(window.innerHeight*(sh?.54:cam.pb));if(sh)zs=.3;}return {center:cam.center,zoom:cam.zoom-(mobile()?0.6:0)-zs,pitch:cam.pitch,bearing:cam.bearing,padding:pd};}
 function distKm(a,b){var A=toV(a),B=toV(b);return 6371*Math.acos(Math.max(-1,Math.min(1,A[0]*B[0]+A[1]*B[1]+A[2]*B[2])));}
-function afterArrive(my){if(my!==token)return;if(window.FX)FX.arrive(step);if(STEPS[step].show&&!document.body.classList.contains('sc'))showcase(STEPS[step].show);orbitOn=STEPS[step].cam.orbit&&!reduce;lastT=0;}
+function afterArrive(my){if(my!==token)return;if(window.FX)FX.arrive(step);if(STEPS[step].show&&!document.body.classList.contains('sc'))showcase(STEPS[step].show);if(/^v_/.test(STEPS[step].show||''))popVisit();orbitOn=STEPS[step].cam.orbit&&!reduce;lastT=0;}
 // flight animation: climb -> follow plane -> descend
 function flight(i,my){
   var back=STEPS[i].flightFrom==='sfo',route=back?ROUTES.back:ROUTES.out,start=route[0];
@@ -980,6 +996,19 @@ FX.intro=function(){var box=document.getElementById('intro');if(!box)return;
     el.style.rotate=(-dy).toFixed(3)+' '+dx.toFixed(3)+' 0 '+(big*Math.min(1,Math.hypot(dx,dy))).toFixed(2)+'deg';
     el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top+(el.scrollTop||0))+'px');el.classList.add('lit');cur=el;});})();
 FX.intro();
+
+// ---- 방문기관 영상: 지도 위 기관 위치에서 뽑아져 나오는 팝업 ----
+function curPop(){var s=document.querySelector('#showcase .scene.visit.cur .vpop');return s;}
+function placeVpop(){var el=curPop();if(!el||mobile())return;var pl=STEPS[step].cam.place;if(!pl||!P[pl])return;
+  var p=map.project(P[pl].c),w=el.offsetWidth,h=el.offsetHeight,stem=96,left=p.x-w/2,top=p.y-stem-h;
+  var minL=Math.min(410,innerWidth*.38)+60;if(document.body.classList.contains('vstep'))minL=Math.min(500,innerWidth*.36)+60;
+  left=Math.max(minL,Math.min(innerWidth-24-w,left));if(top<76){top=76;}
+  var sl=Math.max(14,p.y-(top+h));el.style.left=left+'px';el.style.top=top+'px';
+  el.style.setProperty('--sx',Math.max(18,Math.min(w-18,p.x-left))+'px');el.style.setProperty('--sl',sl+'px');
+  el.style.transformOrigin=Math.max(0,Math.min(w,p.x-left))+'px '+(h+sl)+'px';}
+function popVisit(){var el=curPop();if(!el)return;el.classList.remove('pop');placeVpop();void el.offsetWidth;el.classList.add('pop');}
+map.on('move',function(){if(document.body.classList.contains('vstep')&&document.body.classList.contains('sc'))placeVpop();});
+window.addEventListener('resize',function(){setTimeout(placeVpop,60);});
 window.__go=go;
 })();
 
