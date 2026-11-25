@@ -495,6 +495,15 @@ body.sc.vstep #vignette{background:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba
 .pin.on .lb small{font-size:20px;margin-top:2px}
 .pin.left.on .lb{right:28px}.pin.right.on .lb{left:28px}
 @media (max-width:760px){.pin.on .lb{font-size:15px;padding:6px 11px;border-radius:10px}.pin.on .lb small{font-size:12px}}
+/* v24: 휴대폰·태블릿(터치 기기)·카카오톡 내장 브라우저에서 유리(흐림) 효과가 글자까지 지워 버리는 문제 → 흐림 효과 끄고 불투명 배경 사용 */
+@media (hover:none),(pointer:coarse),(max-width:760px){
+  .card,.tbox,.mx.mx2,.plab,#intro .who,.nnode{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .card{background:#fff!important}
+  .tbox,.mx.mx2{background:#fff!important}
+  .plab{background:rgba(8,16,34,.92)!important}
+  #panel,.scene{perspective:none!important}
+  .card,.tbox,.mx2{rotate:none!important}
+}
 
 </style>
 </head>
@@ -895,7 +904,8 @@ panel.addEventListener('touchend',function(e){if(ty===null)return;var dx=e.chang
 window.addEventListener('resize',function(){if(ready)map.jumpTo(withPad(STEPS[step].cam));});
 
 // ================= v13 연출(FX) =================
-var LITE=reduce||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2)||(navigator.deviceMemory&&navigator.deviceMemory<=2);
+var INAPP=/KAKAOTALK|NAVER|Instagram|FBAN|FBAV|Line\//i.test(navigator.userAgent);
+var LITE=reduce||INAPP||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2)||(navigator.deviceMemory&&navigator.deviceMemory<=2);
 if(LITE)document.body.classList.add('lite');
 var I_KMU=idxOf('계명대'),I_TEAM=idxOf('처별 전담자'),I_END=N-1;
 function circ(c,r,n){n=n||28;var out=[],la=c[1]*D2R;for(var k=0;k<=n;k++){var t=k/n*2*Math.PI;out.push([c[0]+r*Math.cos(t)/(111320*Math.cos(la)),c[1]+r*Math.sin(t)/110540]);}return [out];}
