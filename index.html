@@ -279,6 +279,34 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 .side .learn li{padding:5px 0;font-size:12.5px}
 @media (min-width:761px) and (max-height:820px){.place{aspect-ratio:16/6}.side .learn li{padding:4px 0;font-size:12px}.learn h6{margin-bottom:4px}}
 @media (max-width:760px){.side{display:none}}
+/* v12: 연구 범위 3단계 */
+.axes.three{grid-template-columns:1fr 26px 1fr 26px 1fr;gap:8px}
+.axes.three .arr{color:#ffb703;font-size:34px;font-weight:900;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.axes.three .ax b{font-size:18px}
+.ax.sup small{color:#a14d00}.ax.sup p i{background:#fef3e2;color:#a14d00}
+.mx{grid-template-columns:84px repeat(5,1fr) 1.1fr}
+.mx .k{font-size:12px;line-height:1.3;text-align:center}
+/* v12: 처별 전담자 배치 */
+.tbox{background:#fff;border-radius:16px;padding:22px 26px 18px;box-shadow:0 16px 44px rgba(0,0,0,.5);pointer-events:auto}
+.tbox h3{margin:0;color:#0b3a7a;font-size:26px;font-weight:900;letter-spacing:-.02em}
+.tbox .tsub{margin:4px 0 0;color:#2b3442;font-size:15px;padding-bottom:12px;border-bottom:2px solid #b9c7d8}
+.tgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:16px 0 14px}
+.tgrid>div{background:#f8f6f1;border:1px solid #e2dccd;border-left:6px solid #9a7a35;border-radius:3px;padding:14px 8px 12px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.tgrid b{display:block;font-size:21px;font-weight:900;color:#1f2a37;padding-bottom:8px;margin:0 14% 9px;border-bottom:2px solid #dccfae;letter-spacing:-.01em}
+.tgrid i{display:inline-block;font-style:normal;font-size:12px;font-weight:800;color:#0b6b3a;border:1.5px solid #0b6b3a;border-radius:3px;padding:2px 6px}
+.tgrid span{display:block;margin-top:7px;font-size:13.5px;color:#2b3442}
+.tbox .tfoot{margin:0;padding-top:10px;border-top:2px solid #b9c7d8;font-size:14px;color:#2b3442}
+#showcase.on .scene.team.cur .tgrid>div{opacity:0;transform:translateY(14px);animation:rise .55s cubic-bezier(.2,.8,.2,1) forwards}
+.tgrid>div:nth-child(1){animation-delay:.8s!important}.tgrid>div:nth-child(2){animation-delay:.9s!important}.tgrid>div:nth-child(3){animation-delay:1s!important}.tgrid>div:nth-child(4){animation-delay:1.1s!important}.tgrid>div:nth-child(5){animation-delay:1.2s!important}
+.tgrid>div:nth-child(6){animation-delay:1.3s!important}.tgrid>div:nth-child(7){animation-delay:1.4s!important}.tgrid>div:nth-child(8){animation-delay:1.5s!important}.tgrid>div:nth-child(9){animation-delay:1.6s!important}.tgrid>div:nth-child(10){animation-delay:1.7s!important}
+#showcase.on .scene.team.cur .tgrid.r2{opacity:1;transform:none;animation:none}
+@media (max-width:1300px){.tgrid b{font-size:17px}.tgrid i{font-size:10.5px;padding:2px 4px}.tbox h3{font-size:21px}}
+@media (min-width:761px) and (max-height:820px){.tbox{padding:14px 18px 12px}.tgrid{gap:10px;margin:10px 0}.tgrid>div{padding:9px 6px 8px}.tgrid b{font-size:17px;padding-bottom:5px;margin-bottom:6px}}
+@media (max-width:760px){
+  .axes.three{grid-template-columns:1fr 12px 1fr 12px 1fr;gap:3px}.axes.three .arr{font-size:18px}.axes.three .ax b{font-size:12.5px}
+  .mx{grid-template-columns:56px repeat(6,minmax(70px,1fr))}
+  .tbox{padding:10px}.tbox h3{font-size:14px}.tbox .tsub{font-size:11px;padding-bottom:6px}.tgrid{grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0}.tgrid>div{padding:6px 2px;border-left-width:3px}.tgrid b{font-size:11px;margin:0 0 3px;padding-bottom:3px;letter-spacing:-.04em}.tgrid i{display:none}.tgrid span{font-size:9.5px;margin-top:0}.tbox .tfoot{font-size:10.5px}
+}
 
 </style>
 </head>
@@ -307,54 +335,67 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 </div>
 <!-- 연구 구조: 두 축의 연결 -->
 <div class="scene flow" data-s="flow">
-  <div class="axes r1">
-    <div class="ax staff"><small>축 ① 직원</small><b>개발하는 직원</b><span>학생 곁에서 발견한 불편을<br>AI로 직접 해결</span><p><i>도구</i><i>규칙</i><i>교육</i><i>공유</i></p></div>
-    <div class="link"><span>누구나 개발하는 시대<br><b>직원의 도구 = 학생 서비스</b></span><svg viewBox="0 0 120 24"><path d="M2 12h108" stroke="#ffb703" stroke-width="3" stroke-dasharray="6 5"/><path d="M104 4l12 8-12 8" fill="none" stroke="#ffb703" stroke-width="3" stroke-linejoin="round"/></svg></div>
-    <div class="ax stud"><small>축 ② 학생</small><b>기다리지 않는 학생</b><span>묻기 전에 필요한 정보를<br>먼저 받음</span><p><i>맞춤 알림</i><i>실시간 정보</i><i>AI 상담</i></p></div>
+  <div class="axes three r1">
+    <div class="ax staff"><small>① 직원 개발</small><b>불편을 발견한 직원이</b><span>반복 문의·수작업에서 과제를 찾아<br>AI로 시제품을 직접 제작</span><p><i>과제 발견</i><i>시제품</i><i>시험·수정</i></p></div>
+    <div class="arr">›</div>
+    <div class="ax sup"><small>② 대학의 지원과 검수</small><b>대학이 함께 검토하고</b><span>실습 교육·멘토링, 보안·개인정보<br>검토와 운영 책임·인수인계</span><p><i>실습 교육</i><i>검수</i><i>인수인계</i></p></div>
+    <div class="arr">›</div>
+    <div class="ax stud"><small>③ 공유와 확산</small><b>모든 부서가 나눠 씀</b><span>도구와 제작 방법을 공유해<br>다른 부서가 수정·활용</span><p><i>그룹웨어 등록</i><i>워크숍</i><i>사례집</i></p></div>
   </div>
-  <div class="cases r2"><h5>학생의 불편에서 시작해 직원이 직접 만든 3가지</h5>
+  <div class="cases r2"><h5>먼저 해 본 사례 — 학생의 불편에서 시작해 직접 만든 장학 서비스 3종</h5>
     <div class="case"><span class="w">“내가 받을 수 있는 장학금은?” 반복 문의</span><em>→</em><b>「장학금 자가진단」</b><em>→</em><span class="s">학생이 스스로 진단 <strong>2,100여 회</strong></span></div>
     <div class="case"><span class="w">“장학금 언제 들어와요?” 지급일 문의</span><em>→</em><b>「장학금 캘린더」</b><em>→</em><span class="s">지급일을 묻지 않고 확인 <strong>750여 회</strong></span></div>
     <div class="case"><span class="w">마감 여부를 몰라 아침밥 헛걸음</span><em>→</em><b>「아침밥 실시간 현황」</b><em>→</em><span class="s">헛걸음 없이 확인 <strong>5,400여 회</strong></span></div>
   </div>
-  <div class="gap r3"><div class="bad"><small>지금의 한계</small>담당자 한 명만 개발 → 바뀌면 끊기고, 다른 부서로 퍼지지 않음</div><em>⟶</em><div class="good"><small>AHEAD 2027에서 찾을 답</small><b>모든 직원이 개발</b>하고, 대학이 <b>검수·공유·확산</b>하는 체계</div></div>
+  <div class="gap r3"><div class="bad"><small>지금의 한계</small>개발·운영이 담당자 한 명에게 집중 → 바뀌면 끊기고, 다른 부서로 퍼지지 않음</div><em>⟶</em><div class="good"><small>AHEAD 2027에서 찾을 답</small><b>모든 직원이 개발</b>하고, 대학이 <b>검수·공유·확산</b>하는 체계</div></div>
 </div>
 <!-- 기관 비교표 -->
 <div class="scene matrix" data-s="matrix">
-  <h5 class="r1">‘도구–규칙–사람–서비스’ 기관 비교표 <span><i class="ok">✓</i> 공개자료로 확인 <i class="qq">?</i> 현장에서 확인</span></h5>
+  <h5 class="r1">4개 항목 기관 비교표 <span><i class="ok">✓</i> 공개자료로 확인 <i class="qq">?</i> 현장에서 확인</span></h5>
   <div class="mx r2">
     <div class="h"></div><div class="h">Stanford</div><div class="h">UC Berkeley</div><div class="h">Minerva</div><div class="h">OpenAI</div><div class="h">Google</div><div class="h me">계명대 지금</div>
-    <div class="k">도구</div><div class="ok">AI Playground<small>여러 모델 한곳</small></div><div class="ok">Campus AI Sandbox<small>행정 업무용 베타</small></div><div class="qq">디지털 학생 지원 도구</div><div class="ok">ChatGPT Edu<small>대학 전체 도입</small></div><div class="ok">Gemini for Education<small>업무 도구 속 AI</small></div><div class="me">직원이 만든 서비스 3종</div>
-    <div class="k">규칙</div><div class="ok">위험 등급별 승인<small>고위험 데이터 승인</small></div><div class="ok">P1~P4 데이터 등급<small>P3 승인(2025. 10.)</small></div><div class="qq">학생 데이터 활용 기준</div><div class="ok">대학 워크스페이스<small>맞춤 GPT 공유</small></div><div class="ok">학습·광고 미사용<small>기업 수준 보호</small></div><div class="me warn">기준 없음 → 가이드라인(안)</div>
-    <div class="k">사람</div><div class="ok">입문 교육<small>AI Playground 101</small></div><div class="ok">시간 절감 측정<small>시범 운영 목적</small></div><div class="qq">적은 인력 운영 방식</div><div class="qq">확산 지원 방식</div><div class="ok">전 구성원 교육<small>도입 대학 사례</small></div><div class="me warn">담당자 1명에 의존</div>
-    <div class="k">서비스</div><div class="qq">학생 대상 안내</div><div class="qq">학생 대상 안내</div><div class="qq">알림 시점·채널</div><div class="qq">맞춤 AI 비서</div><div class="qq">시트·앱스크립트 연결</div><div class="me">자가진단·캘린더·현황</div>
+    <div class="k">직원 교육·<br>개발 지원</div><div class="ok">입문 교육<small>AI Playground 101</small></div><div class="ok">행정 업무용 시범<small>Campus AI Sandbox</small></div><div class="qq">현장 직원 지원 방식</div><div class="ok">맞춤 GPT 제작<small>코딩 없이 만들기</small></div><div class="ok">전 구성원 교육<small>도입 대학 사례</small></div><div class="me">AI 플랫폼 도입<small>개발 지원 창구 없음</small></div>
+    <div class="k">검수·<br>승인 기준</div><div class="ok">위험 등급별 승인<small>고위험 데이터 승인</small></div><div class="ok">P1~P4 데이터 등급<small>P3 승인(2025. 10.)</small></div><div class="qq">학생 데이터 활용 기준</div><div class="ok">학습 미사용<small>대학 워크스페이스</small></div><div class="ok">학습·광고 미사용<small>기업 수준 보호</small></div><div class="me">가이드라인(2026. 9.)<small>직원 개발 도구 검수 절차 없음</small></div>
+    <div class="k">운영·<br>인수인계</div><div class="qq">맞춤 도구 운영 주체</div><div class="qq">시범 → 정식 전환 기준</div><div class="qq">적은 인력 운영 방식</div><div class="qq">워크스페이스 관리</div><div class="ok">관리자 현황 확인<small>사용 현황 관리</small></div><div class="me warn">담당자 1명에 의존</div>
+    <div class="k">부서 간<br>공유·활용</div><div class="qq">맞춤 도구 공유 방식</div><div class="ok">직원 실험 커뮤니티<small>UC Berkeley AI Community</small></div><div class="qq">학생 안내 채널</div><div class="ok">맞춤 GPT 공유<small>워크스페이스 안</small></div><div class="qq">부서 간 확산 방식</div><div class="me">서비스 3종 운영 중<small>공유·등록 체계 없음</small></div>
   </div>
 </div>
 <!-- 귀국 후 적용 모델 -->
 <div class="scene model" data-s="model">
-  <h5 class="r1">「계명형 직원 주도 AI 업무혁신 모델」(안)</h5>
+  <h5 class="r1">「계명형 직원 개발자 모델」(안)</h5>
   <div class="steps4 r2">
-    <div><i>1</i><b>직원 개발</b><span>현업 직원이 AI로<br>자기 업무 도구 제작</span></div>
-    <div><i>2</i><b>검수</b><span>전산 부서와 함께<br>개인정보·보안 확인</span></div>
-    <div><i>3</i><b>공유</b><span>업무포털·워크숍 공유<br>지식재산 등록 지원</span></div>
-    <div><i>4</i><b>확산</b><span>타 부서 1~2곳 시범<br>→ 전 부서로</span></div>
+    <div><i>1</i><b>제안·개발</b><span>본인 업무의 개선 과제를<br>AI로 첫 도구 제작<br>(실습 교육·멘토링)</span></div>
+    <div><i>2</i><b>검수</b><span>현업·전산 부서가 함께<br>기능·보안·개인정보 검토<br>(정보 공개 수준별 기준)</span></div>
+    <div><i>3</i><b>등록·인수인계</b><span>그룹웨어에 등록하고<br>운영 담당자·안내서 지정</span></div>
+    <div><i>4</i><b>공유·확산</b><span>워크숍·우수사례집으로<br>타 부서가 수정·활용</span></div>
   </div>
-  <div class="track r3"><div><small>학생 선제 안내 시범</small><b>장학금 신청·지급 일정 개인 맞춤 알림</b></div><div><small>제도</small><b>AI 활용 가이드라인(안) · 직무발명 등록 지원 절차(안)</b></div></div>
-  <div class="measure r4"><span>시범 적용</span><em>⟶</em><span>6개월 후 효과 측정<small>처리 시간 · 문의 건수</small></span><em>⟶</em><span>성과공유회 · 확산</span></div>
+  <div class="track r3"><div><small>학생 서비스</small><b>「학생 선제 안내 서비스」 설계안 — 장학 신청·서류 보완 안내 대상·시점·채널</b></div><div><small>정책·제도</small><b>「AI 활용 가이드라인」 후속 세부 지침 · 「직원 개발 도구 등록제」(안)</b></div></div>
+  <div class="measure r4"><span>참가 부서 직원 1명 시범</span><em>⟶</em><span>시범 전후 비교<small>건당 처리 시간 · 문의 건수</small></span><em>⟶</em><span>처별 전담자 10명으로 확산</span></div>
+</div>
+<!-- 처별 전담자 배치 -->
+<div class="scene team" data-s="team">
+  <div class="tbox">
+    <div class="r1"><h3>KMU_AHEAD TEAM 처별 전담자 배치(안)</h3><p class="tsub">참가자 10명 · 10개 처에 1명씩 배정</p></div>
+    <div class="tgrid r2">
+      <div><b>교무처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>연구처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>학생처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>입학처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>기획처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div>
+      <div><b>총무처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>대외협력처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>관리처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>AI정보처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div><div><b>국제처</b><i>KMU_AHEAD TEAM</i><span>전담자 1명</span></div>
+    </div>
+    <p class="tfoot r3">각 처의 전담자는 동료의 AI 업무 도구 개발·활용을 지원하고, 10명은 하나의 팀으로 협업함.</p>
+  </div>
 </div>
 <!-- 본인 역할 -->
 <div class="scene role" data-s="role">
   <h5 class="r1">제가 맡을 일 — ‘직접 만들어 본 실무자’로서</h5>
-  <div class="phase r2"><div class="ph"><small>출국 전</small><b>공통 질문지 초안</b><span>직접 만든 서비스 3종의 효과·한계를 정리해 연구팀 공통 현장 질문지 초안 작성</span></div>
-  <div class="ph"><small>현지 · 1. 19. ~ 30.</small><b>사례 시연·기록</b><span>방문기관에 우리 대학 사례를 실제 화면으로 시연·소개하고, 면담 기록과 기관별 비교표 정리</span></div>
-  <div class="ph"><small>귀국 후</small><b>시범 적용 주도</b><span>타 부서 시범 적용 설계·운영으로 ‘직원이 만들고 학생이 쓰는’ 모델 검증, 6개월 후 효과 공유</span></div></div>
+  <div class="phase r2"><div class="ph"><small>출국 전</small><b>사례 분석·질문지</b><span>장학 서비스 3종의 개발 계기·시험·수정 과정·이용 실적을 정리하고, 혼자 해결해야 했던 어려움을 현장 질문지에 반영</span></div>
+  <div class="ph"><small>현지 · 1. 19. ~ 30.</small><b>사례 시연·기록</b><span>방문기관에 우리 대학 사례를 실제 화면으로 시연하고 공통 질문을 제시, 면담 기록과 기관별 비교표 정리</span></div>
+  <div class="ph"><small>귀국 후</small><b>시범 과제·멘토</b><span>연구팀 시범 과제를 설계·운영하고 참여 직원의 멘토로서 제작을 지원, 시범 전후 효과를 다음 부서와 공유</span></div></div>
 </div>
 </div>
 <section id="panel" aria-live="polite"></section>
 <div id="lightbox"><img alt=""><video muted loop playsinline controls></video><iframe title="공식 영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><span class="lbx">닫기 ✕</span></div>
 <div class="ctrl">
   <button id="prev" aria-label="이전 단계">‹</button>
-  <span id="stepNo">1 / 15</span>
+  <span id="stepNo">1 / 16</span>
   <button id="next" aria-label="다음 단계">›</button>
 </div>
 <nav id="timeline" aria-label="여정 단계"></nav>
@@ -362,65 +403,67 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 <noscript><p style="padding:40px">이 페이지는 JavaScript가 필요합니다.</p></noscript>
 <script src="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.js"></script>
 <script>
-/* 단계별 카드 문구 — app.js의 STEPS와 순서가 같아야 합니다 (15단계) */
+/* 단계별 카드 문구 — app.js의 STEPS와 순서가 같아야 합니다 (16단계) */
 window.STEP_HTML=[
 /* 0 시작 */
-`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>모든 직원이<br>개발자가 되는 대학</h2><p class="lead">현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><div class="hl">누구나 개발할 수 있는 시대가 됐습니다. 학생 곁에 있는 직원이 일상 속 불편을 가장 먼저 발견하고, 아이디어를 직접 도구로 만들어 적용합니다.</div><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
+`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>모든 직원이<br>개발자가 되는 대학</h2><p class="lead">현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><div class="hl">직무나 코딩 경험에 관계없이, 누구나 자신이 맡은 업무의 문제를 발견하고 이를 해결할 도구를 직접 만들어 시험해 볼 수 있는 대학을 꿈꿉니다.</div><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
 /* 1 계명대 */
-`<span class="tag gr">출발점 · 계명대학교</span><h2>학생의 불편에서 출발해<br>직접 만들어 왔습니다</h2><p class="lead">장학 업무를 하며 학생들이 반복해서 묻고 헛걸음하는 모습을 보고, 생성형 AI로 그 불편을 해결하는 서비스를 직접 만들어 운영하고 있습니다.</p><ul><li><b>장학금 맞춤형 추천 시스템</b>(장학금 자가진단) 개발 — 직무발명 신고 및 지식재산 등록 <b>제C-2026-048495호</b></li><li><b>장학금 자가진단</b> — 누적 방문 <b>13,600여 회</b>, 맞춤 진단 <b>2,100여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥</b> 클리커 자동 집계·실시간 현황 공개 — 예산 0원, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">그런데 담당자 한 명의 역량에 머무르면, 담당자가 바뀔 때 끊기고 다른 부서로 퍼지지 않습니다. 이 한계를 넘을 방법을 찾으러 떠납니다.</div><p class="note">※ 방문·진단 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
+`<span class="tag gr">출발점 · 계명대학교</span><h2>학생의 불편에서 출발해<br>직접 만들어 왔습니다</h2><p class="lead">장학 업무를 하며 학생들이 장학금 자격·신청 일정·식당 운영 현황을 직접 확인하지 못해 겪는 불편과 반복되는 문의·헛걸음을 보고, 생성형 AI로 학생이 스스로 확인할 수 있는 <b>장학 서비스 3종</b>을 직접 기획·개발·운영하고 있습니다.</p><ul><li><b>장학금 자가진단</b> — 직무발명 신고 후 지식재산 등록 <b>제C-2026-048495호</b>, 누적 방문 <b>13,600여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀·전산개발팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥 실시간 현황</b> — 별도 예산 없이 구축, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">업무 현장의 불편과 개선점은 그 분야를 가장 잘 아는 <b>일선의 구성원</b>이 가장 먼저 찾아냅니다. 다만 개발과 운영이 담당자 한 명에게 집중되면, 담당자가 바뀐 뒤 계속 운영하거나 다른 부서로 넓히기 어렵습니다.</div><p class="note">※ 방문 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
 /* 2 직접 만든 서비스 */
-`<span class="tag gr">직접 만들어 운영 중인 서비스</span><h2>학생이 묻기 전에<br>먼저 알려 주는 서비스 3가지</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>클리커 자동 집계로 남은 인원을 5초마다 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl"><b>저작권 등록 제C-2026-048495호</b> — 「학자금지원구간 및 학업정보 기반 장학금 맞춤형 추천 시스템」(2026. 9. 29. 등록, 저작자 계명대학교 산학협력단)</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상입니다. ③은 실제 현황 페이지에 예시 숫자를 넣어, 클리커를 찍을 때마다 인원이 실시간으로 올라가는 운영 중 모습을 재현한 영상입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
+`<span class="tag gr">직접 기획·개발·운영 중인 장학 서비스 3종</span><h2>학생이 묻지 않고도<br>스스로 확인하는 서비스</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>식수 집계를 자동화하고 배식 현황을 실시간 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl">직접 개발한 서비스를 <b>생각보다 많은 학생이 이용하며 좋은 호응</b>을 얻었습니다. 「장학금 자가진단」은 <b>저작권 등록 제C-2026-048495호</b>로 지식재산 가치를 인정받았습니다.</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상입니다. ③은 실제 현황 페이지에 예시 숫자를 넣어 운영 중 모습을 재현한 영상입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
 /* 3 연구 구조 */
-`<span class="tag">연구 구조 · 불편에서 서비스까지</span><h2>학생의 불편이 아이디어가 되고,<br>직원이 만든 도구가 서비스가 됩니다</h2><p class="lead">누구나 개발할 수 있는 시대, 학생 곁의 직원이 가장 먼저 불편을 발견합니다. 이 과정을 <b>하나의 흐름</b>으로 연구합니다.</p><ul><li><b>(직원)</b> 현업 직원이 AI로 자기 업무를 직접 개선하는 체계: 도구·규칙·교육·공유</li><li><b>(학생)</b> 학생이 묻기 전에 필요한 정보를 먼저 알려 주는 선제 안내 서비스</li><li><b>(연결)</b> 학생의 불편 발견 → 직원의 아이디어 → AI로 직접 개발 → 검수·공유 → 학생 서비스 적용</li></ul><div class="hl">흐름도 가운데 줄은 제가 직접 겪은 사례입니다. 이 흐름을 한 사람이 아닌 <b>모든 직원이 할 수 있는 대학의 체계</b>로 만드는 것이 이번 연구의 목표입니다.</div>`,
+`<span class="tag">연구 범위 · 개발에서 확산까지</span><h2>직원이 만들고,<br>대학이 함께 키웁니다</h2><p class="lead">한 사람의 시도를 <b>모든 직원이 할 수 있는 대학의 체계</b>로 만들기 위해 세 단계를 연구합니다.</p><ul><li><b>(직원 개발)</b> 개발 경험이 없는 직원이 반복 문의·수작업 중 개선 과제를 찾고, 생성형 AI로 시제품을 만들어 실제 사용자와 함께 시험·수정하는 과정</li><li><b>(대학의 지원과 검수)</b> 실습 교육과 멘토링, 실제 업무에 적용할 때 필요한 보안·개인정보 검토 기준, 운영 책임과 인수인계 절차</li><li><b>(공유와 확산)</b> 직원이 만든 도구와 제작 방법을 공유하고, 다른 부서 직원이 본인 업무에 맞게 수정·활용하는 방안</li></ul><div class="hl">우리 대학은 이미 생성형 AI 플랫폼과 「AI 활용 가이드라인」(2026. 9.)을 갖추었습니다. 이제 필요한 것은 <b>직원이 만든 도구를 검수·등록·공유하는 절차</b>입니다.</div>`,
 /* 4 사전연구 */
-`<span class="tag">출국 전 · 사전연구</span><h2>세 가지 질문을 들고 갑니다</h2><ul class="q"><li><i>1</i>직원이 만든 AI 도구를 대학은 어떤 기준으로 <b>검증·승인하고 함께 쓰는가?</b><br><span class="chip">개인정보·보안</span><span class="chip">지식재산 귀속</span><span class="chip">유지보수·인수인계</span></li><li><i>2</i>전 직원의 AI 활용 역량을 어떤 <b>교육과 지원 조직</b>으로 키우는가?<br><span class="chip">교육과정</span><span class="chip">직원 커뮤니티</span><span class="chip">성과 인정</span></li><li><i>3</i>학생이 묻기 전에 <b>먼저 알려 주는 서비스</b>는 어떤 데이터와 채널로 운영되는가?<br><span class="chip">AI 상담</span><span class="chip">맞춤 알림</span><span class="chip">실시간 정보</span></li></ul><h4>출국 전에 할 일</h4><ul><li>방문기관의 AI 정책·플랫폼·가이드라인 공개자료 조사</li><li>우리 대학 AI 활용 사례(장학금 자가진단·캘린더, 천원의 아침밥 현황)의 효과와 한계 정리</li><li><b>본인 담당</b> — 직접 만든 서비스 3종을 바탕으로 연구팀 <b>공통 현장 질문지 초안</b> 작성</li></ul>`,
+`<span class="tag">출국 전 · 사전연구</span><h2>세 가지 질문을 들고 갑니다</h2><ul class="q"><li><i>1</i>개발 경험이 없는 직원은 어떤 지원을 받으면 <b>자기 업무에 필요한 첫 도구</b>를 만들 수 있는가?<br><span class="chip">과제 선정</span><span class="chip">실습 교육</span><span class="chip">멘토·지원 부서</span></li><li><i>2</i>직원이 만든 도구를 실제 업무에 적용하기까지 <b>누가 무엇을 검토하고, 누가 운영</b>하는가?<br><span class="chip">시범·정식 도입 기준</span><span class="chip">보안·개인정보</span><span class="chip">인수인계</span></li><li><i>3</i>한 직원의 개발 경험을 <b>다른 직원은 어떻게 활용</b>하며, 대학은 그 효과를 어떻게 확인하는가?<br><span class="chip">공유·수정 활용</span><span class="chip">성과 인정</span><span class="chip">처리 시간·문의 건수</span></li></ul><h4>출국 전에 할 일</h4><ul><li>방문기관의 AI 활용 지침, 직원 교육과정, 업무 도구 개발·공유 사례 조사</li><li>우리 대학 <b>AI 활용 가이드라인·AI 플랫폼 운영 현황</b> 및 국내 대학 사례와 비교</li><li><b>본인 담당</b> — 장학 서비스 3종의 개발 계기·시험·수정 과정·이용 실적을 정리하고, 담당자 혼자 해결해야 했던 어려움을 추려 <b>현장 질문지</b>에 반영</li></ul>`,
 /* 5 인천 출국 */
-`<span class="tag alt">2027. 1. 19.(화) · 인천 출국</span><h2>10박 12일,<br>실리콘밸리로 떠납니다</h2><h4>가방에 넣어 가는 것</h4><ul><li><b>공통 질문지</b> — 탐색사항 ①~③을 기관마다 같은 질문으로</li><li><b>우리 대학 사례 시연 자료</b> — 장학금 자가진단·캘린더 실제 작동 영상, 천원의 아침밥 현황 화면</li><li><b>비교표 양식</b> — ‘도구–규칙–사람–서비스’ 4개 기준</li></ul><p class="note">다음으로 넘기면 태평양을 건너 샌프란시스코로 날아갑니다 ✈</p>`,
+`<span class="tag alt">2027. 1. 19.(화) · 인천 출국</span><h2>10박 12일,<br>실리콘밸리로 떠납니다</h2><h4>가방에 넣어 가는 것</h4><ul><li><b>공통 질문</b> — “귀 기관의 직원이 이런 도구를 제안했다면, 어떤 지원을 받아 만들고 어떤 검토를 거쳐 실제 업무에 도입할 수 있는가?”</li><li><b>우리 대학 사례 시연 자료</b> — 장학 서비스 3종의 실제 작동 화면</li><li><b>비교표 양식</b> — ‘직원 교육·개발 지원 / 검수·승인 기준 / 운영·인수인계 / 부서 간 공유·활용’ 4개 항목</li></ul><p class="note">다음으로 넘기면 태평양을 건너 샌프란시스코로 날아갑니다 ✈</p>`,
 /* 6 샌프란시스코 */
-`<span class="tag alt">샌프란시스코·실리콘밸리 도착</span><h2>다섯 곳에서<br>답을 찾습니다</h2><ul><li><b>Stanford · UC Berkeley</b> — 전 구성원용 AI 플랫폼(<b>AI Playground</b>, <b>Campus AI Sandbox</b>), 데이터 등급별 사용 기준, 직원 교육</li><li><b>Minerva University</b> — 적은 인력으로 여러 도시의 학생을 지원하는 디지털 학생 지원 체계</li><li><b>OpenAI · Google</b> — 대학용 AI 서비스(<b>ChatGPT Edu</b>, <b>Gemini for Education</b>)의 도입·확산 지원, 업무별 맞춤 AI 비서</li></ul><p class="note">※ 방문 순서와 세부 일정은 주최 측 확정 일정에 따르며, 이 페이지의 순서는 연구 흐름에 맞춘 예시입니다.</p>`,
+`<span class="tag alt">샌프란시스코·실리콘밸리 도착</span><h2>다섯 곳에서<br>답을 찾습니다</h2><ul><li><b>Stanford · UC Berkeley</b> — 직원이 교내 AI 플랫폼(<b>AI Playground</b>, <b>Campus AI Sandbox</b>)에서 업무용 도구를 만들 때 받는 교육·지원과 데이터별 사용 기준</li><li><b>Minerva University</b> — 현장 직원이 학생의 어려움을 파악해 디지털 서비스 개선에 반영하는 방식</li><li><b>OpenAI · Google</b> — <b>ChatGPT Edu</b>·<b>Gemini for Education</b>에서 직원이 코딩 없이 업무용 AI 비서를 만들고 구성원과 공유하는 범위와 관리 방식</li></ul><h4>함께 비교할 사례</h4><ul><li><b>UC 샌디에이고</b> — 직원의 AI 아이디어를 제안·검토해 시범 과제로 선정하는 절차</li><li><b>조지아주립대 ‘Pounce’</b> — 학생에게 필요한 시점에 먼저 안내하고 효과를 측정하는 방법</li></ul><p class="note">※ 방문 순서와 세부 일정은 주최 측 확정 일정에 따르며, 이 페이지의 순서는 연구 흐름에 맞춘 예시입니다. 비교 사례는 공개자료로 조사합니다.</p>`,
 /* 7 Stanford */
-`<span class="tag">방문 ① · Stanford University</span><h2>전 구성원이 안전하게 쓰는<br>대학의 AI 플랫폼</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>University IT가 관리하는 <b>‘AI Playground’</b> — 여러 AI 모델을 대학 로그인(SSO) 환경에서 한곳에 모아 교수·직원·학생 모두 사용</li><li>올린 파일은 외부로 공유되거나 모델 학습에 쓰이지 않으며, 현재는 <b>고위험 데이터</b> 사용까지 승인</li><li>행정 매뉴얼(Admin Guide) 검색처럼 <b>업무별 맞춤 도구</b>, 입문 교육 「AI Playground 101」, 승인 도구 목록 운영</li><li>2026. 11. 기준 ChatGPT Edu·Gemini Enterprise·Claude for Education도 전 구성원에게 제공</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span></h4><ul><li>직원이 만든 맞춤 도구를 <b>누가, 어떤 기준으로 검수·승인·공유</b>하는가</li></ul><div class="hl">가져올 것 → <b>계명형 ‘직원 개발 → 검수 → 공유’ 절차(안)</b>의 뼈대</div><p class="src">출처 <a href="https://uit.stanford.edu/aiplayground" target="_blank" rel="noopener">Stanford University IT · AI Playground ↗</a></p>`,
+`<span class="tag">방문 ① · Stanford University</span><h2>전 구성원이 안전하게 쓰는<br>대학의 AI 플랫폼</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>University IT가 관리하는 <b>‘AI Playground’</b> — 여러 AI 모델을 대학 로그인(SSO) 환경에서 한곳에 모아 교수·직원·학생 모두 사용</li><li>올린 파일은 외부로 공유되거나 모델 학습에 쓰이지 않으며, 현재는 <b>고위험 데이터</b> 사용까지 승인</li><li>행정 매뉴얼(Admin Guide) 검색처럼 <b>업무별 맞춤 도구</b>, 입문 교육 「AI Playground 101」, 승인 도구 목록 운영</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ②</span></h4><ul><li>직원이 플랫폼에서 업무용 도구를 만들 때 받는 <b>교육·지원</b>, 그 도구를 <b>누가 어떤 기준으로 검수·승인</b>하는가</li></ul><div class="hl">가져올 것 → <b>「계명형 직원 개발자 모델」(안)</b>의 단계별 지원 내용과 담당 부서 역할</div><p class="src">출처 <a href="https://uit.stanford.edu/aiplayground" target="_blank" rel="noopener">Stanford University IT · AI Playground ↗</a></p>`,
 /* 8 UC Berkeley */
-`<span class="tag">방문 ② · UC Berkeley</span><h2>행정 업무를 위한<br>Campus AI Sandbox</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Campus AI Sandbox’(베타)</b> — 교수·직원·학생 근로자가 <b>일상 행정 업무</b>에 쓰도록 주요 AI 모델을 한곳에 모은 시범 서비스</li><li>2025. 10. 2.부터 <b>P3 등급</b> 데이터 사용 승인 — 데이터 보호 등급(P1~P4)에 따라 쓸 수 있는 도구를 안내</li><li>시범 운영 목적에 <b>직원 시간 절감 효과</b>와 <b>비용 구조 분석</b>을 넣어 지속 가능한 예산 모델을 마련</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ②</span></h4><ul><li>행정 직원의 실제 활용 사례와 시간 절감 측정 방법, 교육·커뮤니티 운영</li></ul><div class="hl">가져올 것 → <b>직원 AI 활용 가이드라인(안)</b>: 데이터 등급별 허용 도구 표</div><p class="src">출처 <a href="https://ai.berkeley.edu/resources/campus-ai-platform-beta" target="_blank" rel="noopener">UC Berkeley · Campus AI Sandbox ↗</a></p>`,
+`<span class="tag">방문 ② · UC Berkeley</span><h2>행정 업무를 위한<br>Campus AI Sandbox</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Campus AI Sandbox’(베타)</b> — 교수·직원·학생 근로자가 <b>일상 행정 업무</b>에 쓰도록 주요 AI 모델을 한곳에 모은 시범 서비스</li><li>2025. 10. 2.부터 <b>P3 등급</b> 데이터 사용 승인 — 데이터 보호 등급(P1~P4)에 따라 쓸 수 있는 도구를 안내</li><li>시범 운영 목적에 <b>직원 시간 절감 효과</b>와 <b>비용 구조 분석</b>을 포함</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ②</span><span class="chip">탐색 ③</span></h4><ul><li>시범 운영 도구를 정식 도입으로 넘기는 기준, 직원 실험 커뮤니티 운영, 시간 절감 측정 방법</li></ul><div class="hl">가져올 것 → 우리 대학 가이드라인의 <b>정보 공개 수준별 기준</b>을 직원 개발 단계에 적용하는 방법</div><p class="src">출처 <a href="https://ai.berkeley.edu/resources/campus-ai-platform-beta" target="_blank" rel="noopener">UC Berkeley · Campus AI Sandbox ↗</a></p>`,
 /* 9 Minerva */
-`<span class="tag">방문 ③ · Minerva University</span><h2>적은 인력으로<br>학생을 먼저 챙기는 방법</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>모든 수업을 자체 플랫폼 <b>‘Forum’</b>에서 소규모 실시간 세미나로 운영</li><li>토론·투표·소그룹 등 <b>수업 참여 데이터</b>를 모아 학생 참여도를 확인</li></ul><h4>확인할 것 <span class="chip">탐색 ③</span></h4><ul><li>여러 도시에 흩어진 학생을 지원하는 <b>디지털 학생 지원 체계</b></li><li>학생 안내 채널, 알림 시점, 학생 반응 측정 방법</li></ul><h4>현장에서 할 일</h4><ul><li>학생 지원 담당자 면담</li><li>우리 대학 학생 서비스(자가진단·캘린더·실시간 현황) <b>직접 시연</b> 후 의견 청취</li></ul><div class="hl">가져올 것 → <b>학생 선제 안내 서비스 설계(안)</b>: 대상 업무·알림 시점·채널</div><p class="src">출처 <a href="https://www.minerva.edu/blog/a-teachers-guide-how-to-use-data-to-measure-student-engagement" target="_blank" rel="noopener">Minerva University · Forum ↗</a></p>`,
+`<span class="tag">방문 ③ · Minerva University</span><h2>현장 직원이 발견한 불편을<br>서비스로 바꾸는 방법</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>모든 수업을 자체 플랫폼 <b>‘Forum’</b>에서 소규모 실시간 세미나로 운영</li><li>토론·투표·소그룹 등 <b>수업 참여 데이터</b>를 모아 학생 참여도를 확인</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ③</span></h4><ul><li>여러 도시에서 생활하는 학생을 지원하며 <b>현장 직원이 학생의 어려움을 어떻게 파악</b>하고 디지털 서비스 개선에 반영하는가</li><li>학생 안내 채널·알림 시점·학생 반응 측정 방법</li></ul><h4>현장에서 할 일</h4><ul><li>우리 대학 장학 서비스 3종 <b>직접 시연</b> 후 의견 청취</li></ul><div class="hl">가져올 것 → <b>「학생 선제 안내 서비스」 설계안</b>: 안내 대상·시점·채널과 효과 측정 방법</div><p class="src">출처 <a href="https://www.minerva.edu/blog/a-teachers-guide-how-to-use-data-to-measure-student-engagement" target="_blank" rel="noopener">Minerva University · Forum ↗</a></p>`,
 /* 10 OpenAI */
-`<span class="tag">방문 ④ · OpenAI</span><h2>대학에 AI를<br>어떻게 퍼뜨리는가</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘ChatGPT Edu’</b> — 학생·교수·연구자는 물론 <b>캠퍼스 운영(행정)</b>까지 대학 전체에 AI를 책임 있게 도입하도록 만든 대학용 서비스</li><li>대학 워크스페이스 안에서 <b>맞춤 GPT를 만들어 함께 쓰는</b> 기능</li><li>2026. 3. 기준 수백 개 대학이 ChatGPT Edu로 협력 중</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ②</span><span class="chip">탐색 ③</span></h4><ul><li>대학 단위 확산을 돕는 방식, 장학 안내·문의 응대용 <b>맞춤 AI 비서</b> 아이디어에 대한 의견</li></ul><div class="hl">가져올 것 → 장학 업무 <b>맞춤 AI 비서</b> 시범 아이디어</div><p class="src">출처 <a href="https://openai.com/index/introducing-chatgpt-edu/" target="_blank" rel="noopener">OpenAI · Introducing ChatGPT Edu ↗</a></p>`,
+`<span class="tag">방문 ④ · OpenAI</span><h2>코딩 없이 만드는<br>업무용 AI 비서</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘ChatGPT Edu’</b> — 학생·교수·연구자는 물론 <b>캠퍼스 운영(행정)</b>까지 대학 전체에 AI를 책임 있게 도입하도록 만든 대학용 서비스</li><li>대학 워크스페이스 안에서 <b>맞춤 GPT를 만들어 함께 쓰는</b> 기능</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ③</span></h4><ul><li>직원이 코딩 경험 없이 만든 AI 비서를 <b>구성원과 공유할 수 있는 범위와 관리 방식</b></li><li>대학 단위 확산을 돕는 방식</li></ul><div class="hl">가져올 것 → 직원이 만든 도구를 등록·공유하는 <b>「직원 개발 도구 등록제」(안)</b>의 공유 범위 기준</div><p class="src">출처 <a href="https://openai.com/index/introducing-chatgpt-edu/" target="_blank" rel="noopener">OpenAI · Introducing ChatGPT Edu ↗</a></p>`,
 /* 11 Google */
-`<span class="tag">방문 ⑤ · Google</span><h2>매일 쓰는 업무 도구 속의 AI</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Gemini for Education’</b> — 교육기관 전체 도입용, 데이터가 <b>AI 모델 학습이나 광고에 쓰이지 않는</b> 기업 수준 보호</li><li>미국 여러 대학이 Gemini·NotebookLM을 <b>전 구성원 교육</b>과 함께 도입 (예: UC Riverside 캠퍼스 AI 비서)</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ②</span></h4><ul><li>문서·시트 등 업무 도구 안의 AI와 조직 단위 보안 설정</li><li>구글 시트·앱스크립트로 만든 우리 도구(천원의 아침밥 집계 등)와 연결할 방법</li></ul><div class="hl">가져올 것 → 이미 쓰는 도구를 활용한 <b>저비용 확산 방안</b></div><p class="src">출처 <a href="https://blog.google/products-and-platforms/products/education/higher-education-gemini-notebooklm/" target="_blank" rel="noopener">Google · Gemini for Education ↗</a></p>`,
+`<span class="tag">방문 ⑤ · Google</span><h2>매일 쓰는 업무 도구 속의 AI</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Gemini for Education’</b> — 교육기관 전체 도입용, 데이터가 <b>AI 모델 학습이나 광고에 쓰이지 않는</b> 기업 수준 보호</li><li>미국 여러 대학이 Gemini·NotebookLM을 <b>전 구성원 교육</b>과 함께 도입</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ③</span></h4><ul><li>직원이 만든 업무용 AI 비서의 공유 범위와 관리자 관리 방식</li><li>전 구성원 교육을 운영하는 방법</li></ul><div class="hl">가져올 것 → 이미 쓰는 업무 도구를 활용한 <b>실습형 직원 교육</b> 운영 방법</div><p class="src">출처 <a href="https://blog.google/products-and-platforms/products/education/higher-education-gemini-notebooklm/" target="_blank" rel="noopener">Google · Gemini for Education ↗</a></p>`,
 /* 12 비교·정리 */
-`<span class="tag gr">현지 정리 · 기관 간 비교</span><h2>네 가지 기준으로<br>나란히 비교합니다</h2><div class="grid4"><div><b>도구</b><span>어떤 AI 플랫폼을 누구에게 제공하는가</span></div><div><b>규칙</b><span>데이터 등급·보안·지식재산 기준은 무엇인가</span></div><div><b>사람</b><span>교육·커뮤니티·성과 인정은 어떻게 하는가</span></div><div><b>서비스</b><span>학생에게 무엇을 먼저 알려 주는가</span></div></div><h4>현지에서 맡을 일</h4><ul><li>방문기관에 우리 대학 사례를 <b>직접 시연·소개</b></li><li>면담 기록과 기관별 비교표 정리</li></ul><p class="note">비교표의 초록 칸은 공개자료로 미리 확인한 내용이고, 주황 ‘?’ 칸은 현장에서 채울 내용입니다.</p>`,
+`<span class="tag gr">현지 정리 · 기관 간 비교</span><h2>네 가지 항목으로<br>나란히 비교합니다</h2><div class="grid4"><div><b>직원 교육·개발 지원</b><span>처음 만드는 직원이 받는 교육·멘토링</span></div><div><b>검수·승인 기준</b><span>보안·개인정보·데이터 기준</span></div><div><b>운영·인수인계</b><span>도입 후 누가 운영하고 넘겨주는가</span></div><div><b>부서 간 공유·활용</b><span>다른 부서가 어떻게 가져다 쓰는가</span></div></div><h4>현지에서 맡을 일</h4><ul><li>방문기관에 우리 대학 사례를 <b>직접 시연</b>하고 공통 질문 제시</li><li>면담 기록과 기관별 비교표 정리 → 우리 대학 적용 방안 도출</li></ul><p class="note">비교표의 초록 칸은 공개자료로 미리 확인한 내용이고, 주황 ‘?’ 칸은 현장에서 채울 내용입니다.</p>`,
 /* 13 귀국·적용 */
-`<span class="tag alt">2027. 1. 30.(토) · 귀국</span><h2>가져와서<br>이렇게 쓰겠습니다</h2><h4>단기 시범 적용</h4><ul><li>장학복지팀 AI 도구를 <b>타 부서 1~2곳</b>에 시범 적용</li><li>장학금 신청·지급 일정 <b>개인 맞춤 알림</b> 시범 운영</li></ul><h4>제도 마련</h4><ul><li>직원 AI 활용 가이드라인(안), 직원 개발 도구 검수·공유 절차</li><li>직원 개발 도구의 <b>직무발명 신고·지식재산 등록 지원 절차(안)</b></li></ul><h4>공유와 확산</h4><ul><li>성과공유회 발표, 실습형 「AI 업무 자동화 따라 하기」 워크숍</li><li>매뉴얼·사례 영상을 업무포털에 공유, 6개월 후 효과(처리 시간·문의 건수) 측정</li></ul>`,
-/* 14 약속 */
-`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「모든 직원이 개발자가 되는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 연구팀 공통 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 타 부서 시범 적용 설계·운영, 6개월 후 효과 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
+`<span class="tag alt">2027. 1. 30.(토) · 귀국</span><h2>가져와서<br>이렇게 쓰겠습니다</h2><h4>주요 성과</h4><ul><li><b>「계명형 직원 개발자 모델」(안)</b> — 개선 과제 발견 → AI로 첫 도구 제작 → 대학의 검수 → 구성원과 공유까지 단계별 지원과 부서 역할</li><li><b>「학생 선제 안내 서비스」 설계안</b> — 장학 신청·서류 보완 등 안내 대상·시점·채널과 효과 측정</li></ul><h4>정책·제도 활용</h4><ul><li>「AI 활용 가이드라인」(2026. 9.)의 <b>후속 세부 지침</b>으로 제안·개발·검수·등록·인수인계 절차 제안</li><li><b>「직원 개발 도구 등록제」(안)</b> — 현업·전산 부서가 기능·보안·개인정보를 함께 검토하고 그룹웨어에 등록</li><li>제안서 양식·검수 체크리스트·운영·인수인계 안내서, 직무발명·지식재산 등록 지원 절차</li></ul><h4>귀국 후 시범 적용</h4><ul><li>참가 부서 직원 1명과 개선 과제를 정해 도구 제작을 지원하고, 단계별로 필요했던 도움을 교육·지원 절차에 반영</li></ul>`,
+/* 14 처별 전담자 */
+`<span class="tag gr">확산 · KMU_AHEAD TEAM</span><h2>10명이 10개 처를<br>한 곳씩 맡습니다</h2><p class="lead">시범 적용 결과를 바탕으로, KMU AHEAD 참가자 10명이 교내 10개 처를 한 곳씩 맡아 AI 업무 개선을 지원하는 방안을 제안합니다.</p><ul><li>각 전담자는 담당 처의 직원과 함께 <b>반복 업무나 학생이 불편을 겪는 절차</b>를 찾아냄</li><li>직원이 <b>직접 AI 도구를 만들어</b> 업무에 활용할 수 있도록 지원</li><li>전담자 10명은 <b>하나의 팀</b>으로 협업 — 여러 처에 공통된 과제는 함께 해결하고, 유용한 도구와 제작 방법은 다른 처에도 공유</li></ul><h4>공유와 확산</h4><ul><li>성과공유회 시연과 실습형 워크숍 <b>「나도 개발자: AI 업무 도구 만들기」</b></li><li>직원이 만든 도구·제작 과정·시연 영상을 그룹웨어에 게시하고 <b>우수사례집</b>으로 정리</li><li>중·장기: 실습 교육 정례화, <b>직원 멘토 커뮤니티</b> 신규 개설, 기여 직원 성과 인정 방안 검토</li></ul>`,
+/* 15 약속 */
+`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「모든 직원이 개발자가 되는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 장학 서비스 3종 사례 분석, 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연·공통 질문 제시, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 연구팀 시범 과제 설계·운영, 참여 직원의 멘토로서 제작 지원, 시범 전후 처리 시간·문의 건수 비교 후 다음 부서와 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
 ];
 
 /* 방문기관 단계 오른쪽 화면: 공식 영상(YouTube 퍼가기) + 가서 배울 것 → 계명대 적용 */
 window.VISITS={
  stanford:{photo:'place_stanford.jpg',pcap:'Stanford 메인 쿼드 · 후버 타워',pcredit:'사진: Frank Schulenburg · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Stanford_University_campus_in_2016.jpg',title:'Stanford · AI Playground',yt:'anpfvt_bN4M',vt:'AI Playground: An Introduction',ch:'Stanford University IT',
-  learn:[['여러 AI 모델을 대학 로그인 한 곳에서','직원용 공용 AI 창구 검토'],
-         ['데이터 위험 등급별 승인 도구 목록','AI 활용 가이드라인(안) 등급표'],
-         ['행정 매뉴얼 검색 같은 업무 맞춤 도구','장학 규정 검색 등 직원 도구 공식화'],
-         ['입문 교육 「AI Playground 101」','실습형 직원 워크숍']]},
+  learn:[['여러 AI 모델을 대학 로그인 한 곳에서','우리 대학 AI 플랫폼의 행정 업무 활용'],
+         ['데이터 위험 등급별 승인 도구 목록','가이드라인 공개 수준별 기준을 개발 단계에 적용'],
+         ['행정 매뉴얼 검색 같은 업무 맞춤 도구','「직원 개발 도구 등록제」(안)'],
+         ['입문 교육 「AI Playground 101」','「나도 개발자」 실습 워크숍']]},
  berkeley:{photo:'place_berkeley.jpg',pcap:'UC Berkeley 세더 타워(캠퍼닐리)',pcredit:'사진: Doug Letterman · CC BY 2.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:UC_Berkeley_Sather_Tower_-_Jan_16,_2022.jpg',title:'UC Berkeley · 직원의 AI 실험',yt:'tCWj1Tt2ptQ',vt:'Staff Experimentation with AI (Eugene Whitlock)',ch:'UC Berkeley AI Community',
-  learn:[['행정 업무용 Campus AI Sandbox 시범','타 부서 1~2곳 시범 적용 설계'],
-         ['P1~P4 데이터 보호 등급별 허용 도구','개인정보 등급별 허용 도구 표'],
-         ['직원 실험을 장려하는 문화·커뮤니티','교내 AI 업무혁신 커뮤니티'],
-         ['직원 시간 절감·비용 구조 측정','6개월 효과 측정 지표']]},
+  learn:[['행정 업무용 Campus AI Sandbox 시범','시범 적용 → 정식 도입 기준'],
+         ['P1~P4 데이터 보호 등급별 허용 도구','검수 체크리스트(보안·개인정보)'],
+         ['직원 실험을 장려하는 문화·커뮤니티','직원 멘토 커뮤니티 신규 개설'],
+         ['직원 시간 절감·비용 구조 측정','건당 처리 시간·문의 건수 비교']]},
  minerva:{photo:'place_minerva.jpg',pcap:'Minerva 본부(14 Mint Plaza) 일대 · 옛 샌프란시스코 조폐국',pcredit:'사진: Percival Kestreltail · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Old_San_Francisco_Mint_rear_06-2023.jpg',title:'Minerva · Forum 학습 플랫폼',yt:'MOwFX-YZoFw',vt:'Forum: A New Way To Learn',ch:'Minerva University',
-  learn:[['모든 수업을 소규모 실시간 세미나로','학생과 상시 연결되는 채널'],
+  learn:[['현장 직원이 학생의 어려움을 파악','일선 직원의 불편 발견 → 개선 과제'],
          ['수업 참여 데이터를 모아 학생 지원','학생 반응·이용 데이터 측정'],
-         ['여러 도시에 흩어진 학생을 적은 인력으로','학생 선제 안내 서비스 설계(안)']]},
+         ['여러 도시에 흩어진 학생을 디지털로 지원','「학생 선제 안내 서비스」 설계안']]},
  openai:{photo:'place_openai.jpg',pcap:'OpenAI 본사 건물 · 미션베이 1515 Third St.(2025년 촬영)',pcredit:'사진: Coolcaesar · CC BY 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:1515_Third_Street.jpg',title:'OpenAI · 대학 전체 확산 사례',yt:'U5LdIVA3Pk8',vt:'Unpacking AI at Scale with CSU and OpenAI',ch:'EDUCAUSE',
-  learn:[['캘리포니아 주립대(CSU) 시스템 전체 도입','단계적 전 부서 확산 방법'],
-         ['대학 워크스페이스 안 맞춤 GPT 공유','장학 안내·문의 응대 AI 비서'],
-         ['대화·데이터를 모델 학습에 쓰지 않음','개인정보 보호 기준']]},
+  learn:[['캘리포니아 주립대(CSU) 시스템 전체 도입','처별 전담자를 통한 단계적 확산'],
+         ['대학 워크스페이스 안 맞춤 GPT 공유','직원 개발 도구의 공유 범위 기준'],
+         ['대화·데이터를 모델 학습에 쓰지 않음','개발 단계의 개인정보 보호 기준']]},
  google:{photo:'place_google.jpg',pcap:'Google 마운틴뷰 캠퍼스 · Charleston Road',pcredit:'사진: Dietmar Rabich · CC BY-SA 4.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:Mountain_View_(CA,_USA),_Charleston_Road,_Google-Schild_--_2022_--_2896.jpg',title:'Google · 대학 차원 AI 도입',yt:'0Zd4LkGELzU',vt:'How San Diego State University is leading the way in higher-education AI',ch:'Google for Education',
-  learn:[['샌디에이고 주립대의 대학 차원 AI 도입','도입 순서·교육 방법 벤치마킹'],
+  learn:[['샌디에이고 주립대의 대학 차원 AI 도입','도입 순서·직원 교육 방법'],
          ['미국 대학 1,000곳 이상 Gemini for Education 도입','이미 쓰는 도구 활용(저비용)'],
-         ['관리자가 사용 현황을 확인','이용률 기반 효과 측정'],
-         ['문서·시트 등 업무 도구 속 AI','시트·앱스크립트 도구와 연결']]}
+         ['관리자가 사용 현황을 확인','등록 도구 이용 현황 관리'],
+         ['문서·시트 등 업무 도구 속 AI','이미 쓰는 도구로 첫 도구 만들기 실습']]}
 };
 
 </script>
@@ -442,7 +485,7 @@ var STEPS=[
  {nav:'시작',sub:'',cam:C([172,30],1.55,0,0,{loc:'태평양 상공'})},
  {nav:'계명대',sub:'출발점',cam:C([128.4874,35.8558],15.7,62,-28,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'})},
  {nav:'직접 만든 서비스',sub:'3가지',cam:C([128.4874,35.8558],15.1,55,-10,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'trio'},
- {nav:'연구 구조',sub:'불편→서비스',cam:C([128.4874,35.8558],13.4,50,35,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'flow'},
+ {nav:'연구 범위',sub:'개발→확산',cam:C([128.4874,35.8558],13.4,50,35,{orbit:1,place:'daegu',loc:'대구 · 계명대학교 성서캠퍼스'}),show:'flow'},
  {nav:'사전연구',sub:'출국 전',cam:C([127.6,36.3],6.3,28,-8,{place:'daegu',loc:'대한민국'})},
  {nav:'인천 출국',sub:'1. 19.(화)',cam:C([126.4506,37.4492],13.4,58,35,{orbit:1,place:'icn',loc:'인천국제공항'})},
  {nav:'샌프란시스코',sub:'도착',cam:C([-122.26,37.63],9.25,48,-12,{loc:'샌프란시스코 베이 에어리어'}),flightFrom:'icn',flightTo:'bayArrive'},
@@ -453,6 +496,7 @@ var STEPS=[
  {nav:'Google',sub:'방문 ⑤',cam:C([-122.0841,37.4220],16.0,63,30,{orbit:1,place:'google',loc:'마운틴뷰'}),show:'v_google'},
  {nav:'비교·정리',sub:'현지',cam:C([-122.24,37.66],9.4,52,18,{loc:'샌프란시스코 베이 에어리어'}),show:'matrix'},
  {nav:'귀국·적용',sub:'1. 30.(토)',cam:C([128.4874,35.8558],15.2,60,15,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),flightFrom:'sfo',flightTo:'daegu',show:'model'},
+ {nav:'처별 전담자',sub:'확산',cam:C([128.4874,35.8558],14.0,52,-40,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),show:'team'},
  {nav:'약속',sub:'본인 역할',cam:C([150,32],1.6,0,0,{loc:'계명대학교에서'}),show:'role'}
 ];
 var N=STEPS.length,HTML=window.STEP_HTML||[];
