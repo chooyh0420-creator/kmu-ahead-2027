@@ -313,6 +313,58 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 .phone .sbar{height:max(15px,calc(var(--pw)*.127));border-radius:clamp(9px,calc(var(--pw)*.093),19px) clamp(9px,calc(var(--pw)*.093),19px) 0 0;padding:0 calc(var(--pw)*.07) 0 calc(var(--pw)*.09);font-size:clamp(6px,calc(var(--pw)*.048),10px)}
 .phone .sbar .ic{font-size:clamp(4px,calc(var(--pw)*.034),7px)}
 .phone img,.phone video{border-radius:0 0 clamp(9px,calc(var(--pw)*.093),19px) clamp(9px,calc(var(--pw)*.093),19px)}
+/* v12: 기관 비교표 고급형 */
+.mxhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.mxhead small{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;color:#ffd36b;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.mxhead h5{font-size:20px}
+.mxhead .lg{margin:0;display:flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.mxhead .d{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:12px}
+.mxhead .d.ok{background:#34a853}.mxhead .d.qq{background:transparent;border:2px solid #f2a33a;width:7px;height:7px}.mxhead .d.me{background:#0b2a5b;border:1.5px solid #ffd36b;width:8px;height:8px}
+.mx.mx2{grid-template-columns:132px repeat(5,1fr) 1.15fr;gap:0;padding:6px 18px 10px;border-radius:18px;background:rgba(255,255,255,.98);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.4)}
+.mx.mx2>div{border-radius:0;padding:12px 12px;font-size:13px;font-weight:700;color:#162033;border-bottom:1px solid #e9ecf2;background:none;border-left:none;line-height:1.35}
+.mx.mx2>div.lastrow{border-bottom:none}
+.mx.mx2 small{display:block;font-size:11px;font-weight:500;color:#6b7686;margin-top:3px}
+.mx.mx2 .h{padding:14px 12px 10px;text-align:left;font-size:12px;letter-spacing:.02em;color:#0b2a5b;font-weight:800;border-bottom:2px solid #0b2a5b}
+.mx.mx2 .h.c0{color:#8a94a6;font-weight:700}
+.mx.mx2 .h.me{background:#0b2a5b;color:#fff;border-radius:12px 12px 0 0;border-bottom-color:#0b2a5b;text-align:left;margin-left:8px}
+.mx.mx2 .k{background:none;color:#0b2a5b;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;place-items:initial;text-align:left}
+.mx.mx2 .k em{font-style:normal;font-size:11px;font-weight:800;color:#b08a2e;letter-spacing:.04em}
+.mx.mx2 .ok b,.mx.mx2 .qq b{display:flex;align-items:flex-start;gap:6px}
+.mx.mx2 .ok b:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:#34a853;margin-top:5px}
+.mx.mx2 .qq{color:#8a5a12;font-weight:600}
+.mx.mx2 .qq:before{content:none}
+.mx.mx2 .qq b{font-weight:600;color:#7a5a1e}
+.mx.mx2 .qq b:before{content:"";flex:none;width:5px;height:5px;border-radius:50%;border:1.5px solid #f2a33a;margin-top:4px}
+.mx.mx2 .qq small{color:#c08a3a;font-style:italic}
+.mx.mx2 .me{background:#0b2a5b;color:#fff;border:none;border-bottom:1px solid rgba(255,255,255,.12);margin-left:8px}
+.mx.mx2 .me b{color:#fff}.mx.mx2 .me small{color:#aebfdc}
+.mx.mx2 .me.lastrow{border-radius:0 0 12px 12px;border-bottom:none}
+.mx.mx2 .me.warn{background:#0b2a5b;border-color:rgba(255,255,255,.12);color:#fff}
+.mx.mx2 .me.warn b{color:#ffd36b}.mx.mx2 .me.warn small{color:#ffcf9e}
+@media (max-width:1180px){.mx.mx2{grid-template-columns:104px repeat(5,1fr) 1.1fr;padding:4px 12px 8px}.mx.mx2>div{padding:9px 7px;font-size:11.5px}.mx.mx2 small{display:block;font-size:10px}.mx.mx2 .k{font-size:11.5px}}
+@media (min-width:761px) and (max-height:820px){.mx.mx2>div{padding:8px 9px}.mx.mx2 .h{padding:10px 9px 7px}}
+@media (max-width:760px){.mx.mx2{grid-template-columns:70px repeat(6,minmax(78px,1fr));overflow-x:auto;padding:4px 8px}.mx.mx2>div{font-size:10px;padding:6px 5px}.mx.mx2 .k em{display:none}.mxhead .lg{display:none}.mxhead h5{font-size:14px}}
+/* v12: 연구주제 부제 한 줄 */
+.card p.lead.one{white-space:nowrap;font-size:clamp(11px,3.4vw,13.2px);letter-spacing:-.035em;margin-top:4px}
+@media (max-width:420px){.card p.lead.one{white-space:normal}}
+.ytw .cap{word-break:keep-all}
+/* v12: 마지막 페이지 표시 */
+.fin{margin-top:18px;padding:16px 16px 14px;border-radius:12px;background:linear-gradient(135deg,#0b2a5b,#16306d);color:#fff;text-align:center}
+.fin span{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.2em;color:#ffd36b;border:1px solid rgba(255,211,107,.6);border-radius:99px;padding:3px 12px}
+.fin b{display:block;font-size:17px;margin:9px 0 4px;color:#fff}
+.fin small{display:block;font-size:11.5px;color:#c9d6ee;line-height:1.5;word-break:keep-all}
+.fin .restart{all:unset;cursor:pointer;display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:#0b2a5b;background:#ffd36b;border-radius:99px;padding:7px 16px}
+.fin .restart:hover{background:#ffe09a}
+.ctrl button:disabled{opacity:.25;cursor:default}
+body.last #stepNo:after{content:" · 끝";color:#c5221f}
+body.last .ctrl span{min-width:76px}
+.endbar{align-self:center;display:flex;align-items:center;gap:14px;margin-top:22px;padding:12px 14px 12px 18px;background:rgba(11,42,91,.92);border:1px solid rgba(255,211,107,.55);border-radius:99px;box-shadow:0 14px 36px rgba(0,0,0,.5);pointer-events:auto}
+.endbar .te{font-size:11px;font-weight:800;letter-spacing:.22em;color:#0b2a5b;background:#ffd36b;border-radius:99px;padding:4px 10px}
+.endbar b{color:#fff;font-size:15px}
+.endbar .restart{all:unset;cursor:pointer;font-size:13px;font-weight:700;color:#0b2a5b;background:#fff;border-radius:99px;padding:7px 14px}
+.endbar .restart:hover{background:#ffe9b3}
+.fin{padding:12px 14px}.fin b{font-size:15px;margin:7px 0 3px}.fin .restart{margin-top:9px;padding:6px 14px;font-size:12.5px}
+@media (max-width:760px){.endbar{margin-top:8px;gap:8px;padding:8px 10px}.endbar b{font-size:11.5px}.endbar .te{display:none}.endbar .restart{font-size:11px;padding:5px 10px}}
 
 </style>
 </head>
@@ -357,13 +409,13 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 </div>
 <!-- 기관 비교표 -->
 <div class="scene matrix" data-s="matrix">
-  <h5 class="r1">4개 항목 기관 비교표 <span><i class="ok">✓</i> 공개자료로 확인 <i class="qq">?</i> 현장에서 확인</span></h5>
-  <div class="mx r2">
-    <div class="h"></div><div class="h">Stanford</div><div class="h">UC Berkeley</div><div class="h">Minerva</div><div class="h">OpenAI</div><div class="h">Google</div><div class="h me">계명대 지금</div>
-    <div class="k">직원 교육·<br>개발 지원</div><div class="ok">입문 교육<small>AI Playground 101</small></div><div class="ok">행정 업무용 시범<small>Campus AI Sandbox</small></div><div class="qq">현장 직원 지원 방식</div><div class="ok">맞춤 GPT 제작<small>코딩 없이 만들기</small></div><div class="ok">전 구성원 교육<small>도입 대학 사례</small></div><div class="me">AI 플랫폼 도입<small>개발 지원 창구 없음</small></div>
-    <div class="k">검수·<br>승인 기준</div><div class="ok">위험 등급별 승인<small>고위험 데이터 승인</small></div><div class="ok">P1~P4 데이터 등급<small>P3 승인(2025. 10.)</small></div><div class="qq">학생 데이터 활용 기준</div><div class="ok">학습 미사용<small>대학 워크스페이스</small></div><div class="ok">학습·광고 미사용<small>기업 수준 보호</small></div><div class="me">가이드라인(2026. 9.)<small>직원 개발 도구 검수 절차 없음</small></div>
-    <div class="k">운영·<br>인수인계</div><div class="qq">맞춤 도구 운영 주체</div><div class="qq">시범 → 정식 전환 기준</div><div class="qq">적은 인력 운영 방식</div><div class="qq">워크스페이스 관리</div><div class="ok">관리자 현황 확인<small>사용 현황 관리</small></div><div class="me warn">담당자 1명에 의존</div>
-    <div class="k">부서 간<br>공유·활용</div><div class="qq">맞춤 도구 공유 방식</div><div class="ok">직원 실험 커뮤니티<small>UC Berkeley AI Community</small></div><div class="qq">학생 안내 채널</div><div class="ok">맞춤 GPT 공유<small>워크스페이스 안</small></div><div class="qq">부서 간 확산 방식</div><div class="me">서비스 3종 운영 중<small>공유·등록 체계 없음</small></div>
+  <div class="mxhead r1"><div><small>BENCHMARK MATRIX</small><h5>4개 항목 기관 비교표</h5></div><p class="lg"><span class="d ok"></span>공개자료로 확인<span class="d qq"></span>현장에서 확인<span class="d me"></span>계명대 현재</p></div>
+  <div class="mx mx2 r2">
+    <div class="h c0">비교 항목</div><div class="h">Stanford</div><div class="h">UC Berkeley</div><div class="h">Minerva</div><div class="h">OpenAI</div><div class="h">Google</div><div class="h me">계명대 지금</div>
+    <div class="k"><em>01</em>직원 교육·개발 지원</div><div class="ok"><b>입문 교육</b><small>AI Playground 101</small></div><div class="ok"><b>행정 업무용 시범</b><small>Campus AI Sandbox</small></div><div class="qq"><b>현장 직원 지원 방식</b></div><div class="ok"><b>맞춤 GPT 제작</b><small>코딩 없이 만들기</small></div><div class="ok"><b>전 구성원 교육</b><small>도입 대학 사례</small></div><div class="me"><b>AI 플랫폼 도입</b><small>개발 지원 창구 없음</small></div>
+    <div class="k"><em>02</em>검수·승인 기준</div><div class="ok"><b>위험 등급별 승인</b><small>고위험 데이터 승인</small></div><div class="ok"><b>P1~P4 데이터 등급</b><small>P3 승인(2025. 10.)</small></div><div class="qq"><b>학생 데이터 활용 기준</b></div><div class="ok"><b>학습 미사용</b><small>대학 워크스페이스</small></div><div class="ok"><b>학습·광고 미사용</b><small>기업 수준 보호</small></div><div class="me"><b>AI 활용 가이드라인</b><small>직원 개발 도구 검수 절차 없음</small></div>
+    <div class="k"><em>03</em>운영·인수인계</div><div class="qq"><b>맞춤 도구 운영 주체</b></div><div class="qq"><b>시범 → 정식 전환 기준</b></div><div class="qq"><b>적은 인력 운영 방식</b></div><div class="qq"><b>워크스페이스 관리</b></div><div class="ok"><b>관리자 현황 확인</b><small>사용 현황 관리</small></div><div class="me warn"><b>담당자 1명에 의존</b><small>인수인계 체계 없음</small></div>
+    <div class="k lastrow"><em>04</em>부서 간 공유·활용</div><div class="lastrow qq"><b>맞춤 도구 공유 방식</b></div><div class="lastrow ok"><b>직원 실험 커뮤니티</b><small>UC Berkeley AI Community</small></div><div class="lastrow qq"><b>학생 안내 채널</b></div><div class="lastrow ok"><b>맞춤 GPT 공유</b><small>워크스페이스 안</small></div><div class="lastrow qq"><b>부서 간 확산 방식</b></div><div class="lastrow me"><b>서비스 3종 운영 중</b><small>공유·등록 체계 없음</small></div>
   </div>
 </div>
 <!-- 귀국 후 적용 모델 -->
@@ -395,6 +447,7 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
   <div class="phase r2"><div class="ph"><small>출국 전</small><b>사례 분석·질문지</b><span>장학 서비스 3종의 개발 계기·시험·수정 과정·이용 실적을 정리하고, 혼자 해결해야 했던 어려움을 현장 질문지에 반영</span></div>
   <div class="ph"><small>현지 · 1. 19. ~ 30.</small><b>사례 시연·기록</b><span>방문기관에 우리 대학 사례를 실제 화면으로 시연하고 공통 질문을 제시, 면담 기록과 기관별 비교표 정리</span></div>
   <div class="ph"><small>귀국 후</small><b>시범 과제·멘토</b><span>연구팀 시범 과제를 설계·운영하고 참여 직원의 멘토로서 제작을 지원, 시범 전후 효과를 다음 부서와 공유</span></div></div>
+  <div class="endbar r3"><span class="te">THE END</span><b>여정의 끝 — 끝까지 봐 주셔서 감사합니다</b><button type="button" class="restart">↺ 처음부터 다시 보기</button></div>
 </div>
 </div>
 <section id="panel" aria-live="polite"></section>
@@ -412,11 +465,11 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
 /* 단계별 카드 문구 — app.js의 STEPS와 순서가 같아야 합니다 (16단계) */
 window.STEP_HTML=[
 /* 0 시작 */
-`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>모든 직원이<br>개발자가 되는 대학</h2><p class="lead">현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><div class="hl">직무나 코딩 경험에 관계없이, 누구나 자신이 맡은 업무의 문제를 발견하고 이를 해결할 도구를 직접 만들어 시험해 볼 수 있는 대학을 꿈꿉니다.</div><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
+`<span class="tag">KMU AHEAD 2027 · 참가 연구계획</span><h2 class="big"><small>「AI 시대, 미래 대학은 어떻게 일하는가?」</small>모든 직원이<br>개발자가 되는 대학</h2><p class="lead one">현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><div class="hl">직무나 코딩 경험에 관계없이, 누구나 자신이 맡은 업무의 문제를 발견하고 이를 해결할 도구를 직접 만들어 시험해 볼 수 있는 대학을 꿈꿉니다.</div><span class="chip">장학복지팀 8급 추윤호</span><span class="chip">2027. 1. 19.(화) ~ 30.(토) · 10박 12일</span><span class="chip">샌프란시스코·실리콘밸리</span><p class="note">마우스 휠이나 방향키(→), 화면 아래 일정을 누르면 계명대에서 출발해 실리콘밸리를 거쳐 다시 계명대로 돌아오는 연구 여정이 이어집니다.</p>`,
 /* 1 계명대 */
-`<span class="tag gr">출발점 · 계명대학교</span><h2>학생의 불편에서 출발해<br>직접 만들어 왔습니다</h2><p class="lead">장학 업무를 하며 학생들이 장학금 자격·신청 일정·식당 운영 현황을 직접 확인하지 못해 겪는 불편과 반복되는 문의·헛걸음을 보고, 생성형 AI로 학생이 스스로 확인할 수 있는 <b>장학 서비스 3종</b>을 직접 기획·개발·운영하고 있습니다.</p><ul><li><b>장학금 자가진단</b> — 직무발명 신고 후 지식재산 등록 <b>제C-2026-048495호</b>, 누적 방문 <b>13,600여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀·전산개발팀 협업(K-Circle 「K-Link」)</li><li><b>천원의 아침밥 실시간 현황</b> — 별도 예산 없이 구축, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">업무 현장의 불편과 개선점은 그 분야를 가장 잘 아는 <b>일선의 구성원</b>이 가장 먼저 찾아냅니다. 다만 개발과 운영이 담당자 한 명에게 집중되면, 담당자가 바뀐 뒤 계속 운영하거나 다른 부서로 넓히기 어렵습니다.</div><p class="note">※ 방문 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
+`<span class="tag gr">출발점 · 계명대학교</span><h2>학생의 불편에서 출발해<br>직접 만들어 왔습니다</h2><p class="lead">장학 업무를 하며 학생들이 장학금 자격·신청 일정·식당 운영 현황을 직접 확인하지 못해 겪는 불편과 반복되는 문의·헛걸음을 보고, 생성형 AI로 학생이 스스로 확인할 수 있는 <b>장학 서비스 3종</b>을 직접 기획·개발·운영하고 있습니다.</p><ul><li><b>장학금 자가진단</b> — 직무발명 신고 후 지식재산 등록 <b>제C-2026-048495호</b>, 누적 방문 <b>13,600여 회</b></li><li><b>계명대 장학금 캘린더</b> — 누적 방문 <b>750여 회</b>, 장학복지팀·재무팀·전산개발팀 협업(「K-Link」)</li><li><b>천원의 아침밥 실시간 현황</b> — 별도 예산 없이 구축, 누적 방문 <b>5,400여 회</b></li></ul><div class="hl">업무 현장의 불편과 개선점은 그 분야를 가장 잘 아는 <b>일선의 구성원</b>이 가장 먼저 찾아냅니다. 다만 개발과 운영이 담당자 한 명에게 집중되면, 담당자가 바뀐 뒤 계속 운영하거나 다른 부서로 넓히기 어렵습니다.</div><p class="note">※ 방문 수치는 각 사이트의 방문 집계 기준(2026. 11. 24. 확인)입니다. 다음(→)을 누르면 실제 작동 화면을 보여 드려요.</p>`,
 /* 2 직접 만든 서비스 */
-`<span class="tag gr">직접 기획·개발·운영 중인 장학 서비스 3종</span><h2>학생이 묻지 않고도<br>스스로 확인하는 서비스</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>식수 집계를 자동화하고 배식 현황을 실시간 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl">직접 개발한 서비스를 <b>생각보다 많은 학생이 이용하며 좋은 호응</b>을 얻었습니다. 「장학금 자가진단」은 <b>저작권 등록 제C-2026-048495호</b>로 지식재산 가치를 인정받았습니다.</div><p class="note">※ ①·② 화면은 실제 사이트를 그대로 녹화한 작동 영상입니다. ③은 실제 현황 페이지에 예시 숫자를 넣어 운영 중 모습을 재현한 영상입니다. 화면을 누르면 크게 볼 수 있어요.</p>`,
+`<span class="tag gr">직접 기획·개발·운영 중인 장학 서비스 3종</span><h2>학생이 묻지 않고도<br>스스로 확인하는 서비스</h2><ol class="svc"><li><i>1</i><b>내 장학금 자가진단</b><span>학자금지원구간·학년·계열·평점을 넣으면 받을 수 있는 장학금과 예상 금액·신청 방법을 안내</span><span class="stat">누적 방문 13,600여 회 · 맞춤 진단 2,100여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>2</i><b>계명대 장학금 캘린더</b><span>신청 기간·지급 예정일을 한 달력에 — 재무팀 전표 일정이 들어오는 대로 바로 반영</span><span class="stat">누적 방문 750여 회</span><a class="mini" href="https://k-link.pages.dev/" target="_blank" rel="noopener">열어 보기 ↗</a></li><li><i>3</i><b>천원의 아침밥 실시간 현황</b><span>식수 집계를 자동화하고 배식 현황을 실시간 공개 — 학생의 헛걸음을 줄임</span><span class="stat">10. 31. 기준 17,093식 · 누적 방문 5,400여 회</span><a class="mini" href="https://kmu-scholarship.pages.dev/breakfast" target="_blank" rel="noopener">열어 보기 ↗</a></li></ol><div class="hl">직접 개발한 서비스를 <b>생각보다 많은 학생이 이용하며 좋은 호응</b>을 얻었습니다. 「장학금 자가진단」은 <b>저작권 등록 제C-2026-048495호</b>로 지식재산 가치를 인정받았습니다.</div>`,
 /* 3 연구 구조 */
 `<span class="tag">연구 범위 · 개발에서 확산까지</span><h2>직원이 만들고,<br>대학이 함께 키웁니다</h2><p class="lead">한 사람의 시도를 <b>모든 직원이 할 수 있는 대학의 체계</b>로 만들기 위해 세 단계를 연구합니다.</p><ul><li><b>(직원 개발)</b> 개발 경험이 없는 직원이 반복 문의·수작업 중 개선 과제를 찾고, 생성형 AI로 시제품을 만들어 실제 사용자와 함께 시험·수정하는 과정</li><li><b>(대학의 지원과 검수)</b> 실습 교육과 멘토링, 실제 업무에 적용할 때 필요한 보안·개인정보 검토 기준, 운영 책임과 인수인계 절차</li><li><b>(공유와 확산)</b> 직원이 만든 도구와 제작 방법을 공유하고, 다른 부서 직원이 본인 업무에 맞게 수정·활용하는 방안</li></ul><div class="hl">우리 대학은 이미 생성형 AI 플랫폼과 「AI 활용 가이드라인」(2026. 9.)을 갖추었습니다. 이제 필요한 것은 <b>직원이 만든 도구를 검수·등록·공유하는 절차</b>입니다.</div>`,
 /* 4 사전연구 */
@@ -424,7 +477,7 @@ window.STEP_HTML=[
 /* 5 인천 출국 */
 `<span class="tag alt">2027. 1. 19.(화) · 인천 출국</span><h2>10박 12일,<br>실리콘밸리로 떠납니다</h2><h4>가방에 넣어 가는 것</h4><ul><li><b>공통 질문</b> — “귀 기관의 직원이 이런 도구를 제안했다면, 어떤 지원을 받아 만들고 어떤 검토를 거쳐 실제 업무에 도입할 수 있는가?”</li><li><b>우리 대학 사례 시연 자료</b> — 장학 서비스 3종의 실제 작동 화면</li><li><b>비교표 양식</b> — ‘직원 교육·개발 지원 / 검수·승인 기준 / 운영·인수인계 / 부서 간 공유·활용’ 4개 항목</li></ul><p class="note">다음으로 넘기면 태평양을 건너 샌프란시스코로 날아갑니다 ✈</p>`,
 /* 6 샌프란시스코 */
-`<span class="tag alt">샌프란시스코·실리콘밸리 도착</span><h2>다섯 곳에서<br>답을 찾습니다</h2><ul><li><b>Stanford · UC Berkeley</b> — 직원이 교내 AI 플랫폼(<b>AI Playground</b>, <b>Campus AI Sandbox</b>)에서 업무용 도구를 만들 때 받는 교육·지원과 데이터별 사용 기준</li><li><b>Minerva University</b> — 현장 직원이 학생의 어려움을 파악해 디지털 서비스 개선에 반영하는 방식</li><li><b>OpenAI · Google</b> — <b>ChatGPT Edu</b>·<b>Gemini for Education</b>에서 직원이 코딩 없이 업무용 AI 비서를 만들고 구성원과 공유하는 범위와 관리 방식</li></ul><h4>함께 비교할 사례</h4><ul><li><b>UC 샌디에이고</b> — 직원의 AI 아이디어를 제안·검토해 시범 과제로 선정하는 절차</li><li><b>조지아주립대 ‘Pounce’</b> — 학생에게 필요한 시점에 먼저 안내하고 효과를 측정하는 방법</li></ul><p class="note">※ 방문 순서와 세부 일정은 주최 측 확정 일정에 따르며, 이 페이지의 순서는 연구 흐름에 맞춘 예시입니다. 비교 사례는 공개자료로 조사합니다.</p>`,
+`<span class="tag alt">샌프란시스코·실리콘밸리 도착</span><h2>다섯 곳에서<br>답을 찾습니다</h2><ul><li><b>Stanford · UC Berkeley</b> — 직원이 교내 AI 플랫폼(<b>AI Playground</b>, <b>Campus AI Sandbox</b>)에서 업무용 도구를 만들 때 받는 교육·지원과 데이터별 사용 기준</li><li><b>Minerva University</b> — 현장 직원이 학생의 어려움을 파악해 디지털 서비스 개선에 반영하는 방식</li><li><b>OpenAI · Google</b> — <b>ChatGPT Edu</b>·<b>Gemini for Education</b>에서 직원이 코딩 없이 업무용 AI 비서를 만들고 구성원과 공유하는 범위와 관리 방식</li></ul><h4>함께 비교할 사례</h4><ul><li><b>UC 샌디에이고</b> — 직원의 AI 아이디어를 제안·검토해 시범 과제로 선정하는 절차</li><li><b>조지아주립대 ‘Pounce’</b> — 학생에게 필요한 시점에 먼저 안내하고 효과를 측정하는 방법</li></ul>`,
 /* 7 Stanford */
 `<span class="tag">방문 ① · Stanford University</span><h2>전 구성원이 안전하게 쓰는<br>대학의 AI 플랫폼</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li>University IT가 관리하는 <b>‘AI Playground’</b> — 여러 AI 모델을 대학 로그인(SSO) 환경에서 한곳에 모아 교수·직원·학생 모두 사용</li><li>올린 파일은 외부로 공유되거나 모델 학습에 쓰이지 않으며, 현재는 <b>고위험 데이터</b> 사용까지 승인</li><li>행정 매뉴얼(Admin Guide) 검색처럼 <b>업무별 맞춤 도구</b>, 입문 교육 「AI Playground 101」, 승인 도구 목록 운영</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ②</span></h4><ul><li>직원이 플랫폼에서 업무용 도구를 만들 때 받는 <b>교육·지원</b>, 그 도구를 <b>누가 어떤 기준으로 검수·승인</b>하는가</li></ul><div class="hl">가져올 것 → <b>「계명형 직원 개발자 모델」(안)</b>의 단계별 지원 내용과 담당 부서 역할</div><p class="src">출처 <a href="https://uit.stanford.edu/aiplayground" target="_blank" rel="noopener">Stanford University IT · AI Playground ↗</a></p>`,
 /* 8 UC Berkeley */
@@ -436,13 +489,13 @@ window.STEP_HTML=[
 /* 11 Google */
 `<span class="tag">방문 ⑤ · Google</span><h2>매일 쓰는 업무 도구 속의 AI</h2><h4>공개자료로 미리 확인한 것</h4><ul class="fact"><li><b>‘Gemini for Education’</b> — 교육기관 전체 도입용, 데이터가 <b>AI 모델 학습이나 광고에 쓰이지 않는</b> 기업 수준 보호</li><li>미국 여러 대학이 Gemini·NotebookLM을 <b>전 구성원 교육</b>과 함께 도입</li></ul><h4>현장에서 확인할 것 <span class="chip">탐색 ①</span><span class="chip">탐색 ③</span></h4><ul><li>직원이 만든 업무용 AI 비서의 공유 범위와 관리자 관리 방식</li><li>전 구성원 교육을 운영하는 방법</li></ul><div class="hl">가져올 것 → 이미 쓰는 업무 도구를 활용한 <b>실습형 직원 교육</b> 운영 방법</div><p class="src">출처 <a href="https://blog.google/products-and-platforms/products/education/higher-education-gemini-notebooklm/" target="_blank" rel="noopener">Google · Gemini for Education ↗</a></p>`,
 /* 12 비교·정리 */
-`<span class="tag gr">현지 정리 · 기관 간 비교</span><h2>네 가지 항목으로<br>나란히 비교합니다</h2><div class="grid4"><div><b>직원 교육·개발 지원</b><span>처음 만드는 직원이 받는 교육·멘토링</span></div><div><b>검수·승인 기준</b><span>보안·개인정보·데이터 기준</span></div><div><b>운영·인수인계</b><span>도입 후 누가 운영하고 넘겨주는가</span></div><div><b>부서 간 공유·활용</b><span>다른 부서가 어떻게 가져다 쓰는가</span></div></div><h4>현지에서 맡을 일</h4><ul><li>방문기관에 우리 대학 사례를 <b>직접 시연</b>하고 공통 질문 제시</li><li>면담 기록과 기관별 비교표 정리 → 우리 대학 적용 방안 도출</li></ul><p class="note">비교표의 초록 칸은 공개자료로 미리 확인한 내용이고, 주황 ‘?’ 칸은 현장에서 채울 내용입니다.</p>`,
+`<span class="tag gr">현지 정리 · 기관 간 비교</span><h2>네 가지 항목으로<br>나란히 비교합니다</h2><div class="grid4"><div><b>직원 교육·개발 지원</b><span>처음 만드는 직원이 받는 교육·멘토링</span></div><div><b>검수·승인 기준</b><span>보안·개인정보·데이터 기준</span></div><div><b>운영·인수인계</b><span>도입 후 누가 운영하고 넘겨주는가</span></div><div><b>부서 간 공유·활용</b><span>다른 부서가 어떻게 가져다 쓰는가</span></div></div><h4>현지에서 맡을 일</h4><ul><li>방문기관에 우리 대학 사례를 <b>직접 시연</b>하고 공통 질문 제시</li><li>면담 기록과 기관별 비교표 정리 → 우리 대학 적용 방안 도출</li></ul><p class="note">비교표의 초록 점(●)은 공개자료로 미리 확인한 내용이고, 주황 고리(○)는 현장에서 확인할 내용입니다.</p>`,
 /* 13 귀국·적용 */
 `<span class="tag alt">2027. 1. 30.(토) · 귀국</span><h2>가져와서<br>이렇게 쓰겠습니다</h2><h4>주요 성과</h4><ul><li><b>「계명형 직원 개발자 모델」(안)</b> — 개선 과제 발견 → AI로 첫 도구 제작 → 대학의 검수 → 구성원과 공유까지 단계별 지원과 부서 역할</li><li><b>「학생 선제 안내 서비스」 설계안</b> — 장학 신청·서류 보완 등 안내 대상·시점·채널과 효과 측정</li></ul><h4>정책·제도 활용</h4><ul><li>「AI 활용 가이드라인」(2026. 9.)의 <b>후속 세부 지침</b>으로 제안·개발·검수·등록·인수인계 절차 제안</li><li><b>「직원 개발 도구 등록제」(안)</b> — 현업·전산 부서가 기능·보안·개인정보를 함께 검토하고 그룹웨어에 등록</li><li>제안서 양식·검수 체크리스트·운영·인수인계 안내서, 직무발명·지식재산 등록 지원 절차</li></ul><h4>귀국 후 시범 적용</h4><ul><li>참가 부서 직원 1명과 개선 과제를 정해 도구 제작을 지원하고, 단계별로 필요했던 도움을 교육·지원 절차에 반영</li></ul>`,
 /* 14 처별 전담자 */
 `<span class="tag gr">확산 · KMU_AHEAD TEAM</span><h2>10명이 10개 처를<br>한 곳씩 맡습니다</h2><p class="lead">시범 적용 결과를 바탕으로, KMU AHEAD 참가자 10명이 교내 10개 처를 한 곳씩 맡아 AI 업무 개선을 지원하는 방안을 제안합니다.</p><ul><li>각 전담자는 담당 처의 직원과 함께 <b>반복 업무나 학생이 불편을 겪는 절차</b>를 찾아냄</li><li>직원이 <b>직접 AI 도구를 만들어</b> 업무에 활용할 수 있도록 지원</li><li>전담자 10명은 <b>하나의 팀</b>으로 협업 — 여러 처에 공통된 과제는 함께 해결하고, 유용한 도구와 제작 방법은 다른 처에도 공유</li></ul><h4>공유와 확산</h4><ul><li>성과공유회 시연과 실습형 워크숍 <b>「나도 개발자: AI 업무 도구 만들기」</b></li><li>직원이 만든 도구·제작 과정·시연 영상을 그룹웨어에 게시하고 <b>우수사례집</b>으로 정리</li><li>중·장기: 실습 교육 정례화, <b>직원 멘토 커뮤니티</b> 신규 개설, 기여 직원 성과 인정 방안 검토</li></ul>`,
 /* 15 약속 */
-`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「모든 직원이 개발자가 되는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 장학 서비스 3종 사례 분석, 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연·공통 질문 제시, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 연구팀 시범 과제 설계·운영, 참여 직원의 멘토로서 제작 지원, 시범 전후 처리 시간·문의 건수 비교 후 다음 부서와 공유</li></ul><p class="note">장학복지팀 8급 추윤호 · 이 페이지는 참가 연구계획서를 바탕으로 직접 만들었습니다.</p>`
+`<span class="tag">KMU AHEAD 2027 · 본인 역할</span><h2 class="big">‘직접 만들어 본 실무자’로서<br>시연과 시범 적용을 주도하겠습니다</h2><p class="lead">「모든 직원이 개발자가 되는 대학」을 위해 사전연구부터 현지 벤치마킹, 결과 보고와 시범 적용까지 성실히 참여하겠습니다.</p><ul><li><b>출국 전</b> — 장학 서비스 3종 사례 분석, 현장 질문지 초안 작성</li><li><b>현지</b> — 우리 대학 사례 시연·공통 질문 제시, 면담 기록·비교표 정리</li><li><b>귀국 후</b> — 연구팀 시범 과제 설계·운영, 참여 직원의 멘토로서 제작 지원, 시범 전후 처리 시간·문의 건수 비교 후 다음 부서와 공유</li></ul><div class="fin"><span>여정의 끝</span><b>끝까지 봐 주셔서 감사합니다</b><small>장학복지팀 8급 추윤호 · 참가 연구계획서를 바탕으로 직접 만들었습니다</small><button type="button" class="restart">↺ 처음부터 다시 보기</button></div>`
 ];
 
 /* 방문기관 단계 오른쪽 화면: 공식 영상(YouTube 퍼가기) + 가서 배울 것 → 계명대 적용 */
@@ -452,7 +505,7 @@ window.VISITS={
          ['데이터 위험 등급별 승인 도구 목록','가이드라인 공개 수준별 기준을 개발 단계에 적용'],
          ['행정 매뉴얼 검색 같은 업무 맞춤 도구','「직원 개발 도구 등록제」(안)'],
          ['입문 교육 「AI Playground 101」','「나도 개발자」 실습 워크숍']]},
- berkeley:{photo:'place_berkeley.jpg',pcap:'UC Berkeley 세더 타워(캠퍼닐리)',pcredit:'사진: Doug Letterman · CC BY 2.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:UC_Berkeley_Sather_Tower_-_Jan_16,_2022.jpg',title:'UC Berkeley · 직원이 직접 만든 AI 챗봇',yt:'mDEHoVLwtWA',st:890,en:1190,vt:'Law School ChatBot Pilot — 로스쿨 미디어서비스 직원이 만든 강의실 장비 도움 챗봇 시연',ch:'UC Berkeley AI Community',
+ berkeley:{photo:'place_berkeley.jpg',pcap:'UC Berkeley 세더 타워(캠퍼닐리)',pcredit:'사진: Doug Letterman · CC BY 2.0 · Wikimedia Commons',plink:'https://commons.wikimedia.org/wiki/File:UC_Berkeley_Sather_Tower_-_Jan_16,_2022.jpg',title:'UC Berkeley · 직원이 직접 만든 AI 챗봇',yt:'mDEHoVLwtWA',st:890,en:1190,vt:'Law School ChatBot Pilot — 로스쿨 직원이 만든 강의실 장비 도움 챗봇 시연',ch:'UC Berkeley AI Community',
   learn:[['행정 업무용 Campus AI Sandbox 시범','시범 적용 → 정식 도입 기준'],
          ['P1~P4 데이터 보호 등급별 허용 도구','검수 체크리스트(보안·개인정보)'],
          ['직원이 만든 챗봇을 AI Community에서 공유','직원 멘토 커뮤니티 신규 개설'],
@@ -518,8 +571,7 @@ var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
       '<div class="vgrid r2"><div class="ytw"><div class="yt"><iframe title="'+esc(v.vt)+'" data-src="https://www.youtube-nocookie.com/embed/'+v.yt+'?autoplay=1&mute=1&playsinline=1&rel=0'+(v.st?'&start='+v.st+'&end='+v.en:'&loop=1&playlist='+v.yt)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
       '<p class="cap"><small>공식 영상 · '+esc(v.ch)+'</small>'+esc(v.vt)+'</p></div>'+
       '<div class="side">'+(v.photo?'<figure class="place"><img src="'+v.photo+'" alt="'+esc(v.pcap)+'" loading="lazy" data-zoom><figcaption><b>📍 '+esc(v.pcap)+'</b><a href="'+v.plink+'" target="_blank" rel="noopener">'+esc(v.pcredit)+'</a></figcaption></figure>':'')+
-      '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div></div>'+
-      '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. 이 단계에 오면 소리 없이 자동 재생되고, 🔊 버튼으로 소리를 켜거나 전체 화면으로 볼 수 있어요.</p>';
+      '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div></div>';
     box.appendChild(d);});})();
 // 휴대폰 틀 크기 비례: 실제 너비를 --pw로 전달
 (function(){var ph=[].slice.call(document.querySelectorAll('.phone'));function fit(){ph.forEach(function(e){var w=e.getBoundingClientRect().width;if(w>0)e.style.setProperty('--pw',w+'px');});}
@@ -544,6 +596,7 @@ document.addEventListener('click',function(e){var t=e.target;var y=t&&t.closest?
   if(t.tagName==='VIDEO'){lbImg.style.display='none';lbVid.style.display='block';lbVid.src=t.currentSrc||t.src;lbVid.currentTime=0;var p=lbVid.play();if(p&&p.catch)p.catch(function(){});}
   else{lbVid.pause();lbVid.removeAttribute('src');lbVid.style.display='none';lbImg.style.display='block';lbImg.src=t.src;}
   lb.classList.add('on');}});
+document.addEventListener('click',function(e){var r=e.target&&e.target.closest?e.target.closest('.restart'):null;if(r){e.preventDefault();go(0);}});
 lb.onclick=function(e){if(e.target===lbVid)return;closeLb();};
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on')){closeLb();}},true);
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -632,7 +685,7 @@ function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===ste
   cards.forEach(function(c,k){c.classList.toggle('on',k===i);if(k===i)c.scrollTop=0;});
   tbs.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);});
   if(tbs[i].scrollIntoView)tbs[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  stepNo.textContent=(i+1)+' / '+N;hint.style.opacity=i===0?1:0;
+  stepNo.textContent=(i+1)+' / '+N;document.body.classList.toggle('last',i===N-1);document.getElementById('next').disabled=i===N-1;hint.style.opacity=i===0?1:0;
   var cam=STEPS[i].cam;locName.textContent=cam.loc;locCoord.textContent=cam.place?fmt(P[cam.place].c):'';
   var showBay=i>=I_SFO&&i<=I_CMP;map.setPaintProperty('bay','line-opacity',showBay?.85:0);
   map.setPaintProperty('routes','line-opacity',(i>=I_SFO-1&&i<=I_SFO)||(i>=I_CMP&&i<=I_CMP+1)?.55:0);
