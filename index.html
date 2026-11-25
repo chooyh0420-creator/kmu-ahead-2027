@@ -307,6 +307,12 @@ i.ok{background:#e6f4ea;color:#137333}i.qq{background:#fff1e0;color:#a14d00}
   .mx{grid-template-columns:56px repeat(6,minmax(70px,1fr))}
   .tbox{padding:10px}.tbox h3{font-size:14px}.tbox .tsub{font-size:11px;padding-bottom:6px}.tgrid{grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0}.tgrid>div{padding:6px 2px;border-left-width:3px}.tgrid b{font-size:11px;margin:0 0 3px;padding-bottom:3px;letter-spacing:-.04em}.tgrid i{display:none}.tgrid span{font-size:9.5px;margin-top:0}.tbox .tfoot{font-size:10.5px}
 }
+/* v12: 휴대폰 틀(다이내믹 아일랜드·상태바)을 휴대폰 너비(--pw, app.js에서 계산)에 비례하도록 */
+.phone{--pw:205px;border-radius:clamp(14px,calc(var(--pw)*.125),26px);padding:clamp(4px,calc(var(--pw)*.034),7px)}
+.phone .notch{top:max(8px,calc(var(--pw)*.058));width:calc(var(--pw)*.26);height:calc(var(--pw)*.072);margin-left:calc(var(--pw)*-.13);border-radius:99px}
+.phone .sbar{height:max(15px,calc(var(--pw)*.127));border-radius:clamp(9px,calc(var(--pw)*.093),19px) clamp(9px,calc(var(--pw)*.093),19px) 0 0;padding:0 calc(var(--pw)*.07) 0 calc(var(--pw)*.09);font-size:clamp(6px,calc(var(--pw)*.048),10px)}
+.phone .sbar .ic{font-size:clamp(4px,calc(var(--pw)*.034),7px)}
+.phone img,.phone video{border-radius:0 0 clamp(9px,calc(var(--pw)*.093),19px) clamp(9px,calc(var(--pw)*.093),19px)}
 
 </style>
 </head>
@@ -515,6 +521,9 @@ var I_SFO=idxOf('샌프란시스코'),I_CMP=idxOf('비교·정리');
       '<div class="learn"><h6>가서 배울 것 <em>→</em> 계명대에 적용</h6><ol>'+li+'</ol></div></div></div>'+
       '<p class="vnote r3">영상은 각 기관이 YouTube에 공개한 공식 영상을 퍼온 것입니다. 이 단계에 오면 소리 없이 자동 재생되고, 🔊 버튼으로 소리를 켜거나 전체 화면으로 볼 수 있어요.</p>';
     box.appendChild(d);});})();
+// 휴대폰 틀 크기 비례: 실제 너비를 --pw로 전달
+(function(){var ph=[].slice.call(document.querySelectorAll('.phone'));function fit(){ph.forEach(function(e){var w=e.getBoundingClientRect().width;if(w>0)e.style.setProperty('--pw',w+'px');});}
+  if(window.ResizeObserver){var ro=new ResizeObserver(fit);ph.forEach(function(e){ro.observe(e);});}window.addEventListener('resize',fit);window.__fitPhones=fit;})();
 var sc=document.getElementById('showcase'),scenes=[].slice.call(sc.querySelectorAll('.scene')),scTimer=0;
 function vids(on){[].forEach.call(sc.querySelectorAll('video'),function(v){if(on){try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}else{try{v.pause();}catch(e){}}});}
 function showcase(s){clearTimeout(scTimer);sc.classList.remove('on');scenes.forEach(function(x){x.classList.remove('cur');});
