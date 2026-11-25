@@ -365,10 +365,71 @@ body.last .ctrl span{min-width:76px}
 .endbar .restart:hover{background:#ffe9b3}
 .fin{padding:12px 14px}.fin b{font-size:15px;margin:7px 0 3px}.fin .restart{margin-top:9px;padding:6px 14px;font-size:12.5px}
 @media (max-width:760px){.endbar{margin-top:8px;gap:8px;padding:8px 10px}.endbar b{font-size:11.5px}.endbar .te{display:none}.endbar .restart{font-size:11px;padding:5px 10px}}
+/* ===== v13 연출 ===== */
+/* 인트로 */
+#intro{position:fixed;inset:0;z-index:60;background:#02040a;transition:background 1.2s}
+#intro canvas{position:absolute;inset:0;width:100%;height:100%;transition:opacity 1.2s}
+#intro.reveal{background:transparent}#intro.reveal canvas{opacity:0}
+#intro .it{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;color:#fff;pointer-events:none;transition:opacity .8s,transform 1.2s}
+#intro.reveal .it{transform:translateY(-50%) scale(.96)}
+#intro.out{opacity:0;transition:opacity .8s;pointer-events:none}
+#intro small{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.32em;color:#ffd36b;opacity:0;animation:fadeup .9s .3s forwards}
+#intro h1{margin:18px 0 14px;font-size:clamp(34px,5.6vw,76px);line-height:1.12;font-weight:900;letter-spacing:-.03em;min-height:2.3em;text-shadow:0 0 40px rgba(120,170,255,.45),0 4px 24px rgba(0,0,0,.8)}
+#intro .caret{display:inline-block;width:.07em;height:.9em;margin-left:.06em;background:#ffd36b;vertical-align:-.08em;animation:blink .8s steps(1) infinite}
+#intro p{margin:0;font-size:clamp(13px,1.4vw,19px);color:#c9d6ee;opacity:0;transition:opacity 1s;text-shadow:0 2px 10px rgba(0,0,0,.9)}
+#intro .who{display:inline-block;margin-top:16px;font-size:13px;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:5px 14px;opacity:0;transition:opacity 1s .3s;backdrop-filter:blur(6px)}
+#intro.sub p,#intro.sub .who{opacity:1}
+#intro .skip{all:unset;position:absolute;right:26px;bottom:26px;cursor:pointer;color:rgba(255,255,255,.75);font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:7px 16px}
+#intro .skip:hover{color:#fff;border-color:#fff}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+body.intro #panel,body.intro .ctrl,body.intro #timeline,body.intro header.top,body.intro #hint{opacity:0}
+#panel,.ctrl,#timeline,header.top{transition:opacity .9s}
+/* 빛기둥 라벨 */
+.plab{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 11px 7px;border-radius:12px;background:rgba(8,16,34,.72);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);color:#fff;text-align:center;opacity:0;transform:translateY(8px) scale(.9);transition:opacity .5s,transform .5s;box-shadow:0 8px 24px rgba(0,0,0,.45);pointer-events:none;white-space:nowrap}
+.plab.on{opacity:1;transform:none}
+.plab i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 10px currentColor}
+.plab span{font-size:11.5px;font-weight:700;color:#dce6f7}
+.plab b{font-size:20px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(255,211,107,.5)}
+.plab small{font-size:10px;color:#9fb0cc}
+/* 확산 네트워크 */
+.nhub{position:relative;width:92px;height:92px;display:grid;place-items:center;opacity:0;transform:scale(.6);transition:opacity .6s,transform .6s cubic-bezier(.2,1.4,.4,1);pointer-events:none}
+.nhub.on{opacity:1;transform:none}
+.nhub b{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:10.5px;line-height:1.2;font-weight:900;color:#0b2a5b;background:radial-gradient(circle at 35% 30%,#fff3c4,#ffb703);box-shadow:0 0 30px rgba(255,183,3,.8),0 0 0 3px rgba(255,255,255,.7)}
+.nhub em{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,211,107,.8);animation:ring 2.2s ease-out infinite}
+.nhub em+em{animation-delay:1.1s}
+@keyframes ring{from{transform:scale(.8);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.nnode{display:flex;align-items:center;gap:6px;padding:5px 11px 5px 7px;border-radius:99px;background:rgba(8,16,34,.78);border:1px solid rgba(255,211,107,.55);color:#fff;font-size:12.5px;font-weight:800;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .45s,transform .45s cubic-bezier(.2,1.5,.4,1);box-shadow:0 6px 18px rgba(0,0,0,.5);pointer-events:none}
+.nnode.on{opacity:1;transform:none}
+.nnode i{width:9px;height:9px;border-radius:50%;background:#ffd36b;box-shadow:0 0 10px #ffb703}
+body.sc.fxnet #vignette{background:linear-gradient(0deg,rgba(3,10,25,.75) 0%,rgba(3,10,25,.35) 45%,rgba(3,10,25,.15) 100%)}
+.scene.team.cur{justify-content:flex-end!important}
+.scene.team .tbox{padding:14px 20px 12px}
+.scene.team .tbox h3{font-size:20px}.scene.team .tbox .tsub{font-size:13px;padding-bottom:8px}
+.scene.team .tgrid{gap:9px;margin:10px 0 8px}.scene.team .tgrid>div{padding:8px 6px 7px}.scene.team .tgrid b{font-size:16px;padding-bottom:5px;margin-bottom:6px}.scene.team .tgrid span{font-size:12px;margin-top:4px}
+.scene.team .tbox .tfoot{font-size:12.5px;padding-top:7px}
+#showcase.on .scene.team.cur .r1{animation-delay:3.3s}
+#showcase.on .scene.team.cur .r3{animation-delay:4.4s}
+.scene.team .tgrid>div:nth-child(1){animation-delay:3.5s!important}.scene.team .tgrid>div:nth-child(2){animation-delay:3.57s!important}.scene.team .tgrid>div:nth-child(3){animation-delay:3.64s!important}.scene.team .tgrid>div:nth-child(4){animation-delay:3.71s!important}.scene.team .tgrid>div:nth-child(5){animation-delay:3.78s!important}.scene.team .tgrid>div:nth-child(6){animation-delay:3.85s!important}.scene.team .tgrid>div:nth-child(7){animation-delay:3.92s!important}.scene.team .tgrid>div:nth-child(8){animation-delay:3.99s!important}.scene.team .tgrid>div:nth-child(9){animation-delay:4.06s!important}.scene.team .tgrid>div:nth-child(10){animation-delay:4.13s!important}
+@media (max-width:760px){.nnode{font-size:9.5px;padding:3px 7px 3px 5px}.nhub{transform:scale(.7)}.nhub.on{transform:scale(.7)}.plab b{font-size:14px}}
+/* 유리 질감 + 마우스 반응 */
+#panel{perspective:1300px}.scene{perspective:1500px}
+.card{background:radial-gradient(520px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.5),rgba(255,255,255,0) 45%),rgba(255,255,255,.89);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(255,255,255,.65);box-shadow:0 18px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.9);transition:opacity .45s,transform .45s,rotate .35s ease-out}
+.tbox,.mx.mx2{background:radial-gradient(640px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.55),rgba(255,255,255,0) 45%),rgba(255,255,255,.9);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.6);transition:rotate .35s ease-out}
+.card.lit,.tbox.lit,.mx2.lit{box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 #fff}
+body.lite .card,body.lite .tbox,body.lite .mx.mx2{backdrop-filter:none;-webkit-backdrop-filter:none;background:#fff}
+body.lite #intro canvas{display:none}
+/* 엔딩: 빛줄기가 먼저 보이고 카드가 뒤따라 등장 */
+body.sc.fxend #vignette{background:radial-gradient(ellipse at 60% 50%,rgba(3,10,25,.05),rgba(3,10,25,.55) 70%)}
+#showcase.on .scene.role.cur .r1{animation-delay:3.4s}
+#showcase.on .scene.role.cur .r2{animation-delay:3.9s}
+#showcase.on .scene.role.cur .r3{animation-delay:4.6s}
+@media (min-width:761px) and (max-height:820px){.scene.team .tgrid i{display:none}.scene.team .tgrid>div{padding:6px 5px}.scene.team .tgrid b{font-size:15px;margin-bottom:4px}.scene.team .tbox h3{font-size:18px}.scene.team .tbox .tsub{font-size:12px}}
 
 </style>
 </head>
 <body>
+<div id="intro"><canvas></canvas><div class="it"><small>KMU AHEAD 2027 · 참가 연구계획</small><h1 data-t="모든 직원이|개발자가 되는 대학"></h1><p>현업 직원의 AI 도구 개발을 검수·공유·확산하는 제도 모델 연구</p><span class="who">장학복지팀 추윤호</span></div><button type="button" class="skip">건너뛰기 ›</button></div>
 <div id="map"></div>
 <div id="vignette"></div>
 <header class="top">
@@ -555,7 +616,7 @@ var STEPS=[
  {nav:'Google',sub:'방문 ⑤',cam:C([-122.0841,37.4220],16.0,63,30,{orbit:1,place:'google',loc:'마운틴뷰'}),show:'v_google'},
  {nav:'비교·정리',sub:'현지',cam:C([-122.24,37.66],9.4,52,18,{loc:'샌프란시스코 베이 에어리어'}),show:'matrix'},
  {nav:'귀국·적용',sub:'1. 30.(토)',cam:C([128.4874,35.8558],15.2,60,15,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),flightFrom:'sfo',flightTo:'daegu',show:'model'},
- {nav:'처별 전담자',sub:'확산',cam:C([128.4874,35.8558],14.0,52,-40,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),show:'team'},
+ {nav:'처별 전담자',sub:'확산',cam:Object.assign(C([128.4874,35.8558],14.35,54,-20,{orbit:1,place:'daegu',loc:'대구 · 계명대학교'}),{pb:.47}),show:'team'},
  {nav:'약속',sub:'본인 역할',cam:C([150,32],1.6,0,0,{loc:'계명대학교에서'}),show:'role'}
 ];
 var N=STEPS.length,HTML=window.STEP_HTML||[];
@@ -664,7 +725,8 @@ map.on('load',function(){
   map.addLayer({id:'done-casing',type:'line',source:'done',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#1d2533','line-width':5.5,'line-opacity':.35}});
   map.addLayer({id:'done',type:'line',source:'done',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#ffb703','line-width':3}});
   map.addLayer({id:'bay',type:'line',source:'bay',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#ffffff','line-width':['interpolate',['linear'],['zoom'],8,1.5,14,3],'line-opacity':0,'line-dasharray':[1.5,1.5]}});
-  ready=true;go(0,true);
+  if(window.FX)FX.init();
+  ready=true;go(0,true);if(window.FX&&FX.ready)FX.ready();
 });
 function empty(){return {type:'FeatureCollection',features:[]};}
 function setDone(coords){var s=map.getSource('done');if(s)s.setData(coords&&coords.length>1?{type:'Feature',geometry:{type:'LineString',coordinates:coords}}:empty());}
@@ -680,7 +742,7 @@ function fmt(c){var la=c[1],lo=c[0];return Math.abs(la).toFixed(4)+'°'+(la>=0?'
 
 // ---- navigation ----
 var step=0,ready=false,token=0,busyUntil=0,orbitOn=false;
-function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===step&&!instant)return;
+function go(i,instant){if(!ready)return;if(!instant&&document.body.classList.contains('intro'))return;i=Math.max(0,Math.min(N-1,i));if(i===step&&!instant)return;
   if(lb.classList.contains('on'))closeLb();var from=step;step=i;var my=++token;orbitOn=false;map.stop();
   cards.forEach(function(c,k){c.classList.toggle('on',k===i);if(k===i)c.scrollTop=0;});
   tbs.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);});
@@ -692,7 +754,9 @@ function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===ste
   // done route
   if(i<I_SFO)setDone(null);else if(i<=I_CMP)setDone(ROUTES.out);else setDone(ROUTES.back);
   var isFlight=(i===from+1&&!!STEPS[i].flightFrom&&!instant);
-  showcase(isFlight?null:STEPS[i].show);
+  if(window.FX)FX.leave(i);
+  var defer=!instant&&(i===I_TEAM||i===I_END);
+  showcase(isFlight||defer?null:STEPS[i].show);
   plane.remove();updateMarkers();
   busyUntil=performance.now()+900;
   if(instant){map.jumpTo(withPad(cam));afterArrive(my);return;}
@@ -702,9 +766,9 @@ function go(i,instant){if(!ready)return;i=Math.max(0,Math.min(N-1,i));if(i===ste
   map.flyTo(Object.assign(withPad(cam),{duration:dur,curve:1.5,essential:true}));
   map.once('moveend',function(){if(my===token)afterArrive(my);});
 }
-function withPad(cam){return {center:cam.center,zoom:cam.zoom-(mobile()?0.6:0),pitch:cam.pitch,bearing:cam.bearing,padding:padding()};}
+function withPad(cam){var pd=padding(),zs=0,sh=window.innerHeight<820;if(cam.pb&&!mobile()){pd.bottom=Math.round(window.innerHeight*(sh?.54:cam.pb));if(sh)zs=.3;}return {center:cam.center,zoom:cam.zoom-(mobile()?0.6:0)-zs,pitch:cam.pitch,bearing:cam.bearing,padding:pd};}
 function distKm(a,b){var A=toV(a),B=toV(b);return 6371*Math.acos(Math.max(-1,Math.min(1,A[0]*B[0]+A[1]*B[1]+A[2]*B[2])));}
-function afterArrive(my){if(my!==token)return;if(STEPS[step].show&&!document.body.classList.contains('sc'))showcase(STEPS[step].show);orbitOn=STEPS[step].cam.orbit&&!reduce;lastT=0;}
+function afterArrive(my){if(my!==token)return;if(window.FX)FX.arrive(step);if(STEPS[step].show&&!document.body.classList.contains('sc'))showcase(STEPS[step].show);orbitOn=STEPS[step].cam.orbit&&!reduce;lastT=0;}
 // flight animation: climb -> follow plane -> descend
 function flight(i,my){
   var back=STEPS[i].flightFrom==='sfo',route=back?ROUTES.back:ROUTES.out,start=route[0];
@@ -748,6 +812,114 @@ var ty=null,tx=null;
 panel.addEventListener('touchstart',function(e){ty=e.touches[0].clientY;tx=e.touches[0].clientX;},{passive:true});
 panel.addEventListener('touchend',function(e){if(ty===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60){go(step+(dx<0?1:-1));}ty=tx=null;},{passive:true});
 window.addEventListener('resize',function(){if(ready)map.jumpTo(withPad(STEPS[step].cam));});
+
+// ================= v13 연출(FX) =================
+var LITE=reduce||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2)||(navigator.deviceMemory&&navigator.deviceMemory<=2);
+if(LITE)document.body.classList.add('lite');
+var I_KMU=idxOf('계명대'),I_TEAM=idxOf('처별 전담자'),I_END=N-1;
+function circ(c,r,n){n=n||28;var out=[],la=c[1]*D2R;for(var k=0;k<=n;k++){var t=k/n*2*Math.PI;out.push([c[0]+r*Math.cos(t)/(111320*Math.cos(la)),c[1]+r*Math.sin(t)/110540]);}return [out];}
+function offM(c,dx,dy){return [c[0]+dx/(111320*Math.cos(c[1]*D2R)),c[1]+dy/110540];}
+function ease(t){return t<0?0:t>1?1:1-Math.pow(1-t,3);}
+function fmtN(n){return Math.round(n).toLocaleString('ko-KR');}
+var FX=window.FX={};
+// ---- 1) 계명대 위 3D 빛기둥 ----
+var HUB=[128.4874,35.8563];
+var PIL=[{name:'장학금 자가진단',n:13600,c:'#ffb703',p:offM(HUB,-260,40)},{name:'천원의 아침밥 현황',n:5400,c:'#34d399',p:offM(HUB,40,-150)},{name:'장학금 캘린더',n:750,c:'#5ab4ff',p:offM(HUB,300,90)}];
+PIL.forEach(function(o){o.h=Math.round(60+200*Math.sqrt(o.n/13600));
+  var el=document.createElement('div');el.className='plab';el.innerHTML='<i style="background:'+o.c+'"></i><span>'+o.name+'</span><b>0</b><small>누적 방문</small>';
+  o.el=el;o.num=el.querySelector('b');o.mk=new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat(o.p);});
+var pk=0,pilOn=false,pilRaf=0;
+function pilFeatures(){var f=[];PIL.forEach(function(o){f.push({type:'Feature',properties:{h:o.h,c:o.c,k:'core'},geometry:{type:'Polygon',coordinates:circ(o.p,22)}});f.push({type:'Feature',properties:{h:o.h,c:o.c,k:'halo'},geometry:{type:'Polygon',coordinates:circ(o.p,48)}});});return {type:'FeatureCollection',features:f};}
+function pilPaint(){map.setPaintProperty('pil-core','fill-extrusion-height',['*',['get','h'],pk]);map.setPaintProperty('pil-halo','fill-extrusion-height',['*',['get','h'],pk*.94]);
+  map.setPaintProperty('pil-core','fill-extrusion-opacity',pk>0?.92:0);map.setPaintProperty('pil-halo','fill-extrusion-opacity',pk>0?.22:0);map.setPaintProperty('pil-base','circle-opacity',Math.min(1,pk*1.5)*.9);}
+function pilLabels(){var z=map.getZoom(),ppm=512*Math.pow(2,z)/(40075016*Math.cos(HUB[1]*D2R)),sp=Math.sin(map.getPitch()*D2R);
+  PIL.forEach(function(o){o.mk.setOffset([0,-(o.h*pk*ppm*sp)-6]);});}
+function pilShow(){if(pilOn)return;pilOn=true;PIL.forEach(function(o){o.mk.addTo(map);o.el.classList.remove('on');});
+  var t0=performance.now(),T=LITE?400:2600;cancelAnimationFrame(pilRaf);
+  (function an(now){if(!pilOn)return;var t=(now-t0)/T;pk=ease(t);pilPaint();pilLabels();
+    var all=true;PIL.forEach(function(o,k){var r=(now-t0-k*180)/T,e=ease(r);if(r<1)all=false;o.num.textContent=r>=1?fmtN(o.n)+'+':fmtN(o.n*e);if(e>.15)o.el.classList.add('on');});
+    if(!all||t<1)pilRaf=requestAnimationFrame(an);else{pk=1;pilPaint();pilLabels();}})(t0);}
+function pilHide(){if(!pilOn)return;pilOn=false;cancelAnimationFrame(pilRaf);pk=0;pilPaint();PIL.forEach(function(o){o.mk.remove();});}
+map.on('move',function(){if(pilOn)pilLabels();});
+// ---- 2) 처별 확산 네트워크 ----
+var DEPTS=['교무처','연구처','학생처','입학처','기획처','총무처','대외협력처','관리처','AI정보처','국제처'];
+var NET={on:false,raf:0,nodes:[],hub:null};
+DEPTS.forEach(function(d,k){var ang=-Math.PI/2+k/DEPTS.length*2*Math.PI,p=offM(HUB,620*Math.cos(ang),620*Math.sin(ang));
+  var el=document.createElement('div');el.className='nnode';el.innerHTML='<i></i><span>'+d+'</span>';NET.nodes.push({p:p,el:el,mk:new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(p)});});
+(function(){var el=document.createElement('div');el.className='nhub';el.innerHTML='<em></em><em></em><b>KMU_AHEAD<br>TEAM</b>';NET.hub=new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(HUB);NET.hubEl=el;})();
+function lerp(a,b,t){return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];}
+function netShow(){if(NET.on)return;NET.on=true;document.body.classList.add('fxnet');MK.daegu.el.style.visibility='hidden';setDone(null);NET.hub.addTo(map);NET.hubEl.classList.add('on');
+  NET.nodes.forEach(function(n){n.el.classList.remove('on');n.mk.addTo(map);});
+  var t0=performance.now(),n=NET.nodes.length;cancelAnimationFrame(NET.raf);
+  (function an(now){if(!NET.on)return;var s=(now-t0)/1000,L=[],D=[];
+    NET.nodes.forEach(function(nd,k){var a=ease((s-.3-k*.14)/.7);if(a>0){L.push({type:'Feature',properties:{},geometry:{type:'LineString',coordinates:[HUB,lerp(HUB,nd.p,a)]}});}
+      if(a>=1)nd.el.classList.add('on');
+      var b=ease((s-1.9-k*.1)/.5);if(b>0){var nx=NET.nodes[(k+1)%n].p;L.push({type:'Feature',properties:{},geometry:{type:'LineString',coordinates:[nd.p,lerp(nd.p,nx,b)]}});}
+      if(s>1.8){var f=((s*0.45+k*.1)%1);D.push({type:'Feature',properties:{},geometry:{type:'Point',coordinates:lerp(HUB,nd.p,f)}});}});
+    map.getSource('net').setData({type:'FeatureCollection',features:L});map.getSource('netdot').setData({type:'FeatureCollection',features:D});
+    NET.raf=requestAnimationFrame(an);})(t0);}
+function netHide(){if(!NET.on)return;NET.on=false;document.body.classList.remove('fxnet');MK.daegu.el.style.visibility='';cancelAnimationFrame(NET.raf);NET.hub.remove();NET.nodes.forEach(function(n){n.mk.remove();});
+  map.getSource('net').setData(empty());map.getSource('netdot').setData(empty());}
+// ---- 3) 엔딩: 계명대에서 세계로 퍼지는 빛줄기 ----
+var CITIES=[[-122.38,37.62],[139.69,35.69],[116.40,39.90],[103.82,1.35],[151.21,-33.87],[-118.24,34.05],[-157.86,21.31],[100.50,13.75],[174.76,-36.85],[-123.12,49.28],[121.47,31.23],[-149.90,61.22],[144.96,-37.81],[106.85,-6.21]];
+var BEAM={on:false,raf:0,paths:CITIES.map(function(c){return gc(DAEGU,c,90);})};
+function beamShow(){if(BEAM.on)return;BEAM.on=true;document.body.classList.add('fxend');var t0=performance.now();cancelAnimationFrame(BEAM.raf);
+  (function an(now){if(!BEAM.on)return;var s=(now-t0)/1000,L=[],P2=[];
+    BEAM.paths.forEach(function(p,k){var a=ease((s-.2-k*.16)/1.4);if(a<=0)return;var m=Math.max(2,Math.round(a*(p.length-1))+1);L.push({type:'Feature',properties:{},geometry:{type:'LineString',coordinates:p.slice(0,m)}});
+      if(a>=1){var pulse=(s-.2-k*.16-1.4)%1.6/1.6;P2.push({type:'Feature',properties:{r:pulse},geometry:{type:'Point',coordinates:p[p.length-1]}});}});
+    P2.push({type:'Feature',properties:{r:(s%1.4)/1.4},geometry:{type:'Point',coordinates:DAEGU}});
+    map.getSource('beam').setData({type:'FeatureCollection',features:L});map.getSource('beamdot').setData({type:'FeatureCollection',features:P2});
+    BEAM.raf=requestAnimationFrame(an);})(t0);}
+function beamHide(){if(!BEAM.on)return;BEAM.on=false;document.body.classList.remove('fxend');cancelAnimationFrame(BEAM.raf);map.getSource('beam').setData(empty());map.getSource('beamdot').setData(empty());}
+FX.init=function(){
+  map.addSource('pil',{type:'geojson',data:pilFeatures()});
+  map.addSource('pilbase',{type:'geojson',data:{type:'FeatureCollection',features:PIL.map(function(o){return {type:'Feature',properties:{c:o.c},geometry:{type:'Point',coordinates:o.p}};})}});
+  map.addLayer({id:'pil-base',type:'circle',source:'pilbase',minzoom:11,paint:{'circle-color':['get','c'],'circle-radius':['interpolate',['linear'],['zoom'],13,8,16,34],'circle-blur':1,'circle-opacity':0,'circle-pitch-alignment':'map'}});
+  map.addLayer({id:'pil-halo',type:'fill-extrusion',source:'pil',filter:['==',['get','k'],'halo'],minzoom:11,paint:{'fill-extrusion-color':['get','c'],'fill-extrusion-height':0,'fill-extrusion-opacity':0}});
+  map.addLayer({id:'pil-core',type:'fill-extrusion',source:'pil',filter:['==',['get','k'],'core'],minzoom:11,paint:{'fill-extrusion-color':['get','c'],'fill-extrusion-height':0,'fill-extrusion-opacity':0,'fill-extrusion-vertical-gradient':true}});
+  map.addSource('net',{type:'geojson',data:empty()});map.addSource('netdot',{type:'geojson',data:empty()});
+  map.addLayer({id:'net-glow',type:'line',source:'net',layout:{'line-cap':'round'},paint:{'line-color':'#ffb703','line-width':9,'line-blur':7,'line-opacity':.55}});
+  map.addLayer({id:'net-core',type:'line',source:'net',layout:{'line-cap':'round'},paint:{'line-color':'#fff1c2','line-width':2.2}});
+  map.addLayer({id:'net-dot',type:'circle',source:'netdot',paint:{'circle-color':'#fff','circle-radius':4,'circle-blur':.3,'circle-stroke-color':'#ffb703','circle-stroke-width':2}});
+  map.addSource('beam',{type:'geojson',data:empty()});map.addSource('beamdot',{type:'geojson',data:empty()});
+  map.addLayer({id:'beam-glow',type:'line',source:'beam',layout:{'line-cap':'round'},paint:{'line-color':'#ffb703','line-width':10,'line-blur':7,'line-opacity':.75}});
+  map.addLayer({id:'beam-core',type:'line',source:'beam',layout:{'line-cap':'round'},paint:{'line-color':'#fff6d8','line-width':2.2}});
+  map.addLayer({id:'beam-dot',type:'circle',source:'beamdot',paint:{'circle-color':'rgba(0,0,0,0)','circle-radius':['+',3,['*',22,['get','r']]],'circle-stroke-color':'#ffd36b','circle-stroke-width':2,'circle-stroke-opacity':['-',1,['get','r']]}});
+};
+FX.leave=function(i){if(i!==I_KMU)pilHide();if(i!==I_TEAM)netHide();if(i!==I_END)beamHide();};
+FX.arrive=function(i){if(i===I_KMU)pilShow();if(i===I_TEAM)netShow();if(i===I_END)beamShow();};
+// ---- 4) 시네마틱 인트로 ----
+FX.intro=function(){var box=document.getElementById('intro');if(!box)return;
+  if(reduce){box.remove();return;}
+  var cv=box.querySelector('canvas'),cx=cv.getContext('2d'),W,H,stars=[],NS=LITE?220:700,t0=performance.now(),done=false;
+  function rs(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio;}rs();addEventListener('resize',rs);
+  for(var k=0;k<NS;k++)stars.push({x:(Math.random()-.5)*2,y:(Math.random()-.5)*2,z:Math.random()});
+  var cam0=STEPS[0].cam,revT=0;function far(){map.jumpTo({center:[cam0.center[0]-60,cam0.center[1]],zoom:0,pitch:0,bearing:0,padding:padding()});}
+  FX.ready=function(){if(!done&&!revT)far();};if(ready)far();
+  var h1=box.querySelector('h1'),txt=h1.getAttribute('data-t'),typed=0;
+  (function draw(now){if(done)return;var s=(now-t0)/1000,v=s<2.4?(0.06*Math.pow(1-s/2.4,2)+0.004):0.004;
+    cx.fillStyle='rgba(2,4,10,'+(s<2.4?0.35:0.6)+')';cx.fillRect(0,0,W,H);
+    stars.forEach(function(st){var pz=st.z;st.z-=v;if(st.z<=0.02){st.x=(Math.random()-.5)*2;st.y=(Math.random()-.5)*2;st.z=1;pz=1;}
+      var sx=W/2+st.x/st.z*W*.5,sy=H/2+st.y/st.z*H*.5,px=W/2+st.x/pz*W*.5,py=H/2+st.y/pz*H*.5,a=Math.min(1,(1-st.z)*1.4);
+      cx.strokeStyle='rgba(220,232,255,'+a+')';cx.lineWidth=Math.max(1,(1-st.z)*2.6*devicePixelRatio);cx.beginPath();cx.moveTo(px,py);cx.lineTo(sx,sy);cx.stroke();});
+    var want=Math.max(0,Math.min(txt.length,Math.floor((s-.9)/0.075)));if(want!==typed){typed=want;h1.innerHTML=txt.slice(0,typed).replace('|','<br>')+'<i class="caret"></i>';}
+    if(s>2.4)box.classList.add('sub');
+    if(s>3.9&&ready&&!revT){revT=s;box.classList.add('reveal');map.easeTo(Object.assign(withPad(cam0),{duration:3400,easing:function(t){return 1-Math.pow(1-t,3);}}));}
+    if(revT&&s>revT+3.5)finish();else requestAnimationFrame(draw);})(t0);
+  function finish(){if(done)return;done=true;box.classList.add('out');document.body.classList.remove('intro');
+    if(ready){map.stop();if(!revT||map.isMoving())map.jumpTo(withPad(cam0));}setTimeout(function(){box.remove();},900);}
+  box.querySelector('.skip').onclick=finish;box.addEventListener('click',function(e){if(e.target===cv)finish();});
+  addEventListener('keydown',function(e){if(!done&&(e.key==='Escape'||e.key==='Enter'))finish();},true);
+  document.body.classList.add('intro');};
+// ---- 5) 유리 카드 마우스 반응 ----
+(function(){if(LITE||window.matchMedia('(hover: none)').matches)return;var cur=null;
+  function sel(){return [].slice.call(document.querySelectorAll('.card.on, .scene.cur .tbox, .scene.cur .mx2'));}
+  document.addEventListener('mousemove',function(e){var hit=null;sel().forEach(function(el){var r=el.getBoundingClientRect();if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)hit={el:el,r:r};});
+    if(cur&&(!hit||hit.el!==cur)){cur.style.rotate='';cur.style.removeProperty('--mx');cur.style.removeProperty('--my');cur.classList.remove('lit');cur=null;}
+    if(!hit)return;var el=hit.el,r=hit.r,dx=(e.clientX-r.left)/r.width*2-1,dy=(e.clientY-r.top)/r.height*2-1,big=el.classList.contains('card')?3.2:2.2;
+    el.style.rotate=(-dy).toFixed(3)+' '+dx.toFixed(3)+' 0 '+(big*Math.min(1,Math.hypot(dx,dy))).toFixed(2)+'deg';
+    el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top+(el.scrollTop||0))+'px');el.classList.add('lit');cur=el;});})();
+FX.intro();
 window.__go=go;
 })();
 
